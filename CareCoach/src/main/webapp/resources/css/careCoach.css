@@ -1,0 +1,440 @@
+@charset "UTF-8";
+
+/* Base Styling */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	overflow-x: hidden;
+	line-height: 1;
+}
+ol, ul, li {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.line {
+  border-top: 1px solid #444444;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo img {
+  max-height: 100px;
+}
+
+/* Navigation Styling */
+nav .nav-links {
+  display: flex;
+  gap: 80px; /* Increased gap for spacing between main menu items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+nav .nav-links li {
+  position: relative;
+}
+
+nav .nav-links li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Dropdown Styling */
+nav .nav-links li .dropdown {
+  z-index: 100;
+  display: block; /* Ensure the block is initially visible for transition */
+  height: 0; /* Start with zero height */
+  overflow: hidden; /* Hide overflow content */
+  position: absolute;
+  top: 100%;
+  left: 50%; /* Positioning to center align the dropdown */
+  transform: translateX(-50%); /* Centering the dropdown */
+  background-color: #444;
+  width: 150px; /* Fixed width for dropdown menu */
+  height: 0; /* Initially no height */
+  border-radius: 5px;
+  list-style: none;
+  margin: 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease-in-out; /* Smooth height transition */
+  padding: 0; /* Remove padding to prevent overflow */
+}
+
+/* Dropdown Items */
+nav .nav-links li .dropdown li {
+  margin: 0;
+}
+
+nav .nav-links li .dropdown li a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 10px 15px;
+  text-align: center; /* Center align text within the dropdown */
+}
+
+/* Show Dropdown with Fixed Height */
+nav .nav-links li:hover .dropdown {
+  height: 120px; /* Fixed height for dropdown menu */
+  padding: 10px 0; /* Add padding to make items look spaced */
+}
+
+/* Auth Links Styling */
+
+.auth-links {
+  font-size: 15px;
+}
+
+.auth-links li {
+  float: left;
+}
+
+.auth-links a {
+  text-decoration: none;
+  color: #000;
+}
+
+.auth-links a:last-child {
+  margin-left: 5px;
+}
+
+.contour {
+	margin : 0 5px 0 5px;
+}
+
+/* ======= main ======= */
+
+/* Main content styling */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f0f0f0; /* Light grey background for contrast */
+}
+
+/* Slider container */
+.slider-container {
+  width: 100%;
+  max-width: 1200px; /* Ensures it doesn't exceed banner width */
+  overflow: hidden;
+  border-radius: 10px; /* Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: relative; /* For positioning arrows */
+}
+
+/* Slider styling */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth sliding transition */
+}
+
+/* Individual slide styling */
+.slide {
+  min-width: 100%; /* Each slide takes full width of the container */
+  transition: opacity 0.5s ease-in-out; /* Fade effect on transition */
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Navigation arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Darken on hover */
+}
+
+/* ======= main - contents ======= */
+
+/* Main content container */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Common styles for sections */
+.section {
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+/* Styling links inside sections */
+.section ul li a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.section ul li a:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Specific styling for videos section */
+.videos .video-item {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.videos .video-item a {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+}
+
+.videos .video-item img {
+  width: 50%;
+  height: auto;
+  border-radius: 10px 0 0 10px;
+}
+
+.videos .video-description {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.videos .video-description p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.videos .video-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/* Flex and spacing adjustments */
+.section:not(.videos) {
+  flex-basis: 30%;
+}
+
+.section.videos {
+  flex-basis: 35%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .section:not(.videos) {
+    flex-basis: 100%;
+  }
+
+  .section.videos {
+    flex-basis: 100%;
+  }
+
+  .videos .video-item {
+    flex-direction: column;
+  }
+
+  .videos .video-item img {
+    width: 100%;
+  }
+}
+
+/* ======= Footer ======= */
+
+/* Footer Styles */
+.footer {
+  background-color: #a4d0d0; /* Background color to match the image */
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-top: 20px;
+  color: #333;
+  width: 100%;
+
+}
+
+.footer-left {
+  max-width: 300px;
+  float: left;
+}
+
+.footer-left h2 {
+  margin: 0 0 30px 0;
+  border-bottom: 1px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.footer-left p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.footer-right {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.footer-column {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.footer-column h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.footer-column ul li a {
+  font-size: 17px;
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer-right {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .footer-column {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
