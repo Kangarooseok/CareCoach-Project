@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-/Users/mskang/Documents/CareCoach_Project/CareCoach/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1227764197.index
-/CareCoach/src/main/java
-/Users/mskang/Documents/CareCoach_Project/CareCoach/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3463256474.index
-/CareCoach/src/main/java
-/Users/mskang/Documents/CareCoach_Project/CareCoach/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4260273464.index
-/CareCoach/src/main/java

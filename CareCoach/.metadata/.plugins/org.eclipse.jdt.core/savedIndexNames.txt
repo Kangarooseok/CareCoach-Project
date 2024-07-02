@@ -1,8 +1,0 @@
-INDEX VERSION 1.131+/Users/mskang/Documents/CareCoach_Project/CareCoach/.metadata/.plugins/org.eclipse.jdt.core
-618247817.index
-364355689.index
-581822384.index
-2840090263.index
-946634104.index
-3187033586.index
-1865797976.index
