@@ -25,11 +25,18 @@ public class memberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//이용약관 페이지 
     @GetMapping("/terms")
     public String terms() {
         return "member/terms";
     }
 	
+    //회원가입 페이지
+ 	@PostMapping("/join")
+ 	public String join() {
+ 	    return "member/join";
+ 	}
+    
 	//로그인 화면 
 	@RequestMapping("/login")
 	public ModelAndView login() {
