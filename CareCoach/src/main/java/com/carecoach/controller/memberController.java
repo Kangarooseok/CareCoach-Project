@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,12 +20,15 @@ import com.carecoach.vo.UsersVO;
 import pwdconv.PwdChange;
 
 @Controller
-public class memberController {
+public class memberController {	
 	
-
-			
 	@Autowired
 	private MemberService memberService;
+	
+    @GetMapping("/terms")
+    public String terms() {
+        return "member/terms";
+    }
 	
 	//로그인 화면 
 	@RequestMapping("/login")

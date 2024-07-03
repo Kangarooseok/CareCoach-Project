@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
           <c:if test="${empty id}">
               <li><a href="/login">Login</a></li>
               <li class="contour">|</li>
-              <li><a href="CareCoach?command=contract">Join</a></li>
+              <li><a href="${pageContext.request.contextPath}/terms">Join</a></li>
            </c:if>
             <c:if test="${!empty id}">
               <li>
