@@ -1,121 +1,138 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
 }
-
-
-
 
 /* Main section styles */
 .my_main {
-	 margin: 0 auto;
-  width: 500px;
+  margin: 0 auto;
+  width: 70%;
   height: 580px;
   padding: 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center; /* Align items to center */
   gap: 0.625rem;
-   border: 1px solid #ddd;
-   border-radius: 10px;
-
-/*     padding: 20px;
-    max-width: 2000px;
-    margin: 0  auto;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
-
-
 .profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the profile-info and profile-intro */
 }
 
 .profile-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
+  width: 90%; /* Set to 90% width */
+  height: 150px;
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Add padding */
+  margin-bottom: 50px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  margin-left: auto; /* Center align within the section */
+  margin-right: auto; /* Center align within the section */
+}
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px; /* Adjust margin around the picture container */
 }
 
 .profile-picture {
-    position: relative;
-    margin-right: 20px;
+  position: relative;
+  width: 100px; /* Fixed width for profile picture container */
+  height: 100px; /* Fixed height for profile picture container */
+  background-color: #f5f5f5; /* Background color for when there's no image */
+  border: 1px solid #ddd;
+  border-radius: 50%; /* Make it a circle */
+  overflow: hidden; /* Hide any overflow */
 }
 
 .profile-picture img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area */
+  border-radius: 50%;
+  display: block;
 }
 
-.profile-picture button {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    background-color: #f5f5f5;
-    color: #555;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 5px;
+.profile-button {
+  display: inline-block;
+  margin-top: 10px; /* Adjust margin to move button below the picture */
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  color: #555;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .profile-details p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .profile-details button {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    background-color: #f5f5f5;
-    color: #555;
-    cursor: pointer;
-    border-radius: 5px;
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  color: #555;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .profile-intro {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
+  width: 90%; /* Match the width of profile-info */
+  margin-bottom: 20px;
+  margin-left: auto; /* Center align within the section */
+  margin-right: auto; /* Center align within the section */
 }
 
 .profile-intro textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    resize: none;
+  width: 100%; /* Set to 100% width of its container */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  margin-top: 15px;
 }
 
 .action-buttons {
-    display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .action-buttons button {
-    padding: 10px 20px;
-    border: 1px solid #ddd;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .action-buttons button#withdrawButton {
-    background-color: #dc3545;
+  background-color: #dc3545;
+}
+
+/* 스타일 추가: h2를 profile-intro의 h2와 일관성 유지 */
+.my_main h2 {
+  width: 90%;
+  font-size: 24px; /* profile-intro의 h2와 유사한 크기 */
+  color: #333; /* 텍스트 색상 */
+  padding-bottom: 10px; /* 아래 패딩 추가 */
+  border-bottom: 1px solid #ddd; /* 아래 테두리 추가 */
 }
