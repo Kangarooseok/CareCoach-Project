@@ -152,14 +152,16 @@
 </head>
 <body>
     <header>
-        <img src="../resources/images/CareCoach-logo.png" alt="CareCoach"/>
+    	<a href="${pageContext.request.contextPath}/">
+        <img src="${pageContext.request.contextPath}/resources/images/CareCoach-logo.png"  alt="CareCoach"/>
+        </a>
         <nav>
             <a href="#">Login</a> <a href="#">  Join</a>
         </nav>
     </header>
     <div class="container">
         <div class="title">
-            <img src="image/CareCoach.png" alt="Icon">
+            <img src="${pageContext.request.contextPath}/resources/images/CareCoach-logo.png" alt="CareCoach">
             <h1>CareCoach 회원가입</h1>
         </div>
         <div class="agreement">
