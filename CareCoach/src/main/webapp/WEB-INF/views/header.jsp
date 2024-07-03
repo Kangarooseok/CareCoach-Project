@@ -23,14 +23,14 @@ pageEncoding="UTF-8"%>
         <nav>
           <ul class="nav-links">
             <li>
-              <a href="${pageContext.request.contextPath}/posts/aboutUs">About Us</a>
+              <a href="#" onClick='moveBoardPage(1,"${pageContext.request.contextPath}/board/aboutus");'>About Us</a>
             </li>
             <li>
               <a href="#">Community</a>
               <ul class="dropdown">
-                <li><a href="${pageContext.request.contextPath}/posts/notice">공지사항</a></li>
-                <li><a href="${pageContext.request.contextPath}/posts/board">게시판</a></li>
-                <li><a href="${pageContext.request.contextPath}/posts/video">헬스영상</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/freeboard">게시판</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/video">헬스영상</a></li>
               </ul>
             </li>
             <li>
@@ -60,5 +60,15 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </header>
+    <script>
+	    function moveBoardPage(categoryId, path){
+	        var href = path + '?'+'categoryId='+categoryId;
+	        console.log(href);
+	        location.href=href;
+	    }
+    </script>
+    
+    
+    
   </body>
 </html>
