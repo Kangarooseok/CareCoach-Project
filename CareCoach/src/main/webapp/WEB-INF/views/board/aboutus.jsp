@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
-<h1> 어바웃어스</h1>
+<span>${list[0].title}</span>
+<span>${list[0].content}</span>
 
 <%@ include file="../footer.jsp" %>  

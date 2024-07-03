@@ -9,10 +9,10 @@
         <button class="arrow left">&#9664;</button>
         <!-- Left arrow -->
         <div class="slider">
-          <div class="slide"><img src="../resources/images/banner1.png" alt="Banner 1" /></div>
-          <div class="slide"><img src="../resources/images/banner2.png" alt="Banner 2" /></div>
-          <div class="slide"><img src="../resources/images/banner3.png" alt="Banner 3" /></div>
-          <div class="slide"><img src="../resources/images/banner4.png" alt="Banner 4" /></div>
+          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner1.png" alt="Banner 1" /></div>
+          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner2.png" alt="Banner 2" /></div>
+          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner3.png" alt="Banner 3" /></div>
+          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner4.png" alt="Banner 4" /></div>
         </div>
         <button class="arrow right">&#9654;</button>
         <!-- Right arrow -->
