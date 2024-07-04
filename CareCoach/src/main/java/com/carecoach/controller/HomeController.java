@@ -26,7 +26,7 @@ import com.carecoach.vo.PostsVO;
 public class HomeController {
 	
 	@Autowired
-	private BoardService boardService;
+	private BoardService boardServiceImpl;
 	
 	@RequestMapping("/")
 	public ModelAndView main() {
@@ -37,7 +37,7 @@ public class HomeController {
 	@RequestMapping("/board/aboutus")
     public String boardList(@ModelAttribute("categoryId") Integer categoryId, Model model) throws Exception{
                 
-        List<PostsVO> list = boardService.selectPostList(categoryId);
+        List<PostsVO> list = boardServiceImpl.selectPostList(categoryId);
         
         model.addAttribute("list", list);
         

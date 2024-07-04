@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
 <span>${list[0].title}</span>
+<hr>
 <span>${list[0].content}</span>
 
 <%@ include file="../footer.jsp" %>  

@@ -13,6 +13,39 @@
    		select * from posts where category_id=#{categoryId}
    </select>
    
+    <insert id="insertBoard">
+			INSERT INTO POSTS
+			(id,user_id,category_id,title,content)
+			VALUES (
+			   SEQ_POSTS.nextval,
+			   id = #{id},
+			   user_id = #{user_id},
+			   title = #{title},
+			   content = #{content}
+			)
+    </insert>
+    
+    <update id="updateBoard">
+        update posts set
+		   category_id = #{category_id},
+		   title = #{title},
+		   content = #{content},
+		   updated_dt = SYSDATE
+		where id = #{id};
+    </update>
+    
+    <delete id="deleteBoard">
+        delete from posts
+        where
+           id = #{id}
+    </delete>
+    
+    <select id="selectBoardByID" parameterType="com.carecoach.vo.PostsVO" resultType="com.carecoach.vo.PostsVO">
+        select * from posts
+        where
+            id = #{id}
+    </select>
+   
 
  </mapper>
  

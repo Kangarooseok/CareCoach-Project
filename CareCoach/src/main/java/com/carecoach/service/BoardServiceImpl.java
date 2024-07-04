@@ -22,6 +22,34 @@ public class BoardServiceImpl implements BoardService{
 		postList = boardDao.selectPostList(categoryId);
 		return postList;
 	}
+
+
+	@Override
+	public void insertBoard(PostsVO postsVO) throws Exception {
+		boardDao.insertBoard(postsVO);
+	}
+
+
+	@Override
+	public void updateBoard(PostsVO postsVO) throws Exception {
+		boardDao.updateBoard(postsVO);
+		
+	}
+
+
+	@Override
+	public void deleteBoard(PostsVO postsVO) throws Exception {
+		
+		boardDao.deleteBoard(postsVO);
+	}
+
+
+	@Override
+	public PostsVO selectPostsById(PostsVO postsVO) throws Exception {
+		PostsVO resultVO = boardDao.selectPostsById(postsVO);
+
+		return resultVO;
+	}
     
 	
 }

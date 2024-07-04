@@ -13,7 +13,6 @@ public class PostsVO {
 	private String updated_dt;
 	private int view_cnt;
 	private int is_deleted;
-	
 	public int getId() {
 		return id;
 	}
@@ -74,5 +73,6 @@ public class PostsVO {
 	public void setIs_deleted(int is_deleted) {
 		this.is_deleted = is_deleted;
 	}
+	
 	
 }
