@@ -2,9 +2,11 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <%@ include file="../header.jsp" %>
-<h1>게시판 </h1>
 <div>
     <form id="boardForm" name="boardForm" method="post">
         <table>
@@ -18,12 +20,12 @@ pageEncoding="UTF-8"%>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="result" items="${list }" varStatus="status">
+                <c:forEach var="result" items="${list}" varStatus="status">
                     <tr>
-                        <td><c:out value="${result.code }"/></td>
-                        <td><a href='#' onClick='fn_view(${result.code})'><c:out value="${result.title }"/></a></td>
-                        <td><c:out value="${result.writer }"/></td>
-                        <td><c:out value="${result.reg_datetime }"/></td>
+                        <td><c:out value="${result.id}"/></td>
+                        <td><a href='#' onClick='fn_view(${result.id})'><c:out value="${result.title}"/></a></td>
+                        <td><c:out value="${result.user_id}"/></td>           
+                        <td><c:out value="${result.created_dt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -45,11 +47,11 @@ function fn_write(){
 }
  
 //글조회
-function fn_view(code){
+function fn_view(id){
     
     var form = document.getElementById("boardForm");
     var url = "<c:url value='/board/viewContent.do'/>";
-    url = url + "?code=" + code;
+    url = url + "?id=" + id;
     
     form.action = url;    
     form.submit(); 

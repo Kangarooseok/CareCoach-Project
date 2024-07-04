@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/CareCoachMypage.css" />
   </head>
-  <body>
+ <header>
       <div class="container">
         <div class="logo">
           <a href="${pageContext.request.contextPath}/">
@@ -28,16 +28,17 @@ pageEncoding="UTF-8"%>
             <li>
               <a href="#">Community</a>
               <ul class="dropdown">
-                <li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
-                <li><a href="${pageContext.request.contextPath}/board/freeboard">게시판</a></li>
-                <li><a href="${pageContext.request.contextPath}/board/video">헬스영상</a></li>
+                <li><a href="#" onClick='moveBoardPage(2,"${pageContext.request.contextPath}/board/notice");'>공지사항</a></li>
+                <li><a href="#" onClick='moveBoardPage(3,"${pageContext.request.contextPath}/board/freeboard");'>게시판</a></li>
+                <li><a href="#" onClick='moveBoardPage(4,"${pageContext.request.contextPath}/board/video");'>헬스영상</a></li>
               </ul>
             </li>
             <li>
               <a href="#">QnA</a>
               <ul class="dropdown">
-                <li><a href="${pageContext.request.contextPath}qna/faq">자주 묻는 질문</a></li>
-                <li><a href="${pageContext.request.contextPath}qna/qna">문의 게시판</a></li>
+                <li><a href="#" onClick='moveBoardPage(5,"${pageContext.request.contextPath}/qna/faq");'>자주 묻는 질문</a></li>
+                <li><a href="#" onClick='moveBoardPage(6,"${pageContext.request.contextPath}/qna/qna");'>문의 게시판</a></li>
+                </ul>
             </li>
             <li>
               <a href="#">CareCoach</a>
@@ -59,7 +60,7 @@ pageEncoding="UTF-8"%>
           </c:if>
         </div>
       </div>
-    </header>
+ </header>
     <script>
 	    function moveBoardPage(categoryId, path){
 	        var href = path + '?'+'categoryId='+categoryId;
