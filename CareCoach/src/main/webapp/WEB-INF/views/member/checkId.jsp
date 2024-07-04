@@ -171,7 +171,7 @@ QQQ
         .then(data => {
             console.log(data);  // 응답 데이터 로깅
             if (data.available) {
-                alert('사용 가능한 아이디입니다.');
+                alert('사용 하시겠습니까 ?');
                 window.opener.setIdChecked(userId);
                 window.close();
             } else {
