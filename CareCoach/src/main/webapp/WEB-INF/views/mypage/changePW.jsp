@@ -46,7 +46,7 @@ function write_check(){
 	        <input type="password" name="newpassword" id ="newpassword" placeholder="새 비밀번호를 입력해 주세요." />
 	        <label for="newpasswordcheck">새 비밀번호 확인</label>
 	        <input type="password" name="newpasswordcheck" id="newpasswordcheck" placeholder="새 비밀번호 확인." />
-	        <input class="button" type="submit" value="회원탈퇴" />
+	        <input class="button" type="submit" value="비밀번호 변경" />
 			</form>
 		</div>
 	</div>

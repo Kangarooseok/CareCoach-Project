@@ -58,7 +58,7 @@ public class memberController {
         // 사용자 조회 로직
         UsersVO user = this.memberService.findId(email);
 
-        if (user == null || !user.getEmail().equals(email)) {
+        if (user == null || !user.getEmail().equals(email) || !user.getUser_id().equals(user_id)) {
             // 사용자 정보를 찾을 수 없는 경우
             out.println("<script>");
             out.println("alert('해당 이메일과 아이디로 등록된 사용자가 없습니다.');");
@@ -105,8 +105,9 @@ public class memberController {
 		PrintWriter out = response.getWriter();
 		
 		UsersVO m = this.memberService.findId(email);
+		
 
-		if (m == null || !m.getEmail().equals(email)) {
+		if (m == null || !m.getEmail().equals(email) || !m.getName().equals(name)) {
 			out.println("<script>");
 			out.println("alert('해당 이메일과 이름으로 등록된 아이디가 없습니다.');");
 			out.println("history.back();");

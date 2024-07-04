@@ -64,7 +64,7 @@ function write_check2(){
                         <input type="text" name="user_id" placeholder="아이디를 입력해 주세요." id="id" />
                         <label for="email">이메일</label>
                         <input type="email" name="email" placeholder="이메일을 입력해 주세요." id="email" />
-                        <button class="button" type="submit">Submit</button>
+                        <button class="button" type="submit">비밀번호 찾기</button>
                     </form>
                 </div>
             </div>
@@ -84,7 +84,7 @@ function write_check2(){
                         <input type="password" name="newPassword" placeholder="새 비밀번호를 입력해 주세요." id="newPassword" />
                         <label for="confirmPassword">새 비밀번호 확인</label>
                         <input type="password" name="confirmPassword" placeholder="비밀번호를 한 번 더 입력해 주세요." id="confirmPassword" />
-                        <button class="button" type="submit">Submit</button>
+                        <button class="button" type="submit">비밀번호 변경</button>
                     </form>
                 </div>
             </div>

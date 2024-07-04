@@ -31,7 +31,7 @@ function write_check(){
 				<input type="password" name="password" id="password" placeholder="비밀번호" />
 				<label for="ckpassword">비밀번호 확인</label>
 				<input type="password" name="ckpassword" id="ckpassword" placeholder="비밀번호 확인." />
-				<button class="button" type="submit">회원탈퇴</button>
+				<button class="button" type="submit">회원 탈퇴</button>
 			</form>
 		</div>
 	</div>

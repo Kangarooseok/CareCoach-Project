@@ -30,10 +30,10 @@ function write_check(){
           action="/findIdResult"
           onsubmit="return write_check();"
         >
-          <label for="nickname">이름</label>
+          <label for="name">이름</label>
           <input
             type="text"
-            name="nickname"
+            name="name"
             placeholder="이름을 입력해 주세요."
             id="name"
           />
@@ -44,7 +44,7 @@ function write_check(){
             placeholder="이메일을 입력해 주세요."
             id="email"
           />
-          <button class="button" type="submit">Submit</button>
+          <button class="button" type="submit">아이디 찾기</button>
         </form>
       </div>
     </div>
