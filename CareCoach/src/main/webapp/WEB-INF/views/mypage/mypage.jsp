@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %> 
+<script src="../resources/js/jquery.js"></script>
 
 <div class="my_main">
       <!-- h1을 h2로 수정 -->
@@ -21,7 +22,7 @@
             <p>이름: 홍길동</p>
             <p>
               아이디: aassdw112
-              <button id="changePasswordButton" onclick="location='/chgpw';">
+              <button id="changePasswordButton" onclick="openLoginModal2()">
                 비밀번호 변경
               </button>
             </p>
@@ -38,10 +39,13 @@
       </section>
       <div class="action-buttons">
         <button id="saveButton">저장</button>
-        <button id="withdrawButton" onclick="location='/del_mem';">
+        <button id="withdrawButton" onclick="openLoginModal()">
           회원 탈퇴
         </button>
       </div>
     </div>
+    
+    <div class="modal-contents"></div>
 
+<script type="text/javascript" src="../resources/js/modal_popup.js"></script>
 <%@ include file="../footer.jsp" %>  

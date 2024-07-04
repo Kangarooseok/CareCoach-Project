@@ -39,7 +39,6 @@ public class memberController {
 	//아이디 찾기
 	@RequestMapping("/findId")
 	public String findId() {
-
 		return "member/findId";
 	}
 
@@ -194,6 +193,13 @@ public class memberController {
 		}
 		return null;
 	}//member_login_ok()
+	
+	//회원 탈퇴
+	@RequestMapping("/changePW")
+	public String changePW() {
+		System.out.print("changePW");
+		return "mypage/changePW";
+	}
 
 	@RequestMapping("/chgpw")
 	public ModelAndView chgpw() {
@@ -222,6 +228,12 @@ public class memberController {
 		}
 
 		return null;
+	}
+	
+	//회원 탈퇴
+	@RequestMapping("/delmem")
+	public String delmem() {
+		return "mypage/delmem";
 	}
 
 	@RequestMapping("/del_mem")
