@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
            </c:if>
             <c:if test="${!empty id}">
               <li>
-               <a href="/member_logout">LOGOUT |</a>
+               <a href="/member_logout">Logout |</a>
               </li>
               <li><a href="/mypage">마이페이지</a></li>
           </c:if>

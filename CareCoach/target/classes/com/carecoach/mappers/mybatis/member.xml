@@ -3,24 +3,34 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="Member"> 
- 
-  
-   
-  
-   <select id="m_loginCheck" resultType="member">
-     select * from Users where user_id=#{user_id} and is_deleted=0
-   </select>
-   
-   <update id="m_update" >
-   update Users set password=#{password} where user_id=#{user_id}
-   </update>
-   
-   <update id="m_del">
-   	update Users set is_deleted = 1 where user_id=#{user_id}
-   </update>
- </mapper>
+
+<mapper namespace="Member">
+
+
+
+
+	<select id="m_loginCheck" resultType="member">
+		select * from Users where user_id=#{user_id} and is_deleted=0
+	</select>
+
+	<update id="m_update">
+		update Users set password=#{password} where user_id=#{user_id}
+	</update>
+
+	<update id="m_del">
+		update Users set is_deleted = 1 where user_id=#{user_id}
+	</update>
+
+   <update id="bio_update">
+        UPDATE users SET bio = #{bio} WHERE user_id = #{user_id}
+    </update>
+	
+    <update id="updateProfilePicPath">
+        UPDATE users SET profile_image = #{profile_image} WHERE user_id = #{user_id}
+    </update>
+
+
+</mapper>
  
  
  

@@ -10,5 +10,8 @@ public interface MemberService {
 
 	void del_mem(String id);
 
+	void updatebio(UsersVO bio);
+
+	void updateProfilePicPath(UsersVO user);
 	
 }

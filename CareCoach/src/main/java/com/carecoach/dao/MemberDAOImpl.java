@@ -30,7 +30,14 @@ public class MemberDAOImpl implements MemberDAO{
 		this.sqlsession.update("m_del",id);
 	}
 
-	
-	
+    @Override
+    public void updatebio(UsersVO bio) {
+        this.sqlsession.update("bio_update", bio);
+    }
 
+	@Override
+    public void updateProfilePicPath(UsersVO user) {
+        this.sqlsession.update("updateProfilePicPath", user);
+    }
+	
 }

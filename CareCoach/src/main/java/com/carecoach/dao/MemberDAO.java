@@ -7,7 +7,6 @@ public interface MemberDAO {
 	UsersVO loginCheck(String user_id);
 	void changepw(UsersVO m);
 	void del_mem(String id);
-
-	
-
+	void updatebio(UsersVO bio);
+	void updateProfilePicPath(UsersVO user);
 }

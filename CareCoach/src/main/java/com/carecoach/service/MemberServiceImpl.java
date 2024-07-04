@@ -28,7 +28,16 @@ public class MemberServiceImpl implements MemberService{
 		this.memberdao.del_mem(id);
 	}
 
+	@Override
+    public void updatebio(UsersVO bio) {
+        this.memberdao.updatebio(bio);
+    }
 
+	@Override
+	public void updateProfilePicPath(UsersVO user) {
+		this.memberdao.updateProfilePicPath(user);
+		
+	}
 
 	
 	
