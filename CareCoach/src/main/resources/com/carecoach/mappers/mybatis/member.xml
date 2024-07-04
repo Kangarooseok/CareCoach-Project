@@ -20,12 +20,12 @@
    <update id="m_del">
    	update Users set is_deleted = 1 where user_id=#{user_id}
    </update>
+   
+   <select id="m_findId" resultType="member">
+     select * from Users where email=#{email} and is_deleted=0
+   </select>
+   
  </mapper>
- 
- 
- 
- 
- 
  
  
  

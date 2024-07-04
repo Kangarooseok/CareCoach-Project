@@ -28,6 +28,17 @@ public class MemberServiceImpl implements MemberService{
 		this.memberdao.del_mem(id);
 	}
 
+	@Override
+	public UsersVO findId(String email) {
+		return this.memberdao.findId(email);
+	}
+
+	@Override
+	public UsersVO userCheck(String email) {
+		// TODO Auto-generated method stub
+		return this.memberdao.usersCheck(email);
+	}
+
 
 
 	

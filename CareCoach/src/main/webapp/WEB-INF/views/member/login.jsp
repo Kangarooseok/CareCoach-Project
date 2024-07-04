@@ -28,14 +28,16 @@ function write_check(){
           <input type="password" name="password" id="password" placeholder="비밀번호" />
         </div>
         <div class="loginNavigation">
-          <input type="button" value="아이디 찾기" onclick="location='/member/findId';">
-          <input type="button" value="비밀번호 찾기">
+          <input type="button" value="아이디 찾기" onclick="openLoginModal()">
+          <input type="button" value="비밀번호 찾기" onclick="openLoginModal2()">
           <input type="button" value="회원가입">
         </div>
         <input type="submit" value="로그인" />
        </form>
     </div>
     
+    <div class="modal-contents"></div>
     
-<script type="text/javascript" src="../resources/js/post_findid.js"></script>
+    
+<script type="text/javascript" src="../resources/js/post_findId.js"></script>
 <%@ include file="../footer.jsp" %>

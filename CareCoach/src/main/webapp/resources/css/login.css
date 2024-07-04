@@ -17,7 +17,7 @@ input[type="button"] {
 .loginWrapper {
   margin: 0 auto;
   width: 500px;
-  height: 580px;
+  height: 650px;
   padding: 40px;
   box-sizing: border-box;
   display: flex;
@@ -111,3 +111,168 @@ input[type="button"] {
 .loginNavigation input:last-child {
   border: 0px;
 }
+
+
+.find_body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* For a dimmed background effect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+.modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        position: relative;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      .modal-content h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      .modal-content label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .modal-content input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .modal-content .button {
+        width: 100%;
+        padding: 10px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .modal-content .button:hover {
+        background-color: #333;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+.result_body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* For a dimmed background effect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .modal2 {
+        display: flex; /* Display the modal by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content2 {
+        position: relative;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .modal-content2 p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .modal-content2 button {
+        width: 100px;
+        padding: 10px;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .modal-content2 button:hover {
+        background-color: #e0e0e0;
+      }
+
+      .close2 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close2:hover,
+      .close2:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
