@@ -395,18 +395,6 @@
             <label class="agree-all-label"><input type="checkbox" id="agreeAll"> 전체동의</label>
         </div>
         </div>
-        <footer>
-            <p>CareCoach</p>
-            <p>Tel: 010-9000-0000 | Fax: 00-0000-0000 | CareCoach@coach.com</p>
-            <p>Addr: Seoul, Korea</p>
-            <p>Made by JZ</p>
-            <p>
-                <a href="#">About Us</a> | 
-                <a href="#">Community</a> | 
-                <a href="#">QnA</a> | 
-                <a href="#">CareCoach</a>
-            </p>
-        </footer>
 		<script>
             document.addEventListener('DOMContentLoaded', function() {
                 const agreeAllCheckbox = document.getElementById('agreeAll');
