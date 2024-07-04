@@ -448,9 +448,9 @@
                     if (!allAgreed) {
                         alert("이용약관을 모두 동의해주세요.");
                     } else {
-                        // POST 방식으로 /join 요청
+                        // GET 방식으로 /join 요청
                         const form = document.createElement('form');
-                        form.method = 'POST';
+                        form.method = 'GET';
                         form.action = '/controller/join';
                         document.body.appendChild(form);
                         form.submit();
