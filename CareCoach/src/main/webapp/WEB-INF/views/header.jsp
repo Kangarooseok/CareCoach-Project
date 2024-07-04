@@ -12,6 +12,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/careCoach.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/CareCoachMypage.css" />
+    
   </head>
  <header>
       <div class="container">

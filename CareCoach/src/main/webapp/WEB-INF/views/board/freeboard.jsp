@@ -7,8 +7,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <%@ include file="../header.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
+
 <div>
     <form id="boardForm" name="boardForm" method="post">
+         <div>            
+            <a href='#' onClick='fn_write()'>글쓰기</a>            
+        </div>
         <table>
             <thead>
                 <tr>
@@ -26,14 +31,13 @@ pageEncoding="UTF-8"%>
                         <td><a href='#' onClick='fn_view(${result.id})'><c:out value="${result.title}"/></a></td>
                         <td><c:out value="${result.user_id}"/></td>           
                         <td><c:out value="${result.created_dt}"/></td>
+                        <td><c:out value="${result.view_cnt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
         
-        <div>            
-            <a href='#' onClick='fn_write()'>글쓰기</a>            
-        </div>
+
     </form>
 <script>
 //글쓰기

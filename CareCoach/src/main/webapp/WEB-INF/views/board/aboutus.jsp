@@ -4,8 +4,12 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
-<span>${list[0].title}</span>
-<hr>
-<span>${list[0].content}</span>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<body style="background-color: white; height: 2000px;">
+<h1 style="padding-left: 100px; font-size: 2em;">${list[0].title}</h1>
+<hr style="width: 500px;margin-left: 100px;">
+<div style="padding-left: 100px; padding-right: 100px;width 1000px; font-size: 2em;">${list[0].content}</div>
+</body>
 
 <%@ include file="../footer.jsp" %>  
