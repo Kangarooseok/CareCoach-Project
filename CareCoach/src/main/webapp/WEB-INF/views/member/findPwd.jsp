@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <title>비밀번호 찾기 및 재설정</title>
     <script src="../resources/js/jquery.js"></script>
     <script>
     function write_check() {
@@ -36,19 +35,25 @@
     </script>
     
     <script>
-function write_check2(){
-	  
-	  if($.trim($("#newPassword").val())== "" || $.trim($("#confirmPassword").val())== ""){
-		  alert("새 비밀번호와 새 비밀번호 확인 모두 입력하세요");
-		  return false;
-	  }
-	  
-	  if($.trim($("#newPassword").val()) != $.trim($("#confirmPassword").val())){
-		  alert("입력된 새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다");
-		  return false;
-	  }
-	
-}
+    function write_check2(){
+        var newPassword = $.trim($("#newPassword").val());
+        var confirmPassword = $.trim($("#confirmPassword").val());
+
+        if(newPassword == "" || confirmPassword == ""){
+            alert("새 비밀번호와 새 비밀번호 확인 모두 입력하세요");
+            return false;
+        }
+
+        if(newPassword != confirmPassword){
+            alert("입력된 새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다. 비밀번호가 다릅니다. 다시 입력해주세요.");
+            return false;
+        }
+
+        if(newPassword.length < 6 || newPassword.length > 12){
+            alert("비밀번호는 6자리에서 12자리 사이여야 합니다. 다시 입력해주세요.");
+            return false;
+        }
+    }
 
 </script>
     
@@ -58,7 +63,7 @@ function write_check2(){
             <div class="modal" id="myModal">
                 <div class="modal-content">
                     <span class="close" id="closeModal">×</span>
-                    <h2>비밀번호 찾기</h2>
+                    <h2>비밀번호 변경</h2>
                     <form method="post" id="login-form" class="loginForm" action="/findPwdResult" onsubmit="return write_check();">
                         <label for="user_id">아이디</label>
                         <input type="text" name="user_id" placeholder="아이디를 입력해 주세요." id="id" />

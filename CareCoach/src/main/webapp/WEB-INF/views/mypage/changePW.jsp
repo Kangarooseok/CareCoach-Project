@@ -26,6 +26,12 @@ function write_check(){
 		  alert("입력된 새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다");
 		  return false;
 	  }
+	  
+	  var newPassword = $.trim($("#newpassword").val());
+	  if (newPassword.length < 6 || newPassword.length > 12) {
+	      alert("새 비밀번호는 6자 이상 12자 이하이어야 합니다");
+	      return false;
+	  }
 	
 }
 
