@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 
         <div class="auth-links">
           <c:if test="${empty id}">
-              <li><a href="/login">Login</a></li>
+              <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
               <li class="contour">|</li>
               <li><a href="${pageContext.request.contextPath}/terms">Join</a></li>
            </c:if>
