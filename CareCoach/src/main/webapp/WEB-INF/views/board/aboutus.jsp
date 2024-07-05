@@ -6,10 +6,11 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
-<body style="background-color: white; height: 2000px;">
+<div class="page-contents">
 <h1 style="padding-left: 100px; font-size: 2em;">${list[0].title}</h1>
 <hr style="width: 500px;margin-left: 100px;">
 <div style="padding-left: 100px; padding-right: 100px;width 1000px; font-size: 2em;">${list[0].content}</div>
-</body>
+</div>
+
 
 <%@ include file="../footer.jsp" %>  

@@ -25,7 +25,41 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+.page-contents{
+	min-height: 700px;
+	background-color: white;
+ 	margin: 0;
+ 	padding: 0;
+}
 
 tr:nth-child(even) {
   background-color: #eff0fa;
+}
+
+ h1 {
+     text-align: center;
+     padding-top: 50px;
+ }
+ .faq-container {
+     width: 80%;
+     margin: 0 auto;
+ }
+ .faq-item {
+     border-bottom: 1px solid #333;
+ }
+ .faq-question {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-top: 20px;
+   padding-bottom: 20px;
+ }
+ .faq-answer {
+     margin-top: 10px;
+     font-size: 16px;
+     display: none;
+     padding-bottom: 20px;
+ }
+.faq-question span:last-child {
+  margin-left: auto;
 }

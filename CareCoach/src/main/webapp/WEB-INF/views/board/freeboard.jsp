@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
 
-<div>
+<div class="page-contents">
     <form id="boardForm" name="boardForm" method="post">
          <div>            
             <a href='#' onClick='fn_write()'>글쓰기</a>            

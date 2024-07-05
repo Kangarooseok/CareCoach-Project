@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
 <body>
-<div>
+<div class="page-contents">
     <form id="writeForm" name="writeForm" method="post">
         <div>
             <h2>글쓰기</h2>

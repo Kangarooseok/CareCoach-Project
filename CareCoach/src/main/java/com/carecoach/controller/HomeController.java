@@ -137,15 +137,15 @@ public class HomeController {
 	
 	
 	
-	@RequestMapping("/faq")
+	@RequestMapping("/qna/faq")
 	public ModelAndView faq() {
 		System.out.println("자주묻는질문 메인컨트롤러");
 		return new ModelAndView("/qna/faq");
 	}
 	
-	@RequestMapping("/qna")
+	@RequestMapping("/qna/qna")
 	public ModelAndView qna() {
-		System.out.println("자주 묻는 질문 메인컨트롤러");
+		System.out.println("문의 게시판 메인컨트롤러");
 		return new ModelAndView("/qna/qna");
 	}
 	

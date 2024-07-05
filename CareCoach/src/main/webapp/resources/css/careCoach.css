@@ -438,3 +438,10 @@ main {
     margin-bottom: 20px;
   }
 }
+
+
+.page-contents{
+	margin: auto;
+	min-height: 1000px;
+	background-color: white;
+}

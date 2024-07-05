@@ -4,8 +4,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
-body>
-<div>
+
+<div class="page-contents">
     <form id="viewForm" name="viewForm" method="post">
         <div>
             <h2>글쓰기</h2>
@@ -33,6 +33,7 @@ body>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
     </form>
+</div>
 <script>
 //목록
 function fn_cancel(){
@@ -63,6 +64,6 @@ function fn_relay(){
     
 }
 </script>
-</div>
+
 </body>
 <%@ include file="../footer.jsp" %>  
