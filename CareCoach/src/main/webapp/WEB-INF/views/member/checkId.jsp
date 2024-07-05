@@ -66,7 +66,6 @@ input[type="text"] {
     font-size: 11px;
     margin-bottom: 5px;
 }
-QQQ
 .use-btn {
     background-color: #f0f0f0;
     border: none;

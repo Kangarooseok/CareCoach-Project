@@ -12,6 +12,32 @@ public class MemberDAOImpl implements MemberDAO{
 	@Autowired
 	private SqlSession sqlsession;
 
+    @Override
+    public int checkUserId(String user_id) {
+        return sqlsession.selectOne("m_checkUserId", user_id);
+    }
+    
+    @Override
+    public int checkEmail(String email) {
+        return sqlsession.selectOne("m_checkEmail", email);
+    }
+
+    @Override
+    public void insertUser(UsersVO user) throws Exception {	
+    	  System.out.println("MemberDAOImpl: insertUser 시작");
+    	    try {
+    	        sqlsession.insert("m_insertUser", user);
+    	        System.out.println("MemberDAOImpl: SQL 실행 완료");
+    	    } catch (Exception e) {
+    	        System.err.println("MemberDAOImpl: 예외 발생 - " + e.getMessage());
+    	        e.printStackTrace();
+    	        throw e;
+    	    } finally {
+    	        System.out.println("MemberDAOImpl: insertUser 종료");
+    	    }
+    	}
+ 
+	
 	@Override
 	public UsersVO loginCheck(String user_id) {
 		return this.sqlsession.selectOne("m_loginCheck", user_id);

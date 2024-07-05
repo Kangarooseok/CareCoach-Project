@@ -114,7 +114,9 @@
 </head>
 <body>
     <header>
-        <img src="image/CareCoach.png" alt="CareCoach Logo">
+    	<a href ="${pageContext.request.contextPath}/">
+        <img src="${pageContext.request.contextPath}/resources/images/CareCoach-logo.png" alt="CareCoach">
+        </a>
         <nav>
             <a href="#">Login</a> 
             <a href="#">Join</a>
@@ -122,7 +124,7 @@
     </header>
     <h1>회원가입 페이지</h1>
     <div class="container">
-        <form method="post" action="/join_process">
+        <form method="post" action="${pageContext.request.contextPath}/join_process">
             <h4>회원가입 양식</h4>
             <div class="form-group">
                 <label for="user_id">아이디</label>
