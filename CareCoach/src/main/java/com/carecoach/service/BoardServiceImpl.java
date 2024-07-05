@@ -25,30 +25,36 @@ public class BoardServiceImpl implements BoardService{
 
 
 	@Override
-	public void insertBoard(PostsVO postsVO) throws Exception {
-		boardDao.insertBoard(postsVO);
+	public void insertPost(PostsVO postsVO) throws Exception {
+		boardDao.insertPost(postsVO);
 	}
 
 
 	@Override
-	public void updateBoard(PostsVO postsVO) throws Exception {
-		boardDao.updateBoard(postsVO);
+	public void updatePost(PostsVO postsVO) throws Exception {
+		boardDao.updatePost(postsVO);
 		
 	}
 
 
 	@Override
-	public void deleteBoard(PostsVO postsVO) throws Exception {
+	public void deletePost(PostsVO postsVO) throws Exception {
 		
-		boardDao.deleteBoard(postsVO);
+		boardDao.deletePost(postsVO);
 	}
 
 
 	@Override
 	public PostsVO selectPostsById(PostsVO postsVO) throws Exception {
 		PostsVO resultVO = boardDao.selectPostsById(postsVO);
-
+		
 		return resultVO;
+	}
+
+
+	@Override
+	public void addViewCnt(Integer postsId) throws Exception {
+		boardDao.addViewCnt(postsId);
 	}
     
 	

@@ -10,11 +10,15 @@
    
   
    <select id="selectPostList" resultType="com.carecoach.vo.PostsVO" parameterType="int">
-   		select * from posts where category_id=#{categoryId}
+   		select * 
+   		from posts 
+   		where category_id=#{categoryId}
+   			and is_deleted=0
+   		order by updated_dt DESC
    </select>
    
    
-    <insert id="insertBoard">
+    <insert id="insertPost">
 			INSERT INTO POSTS
 			(id,user_id,category_id,title,content)
 			VALUES (
@@ -28,7 +32,7 @@
 
     </insert>
     
-    <update id="updateBoard">
+    <update id="updatePost">
         update posts set
 		   category_id = #{category_id},
 		   title = #{title},
@@ -37,11 +41,20 @@
 		where id = #{id}
     </update>
     
-    <delete id="deleteBoard">
-        delete from posts
+    <update id="addViewCnt">
+    	update posts set
+    		view_cnt = (select view_cnt from posts where id = #{id}) + 1
+   		where id = #{id}
+    </update>
+    
+    
+    
+    <update id="deletePost">
+        update posts set
+        	is_deleted=1
         where
            id = #{id}
-    </delete>
+    </update>
     
     <select id="selectPostsById" parameterType="com.carecoach.vo.PostsVO" resultType="com.carecoach.vo.PostsVO">
         select * from posts

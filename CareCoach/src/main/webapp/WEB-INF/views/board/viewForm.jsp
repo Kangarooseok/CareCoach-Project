@@ -26,23 +26,21 @@ pageEncoding="UTF-8"%>
                 </table>
                 <div>
                     <a href='#' onClick='fn_update()'>수정</a>
-                    <a href='#' onClick='fn_cancel()'>목록</a>
-                    <a href='#' onClick='fn_relay()'>답변</a>                    
+                    <a href='#' onClick='fn_cancel()'>뒤로가기</a>
+                    <a href='#' onClick='fn_relay()'>댓글작성</a> 
+                    <a href='#' onClick='fn_delete()'>삭제</a> 
+                
                 </div>
             </div>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
+        <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
     </form>
 </div>
 <script>
-//목록
+//돌아가기
 function fn_cancel(){
-    
-    var form = document.getElementById("viewForm");
-    
-    form.action = "<c:url value='/board/freeboard'/>";
-    form.submit();
-    
+	history.back();
 }
  
 //수정
@@ -50,7 +48,7 @@ function fn_update(){
     
     var form = document.getElementById("viewForm");
     
-    form.action = "<c:url value='/board/writeForm.do'/>";
+    form.action = "<c:url value='/board/updateForm.do'/>";
     form.submit();
 }
  
@@ -63,6 +61,15 @@ function fn_relay(){
     form.submit();
     
 }
+
+function fn_delete(){
+	var form = document.getElementById("viewForm");
+    form.action = "<c:url value='/board/delete.do'/>";
+    form.submit();
+	
+}
+
+
 </script>
 
 </body>

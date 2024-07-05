@@ -24,25 +24,25 @@ pageEncoding="UTF-8"%>
         <nav>
           <ul class="nav-links">
             <li>
-              <a href="#" onClick='moveBoardPage(1,"${pageContext.request.contextPath}/board/aboutus");'>About Us</a>
+              <a href="#" onClick='moveBoardPage(1);'>About Us</a>
             </li>
             <li>
               <a href="#">Community</a>
               <ul class="dropdown">
-                <li><a href="#" onClick='moveBoardPage(2,"${pageContext.request.contextPath}/board/notice");'>공지사항</a></li>
-                <li><a href="#" onClick='moveBoardPage(3,"${pageContext.request.contextPath}/board/freeboard");'>게시판</a></li>
-                <li><a href="#" onClick='moveBoardPage(4,"${pageContext.request.contextPath}/board/video");'>헬스영상</a></li>
+                <li><a href="#" onClick='moveBoardPage(2);'>공지사항</a></li>
+                <li><a href="#" onClick='moveBoardPage(3);'>게시판</a></li>
+                <li><a href="#" onClick='moveBoardPage(4);'>헬스영상</a></li>
               </ul>
             </li>
             <li>
               <a href="#">QnA</a>
               <ul class="dropdown">
-                <li><a href="#" onClick='moveBoardPage(5,"${pageContext.request.contextPath}/qna/faq");'>자주 묻는 질문</a></li>
-                <li><a href="#" onClick='moveBoardPage(6,"${pageContext.request.contextPath}/qna/qna");'>문의 게시판</a></li>
+                <li><a href="#" onClick='moveBoardPage(5);'>자주 묻는 질문</a></li>
+                <li><a href="#" onClick='moveBoardPage(6);'>문의 게시판</a></li>
                 </ul>
             </li>
             <li>
-              <a href="#">CareCoach</a>
+              <a href="#" onClick='moveBoardPage(7);'>CareCoach</a>
             </li>
           </ul>
         </nav>
@@ -61,14 +61,15 @@ pageEncoding="UTF-8"%>
           </c:if>
         </div>
       </div>
+     
  </header>
-    <script>
-	    function moveBoardPage(categoryId, path){
-	        var href = path + '?'+'categoryId='+categoryId;
-	        console.log(href);
-	        location.href=href;
-	    }
-    </script>
+  <script>
+   function moveBoardPage(categoryId){
+       var href = "${pageContext.request.contextPath}/board/"+categoryId;
+       console.log(href);
+       location.href=href;
+   }
+  </script>
     
     
     

@@ -23,19 +23,19 @@ public class BoardDAOImpl implements BoardDAO{
         return mapper.selectPostList(categoryId);
 	}
 	
-    public void insertBoard(PostsVO postsVO) throws Exception {
+    public void insertPost(PostsVO postsVO) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-        mapper.insertBoard(postsVO);
+        mapper.insertPost(postsVO);
     }
  
-    public void updateBoard(PostsVO postsVO) throws Exception {
+    public void updatePost(PostsVO postsVO) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-        mapper.updateBoard(postsVO);
+        mapper.updatePost(postsVO);
     }
  
-    public void deleteBoard(PostsVO postsVO) throws Exception {
+    public void deletePost(PostsVO postsVO) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-        mapper.deleteBoard(postsVO);
+        mapper.deletePost(postsVO);
     }
 
 	@Override
@@ -45,6 +45,13 @@ public class BoardDAOImpl implements BoardDAO{
 
 		return mapper.selectPostsById(postsVO);
 	}
- 
 
+	@Override
+	public void addViewCnt(Integer postsId) throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		mapper.addViewCnt(postsId);
+	}
+
+	
 }

@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
                         <td><c:out value="${result.id}"/></td>
                         <td><a href='#' onClick='fn_view(${result.id})'><c:out value="${result.title}"/></a></td>
                         <td><c:out value="${result.user_id}"/></td>           
-                        <td><c:out value="${result.created_dt}"/></td>
+                        <td><c:out value="${result.updated_dt}"/></td>
                         <td><c:out value="${result.view_cnt}"/></td>
                     </tr>
                 </c:forEach>
@@ -39,6 +39,7 @@ pageEncoding="UTF-8"%>
         
 
     </form>
+</div>
 <script>
 //글쓰기
 function fn_write(){
@@ -61,5 +62,4 @@ function fn_view(id){
     form.submit(); 
 }
 </script>
-</div>
 <%@ include file="../footer.jsp" %>  

@@ -9,12 +9,14 @@ public interface BoardService {
 
     public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
  
-	void insertBoard(PostsVO postsVO) throws Exception;
+	void insertPost(PostsVO postsVO) throws Exception;
 	
-	void updateBoard(PostsVO postsVO) throws Exception;
+	void updatePost(PostsVO postsVO) throws Exception;
 	
-	void deleteBoard(PostsVO postsVO) throws Exception;
+	void deletePost(PostsVO postsVO) throws Exception;
 	
 	PostsVO selectPostsById(PostsVO postsVO) throws Exception;
-
+	
+	void addViewCnt(Integer postsId) throws Exception;
+	
 }

@@ -11,15 +11,17 @@ public interface BoardMapper {
     public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
     
     // 게시물 등록
-    public void insertBoard(PostsVO postsVO) throws Exception;
+    public void insertPost(PostsVO postsVO) throws Exception;
     
     // 게시물 수정
-    public void updateBoard(PostsVO postsVO) throws Exception;
+    public void updatePost(PostsVO postsVO) throws Exception;
     
     // 게시물 삭제
-    public void deleteBoard(PostsVO postsVO) throws Exception;
+    public void deletePost(PostsVO postsVO) throws Exception;
  
     // 게시물 조회
     public PostsVO selectPostsById(PostsVO postsVO) throws Exception;
     
+    //게시물 조회수
+    public void addViewCnt(Integer postsId) throws Exception;
 }
