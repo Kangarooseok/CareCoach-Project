@@ -18,7 +18,7 @@
    </select>
    
    
-   <select id="selectPostCnt" resultType="com.carecoach.vo.PostsVO" parameterType="int">
+   <select id="selectPostCnt" resultType="int" parameterType="int">
    		select count(*) 
    		from posts 
    		where category_id=#{categoryId}
