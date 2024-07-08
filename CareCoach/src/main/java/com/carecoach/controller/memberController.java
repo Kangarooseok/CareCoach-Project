@@ -68,11 +68,7 @@ public class memberController {
     }
 	
     
-	//이용약관 페이지 
-    @GetMapping("/terms")
-    public String terms() {
-        return "member/terms";
-    }
+
 	
     //회원가입 페이지
     @GetMapping("/join")
