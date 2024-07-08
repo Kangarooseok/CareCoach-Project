@@ -8,6 +8,8 @@ import com.carecoach.vo.PostsVO;
 public interface BoardService {
 
     public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
+    
+    public int selectPostCnt(Integer categoryId) throws Exception;
  
 	void insertPost(PostsVO postsVO) throws Exception;
 	

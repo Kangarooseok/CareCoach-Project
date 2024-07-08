@@ -18,6 +18,13 @@
    </select>
    
    
+   <select id="selectPostCnt" resultType="com.carecoach.vo.PostsVO" parameterType="int">
+   		select count(*) 
+   		from posts 
+   		where category_id=#{categoryId}
+   			and is_deleted=0
+   </select>
+   
     <insert id="insertPost">
 			INSERT INTO POSTS
 			(id,user_id,category_id,title,content)

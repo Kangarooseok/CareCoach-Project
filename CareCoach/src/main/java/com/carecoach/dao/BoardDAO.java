@@ -9,6 +9,8 @@ public interface BoardDAO {
 	public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
 
 	PostsVO selectPostsById(PostsVO postsVO) throws Exception;
+	
+	public int selectPostCnt(Integer categoryId) throws Exception;
 
 	void insertPost(PostsVO postsVO) throws Exception;
 

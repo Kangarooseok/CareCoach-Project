@@ -23,6 +23,14 @@ public class BoardServiceImpl implements BoardService{
 		return postList;
 	}
 
+	
+
+	@Override
+	public int selectPostCnt(Integer categoryId) throws Exception {
+		int postcnt = 0;
+		postcnt = boardDao.selectPostCnt(categoryId);
+		return postcnt;
+	}
 
 	@Override
 	public void insertPost(PostsVO postsVO) throws Exception {

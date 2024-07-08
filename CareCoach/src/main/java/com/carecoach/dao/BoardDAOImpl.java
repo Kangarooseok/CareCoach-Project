@@ -23,7 +23,17 @@ public class BoardDAOImpl implements BoardDAO{
         return mapper.selectPostList(categoryId);
 	}
 	
-    public void insertPost(PostsVO postsVO) throws Exception {
+
+    @Override
+	public int selectPostCnt(Integer categoryId) throws Exception {
+    	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.selectPostCnt(categoryId);
+	}
+
+
+
+
+	public void insertPost(PostsVO postsVO) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         mapper.insertPost(postsVO);
     }

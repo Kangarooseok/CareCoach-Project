@@ -6,35 +6,21 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
 
-
-    <div class="page-contents">
+<div class="page-contents">
+ <div class="category-container">
+    <div class="section faq" onclick="moveBoardPage(5)">자주묻는질문</div>
+    <div class="section qna" onclick="moveBoardPage(6)">문의게시판</div>
+ </div>
     <h1>자주 묻는 질문(FAQ)</h1>
 	    <div class="faq-container">
 	        <div class="faq-item">
-	            <div class="faq-question"><span>CareCoach란 무엇인가요?</span><span>▼</span></div>
-	            <div class="faq-answer">
-					테스트 문구 1 <br>
-					테스트 문구 1 <br>
-					
-
-	            </div>
-	        </div>
-	        <div class="faq-item">
-	          
-	            <div class="faq-question">
-	              <span>비밀번호를 잊어버렸습니다</span><span>▼</span>
-	              </div>
-	            <div class="faq-answer">
-	               테스트 문구 2 <br>
-	               테스트 문구 2 <br>
-	               테스트 문구 2 <br>
-	               테스트 문구 2 <br>
-	               
-	            </div>
-	        </div>
-	        <!-- 추가 FAQ 항목 -->
-	    </div>
-    </div>
+	        <c:forEach var="result" items="${list}" varStatus="status">
+	        	<div class="faq-question"><span><c:out value="${result.title}"/></span><span>▼</span></div>
+	         	<div class="faq-answer"><c:out value="${result.content}"/></div>
+	         </c:forEach>
+       </div> 
+   </div>
+</div>
 
 <script>
 var faqQuestions = document.querySelectorAll(".faq-question");
@@ -51,5 +37,35 @@ faqQuestions.forEach(function(question) {
         }
     });
 });
+
+//JavaScript 코드
+  document.addEventListener('DOMContentLoaded', function() {
+    // URL 정보 파싱
+    const url = new URL(window.location.href);
+    const path = url.pathname.split('/');
+    const boardId = path[path.length - 1];
+
+    // 섹션 요소 선택
+    const sections = document.querySelectorAll('.category-container .section');
+
+    // 섹션 배경색 변경
+    sections.forEach(section => {
+      section.classList.remove('faq', 'qna');
+    });
+
+    if (boardId === '5') {
+      sections[0].classList.add('faq');
+    } else if (boardId === '6') {
+      sections[1].classList.add('qna');
+    }
+  });
+    
+    
+    
+function moveBoardPage(categoryId){
+  var href = "${pageContext.request.contextPath}/board/"+categoryId;
+  console.log(href);
+  location.href=href;
+}
 </script>
 <%@ include file="../footer.jsp" %>  
