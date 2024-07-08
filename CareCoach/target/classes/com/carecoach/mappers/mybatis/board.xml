@@ -9,19 +9,19 @@
   
    
   
-   <select id="selectPostList" resultType="com.carecoach.vo.PostsVO" parameterType="int">
+   <select id="selectPostList" resultType="com.carecoach.vo.PostsVO" >
    		select * 
    		from posts 
-   		where category_id=#{categoryId}
+   		where category_id=#{category_id}
    			and is_deleted=0
    		order by updated_dt DESC
    </select>
    
    
-   <select id="selectPostCnt" resultType="int" parameterType="int">
+   <select id="selectPostCnt" resultType="int">
    		select count(*) 
    		from posts 
-   		where category_id=#{categoryId}
+   		where category_id=#{category_id}
    			and is_deleted=0
    </select>
    

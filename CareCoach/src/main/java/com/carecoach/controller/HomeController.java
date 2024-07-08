@@ -44,15 +44,17 @@ public class HomeController {
 	
 	
 	
-	@RequestMapping("/board/{categoryId}")
-    public String boardList(@PathVariable Integer categoryId, Model model) throws Exception{
-                
-        List<PostsVO> list = boardServiceImpl.selectPostList(categoryId);
+	@RequestMapping("/board/{category_id}")
+    public String boardList(@PathVariable Integer category_id, Model model) throws Exception{
+        PostsVO postsvo = new PostsVO();        
+		postsvo.setCategory_id(category_id);
+		
+        List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
         
         model.addAttribute("list", list);
         
         
-        return returnPosts(categoryId);
+        return returnPosts(category_id);
        
     }
 	
@@ -86,7 +88,7 @@ public class HomeController {
            	
     	boardServiceImpl.insertPost(postsVO);
         
-        List<PostsVO> list = boardServiceImpl.selectPostList(postsVO.getCategory_id());
+        List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
         
         model.addAttribute("list", list);
         
@@ -107,7 +109,7 @@ public class HomeController {
 	   
         boardServiceImpl.updatePost(postsVO);
           
-        List<PostsVO> list = boardServiceImpl.selectPostList(postsVO.getCategory_id());
+        List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
         
         model.addAttribute("list", list);
         
@@ -140,7 +142,7 @@ public class HomeController {
  	   
          boardServiceImpl.deletePost(postsVO);
            
-         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO.getCategory_id());
+         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
          
          model.addAttribute("list", list);
          

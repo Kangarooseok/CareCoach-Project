@@ -17,9 +17,9 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	@Override
-	public List<PostsVO> selectPostList(Integer categoryId) throws Exception {
+	public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception {
 		List<PostsVO> postList = null;
-		postList = boardDao.selectPostList(categoryId);
+		postList = boardDao.selectPostList(postsVO);
 		return postList;
 	}
 

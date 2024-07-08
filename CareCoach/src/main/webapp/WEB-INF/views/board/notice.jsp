@@ -76,8 +76,8 @@ if (boardId === '2') {
 } 
 });
 
-function moveBoardPage(categoryId){
-  var href = "${pageContext.request.contextPath}/board/"+categoryId;
+function moveBoardPage(category_id){
+  var href = "${pageContext.request.contextPath}/board/"+category_id;
   console.log(href);
   location.href=href;
 }

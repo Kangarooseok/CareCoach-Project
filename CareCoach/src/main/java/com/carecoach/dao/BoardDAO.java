@@ -6,7 +6,7 @@ import com.carecoach.vo.PostsVO;
 
 public interface BoardDAO {
 
-	public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
+	public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception;
 
 	PostsVO selectPostsById(PostsVO postsVO) throws Exception;
 	

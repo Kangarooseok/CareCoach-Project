@@ -7,7 +7,7 @@ import com.carecoach.vo.PostsVO;
 
 public interface BoardService {
 
-    public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
+    public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception;
     
     public int selectPostCnt(Integer categoryId) throws Exception;
  

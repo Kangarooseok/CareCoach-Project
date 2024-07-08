@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
     sections[1].classList.add('qna');
   }
 });
-function moveBoardPage(categoryId){
-  var href = "${pageContext.request.contextPath}/board/"+categoryId;
+function moveBoardPage(category_id){
+  var href = "${pageContext.request.contextPath}/board/"+category_id;
   console.log(href);
   location.href=href;
 }

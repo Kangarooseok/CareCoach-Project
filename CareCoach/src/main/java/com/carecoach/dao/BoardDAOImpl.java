@@ -18,9 +18,9 @@ public class BoardDAOImpl implements BoardDAO{
     private SqlSession sqlSession;
 	    
 	@Override
-	public List<PostsVO> selectPostList(Integer categoryId) throws Exception {
+	public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception {
 		 BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-        return mapper.selectPostList(categoryId);
+        return mapper.selectPostList(postsVO);
 	}
 	
 

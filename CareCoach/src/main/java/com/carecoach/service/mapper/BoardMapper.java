@@ -8,7 +8,7 @@ import com.carecoach.vo.PostsVO;
 public interface BoardMapper {
 	
 	// 게시물 리스트 조회
-    public List<PostsVO> selectPostList(Integer categoryId) throws Exception;
+    public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception;
     
     //게시물 개수
     public int selectPostCnt(Integer categoryId) throws Exception;
