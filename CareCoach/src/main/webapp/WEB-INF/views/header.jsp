@@ -59,6 +59,17 @@ pageEncoding="UTF-8"%>
           </c:if>
         </div>
       </div>
+      
+      <nav class="navbar2">
+      <ul class="nav_wrapper">
+        <a href="#">
+          <li class="icon test_icon_name1">
+            <img src="../resources/images/ChatBot_Icon.jpeg" alt="ChatBot" />
+            <span class="name">ChatBot</span>
+          </li>
+        </a>
+      </ul>
+    </nav>
     </header>
   </body>
 </html>

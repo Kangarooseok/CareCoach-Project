@@ -9,10 +9,17 @@ public class UsersVO {
 	private String email;
 	private int is_deleted;
 	private String indate;
-	private String profile_image;
+	private String profile_img;
 	private String bio;
 	private String roles;
 	private int user_no;
+	
+	public String getProfile_img() {
+		return profile_img;
+	}
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
+	}
 	
 	public int getUser_no() {
 		return user_no;
@@ -56,12 +63,7 @@ public class UsersVO {
 	public void setIndate(String indate) {
 		this.indate = indate;
 	}
-	public String getProfile_image() {
-		return profile_image;
-	}
-	public void setProfile_image(String profile_image) {
-		this.profile_image = profile_image;
-	}
+
 	public String getBio() {
 		return bio;
 	}

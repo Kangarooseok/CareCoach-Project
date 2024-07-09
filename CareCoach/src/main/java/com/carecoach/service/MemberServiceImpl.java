@@ -39,6 +39,15 @@ public class MemberServiceImpl implements MemberService{
 		return this.memberdao.usersCheck(email);
 	}
 
+	@Override
+    public void updatebio(UsersVO bio) {
+        this.memberdao.updatebio(bio);
+    }
+
+    @Override
+    public void updateProfilePicPath(UsersVO fileName) {
+        this.memberdao.updateProfilePicPath(fileName);
+    }
 
 
 	

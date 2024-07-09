@@ -9,7 +9,8 @@ public interface MemberDAO {
 	UsersVO findId(String email);
 	void changepw(UsersVO m);
 	void del_mem(String id);
-	
+	void updatebio(UsersVO bio);
+	void updateProfilePicPath(UsersVO fileName);
 	
 
 }
