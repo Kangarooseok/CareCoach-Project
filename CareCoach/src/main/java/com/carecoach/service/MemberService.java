@@ -10,5 +10,7 @@ public interface MemberService {
 
 	void del_mem(String id);
 
-	
+	boolean isUserIdAvailable(String user_id);
+    void registerUser(UsersVO user) throws Exception;
+
 }

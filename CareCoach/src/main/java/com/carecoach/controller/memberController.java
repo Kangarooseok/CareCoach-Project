@@ -3,14 +3,20 @@ package com.carecoach.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.io.PrintWriter;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.carecoach.service.MemberService;
@@ -19,13 +25,57 @@ import com.carecoach.vo.UsersVO;
 import pwdconv.PwdChange;
 
 @Controller
-public class memberController {
+public class memberController {	
 	
-
-			
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping(value = "/checkIdAvailability", produces = "application/json")
+    @ResponseBody
+    public Map<String, Boolean> checkId(@RequestParam String user_id) {
+        System.out.println("유저 아이디 요청 " + user_id);  
+        boolean isAvailable = memberService.isUserIdAvailable(user_id);
+        System.out.println("아이디 체크 : " + user_id + ", 사용 가능: " + isAvailable);
+        Map<String, Boolean> response = new HashMap<String, Boolean>();
+        response.put("available", isAvailable);
+        return response;
+    }
+	
+	//아이디중복확인 페이지
+	@GetMapping("/checkId")
+	public String checkIdPage() {
+	    return "member/checkId";
+	}
+
+    @PostMapping("/join_process")
+    public String joinProcess(UsersVO user, HttpServletResponse response) throws Exception {
+    	response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        try {
+            memberService.registerUser(user);
+            out.println("<script>alert('회원가입이 완료되었습니다.'); </script>");
+            return "member/login";
+        } catch (DuplicateKeyException e) {
+            out.println("<script>alert('" + e.getMessage() + "'); history.back();</script>");
+        } catch (Exception e) {
+            System.err.println("예외 발생: " + e.getClass().getName() + " - " + e.getMessage());
+            e.printStackTrace();
+            out.println("<script>alert('회원가입 중 오류가 발생했습니다.'); history.back();</script>");
+        }
+        
+        return null;
+    }
+	
+    
+
+	
+    //회원가입 페이지
+    @GetMapping("/join")
+ 	public String join() {
+ 	    return "member/join";
+ 	}
+    
 	//로그인 화면 
 	@RequestMapping("/login")
 	public ModelAndView login() {

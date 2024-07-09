@@ -56,12 +56,16 @@
          <artifactId>jackson-dataformat-xml</artifactId>
          <version>2.9.5</version>
       </dependency>
+<<<<<<< HEAD
 	  <dependency>
 	    <groupId>com.googlecode.json-simple</groupId>
 	    <artifactId>json-simple</artifactId>
 	    <version>1.1.1</version>
 	  </dependency>
       
+=======
+	  
+>>>>>>> dev/devjoin
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
