@@ -29,9 +29,22 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+<<<<<<< HEAD
     public void updatebio(UsersVO bio) {
         this.memberdao.updatebio(bio);
     }
+=======
+	public UsersVO findId(String email) {
+		return this.memberdao.findId(email);
+	}
+
+	@Override
+	public UsersVO userCheck(String email) {
+		// TODO Auto-generated method stub
+		return this.memberdao.usersCheck(email);
+	}
+
+>>>>>>> dev/devlogin
 
 	@Override
 	public void updateProfilePicPath(UsersVO user) {

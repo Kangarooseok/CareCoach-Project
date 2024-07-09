@@ -15,8 +15,6 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public UsersVO loginCheck(String user_id) {
 		return this.sqlsession.selectOne("m_loginCheck", user_id);
-		
-		
 	}
 
 	@Override
@@ -30,10 +28,26 @@ public class MemberDAOImpl implements MemberDAO{
 		this.sqlsession.update("m_del",id);
 	}
 
+<<<<<<< HEAD
     @Override
     public void updatebio(UsersVO bio) {
         this.sqlsession.update("bio_update", bio);
     }
+=======
+	@Override
+	public UsersVO findId(String email) {
+		return this.sqlsession.selectOne("m_findId", email);
+	}
+
+	@Override
+	public UsersVO usersCheck(String email) {
+		// TODO Auto-generated method stub
+		return this.sqlsession.selectOne("m_findId", email);
+	}
+
+	
+	
+>>>>>>> dev/devlogin
 
 	@Override
     public void updateProfilePicPath(UsersVO user) {

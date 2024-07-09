@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ include file="../header.jsp"%>
 
 <!-- 필요한 JavaScript 추가 -->
@@ -19,6 +20,10 @@
         reader.readAsDataURL(file);
     }
 </script>
+=======
+<%@ include file="../header.jsp" %> 
+<script src="../resources/js/jquery.js"></script>
+>>>>>>> dev/devlogin
 
 <div class="my_main">
     <h2 class="title">${name}의 페이지</h2>
@@ -39,6 +44,22 @@
                 </p>
                 <p>이메일: ${email}</p>
             </div>
+<<<<<<< HEAD
+=======
+            <button class="profile-button" id="changePicButton">변경</button>
+            <input type="file" id="profilePicInput" style="display: none" />
+          </div>
+          <div class="profile-details">
+            <p>이름: 홍길동</p>
+            <p>
+              아이디: aassdw112
+              <button id="changePasswordButton" onclick="openLoginModal2()">
+                비밀번호 변경
+              </button>
+            </p>
+            <p>이메일: mydreamJavaking@gmail.com</p>
+          </div>
+>>>>>>> dev/devlogin
         </div>
         <div class="profile-intro">
             <h2 class="title">자기소개글</h2>
@@ -51,7 +72,23 @@
                 </div>
             </form>
         </div>
+<<<<<<< HEAD
     </section>
 </div>
 
 <%@ include file="../footer.jsp"%>
+=======
+      </section>
+      <div class="action-buttons">
+        <button id="saveButton">저장</button>
+        <button id="withdrawButton" onclick="openLoginModal()">
+          회원 탈퇴
+        </button>
+      </div>
+    </div>
+    
+    <div class="modal-contents"></div>
+
+<script type="text/javascript" src="../resources/js/modal_popup.js"></script>
+<%@ include file="../footer.jsp" %>  
+>>>>>>> dev/devlogin

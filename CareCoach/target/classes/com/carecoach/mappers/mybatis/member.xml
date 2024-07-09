@@ -3,6 +3,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 
 <mapper namespace="Member">
 
@@ -31,11 +32,31 @@
 
 
 </mapper>
+=======
  
+ <mapper namespace="Member"> 
  
- 
- 
- 
+  
+   
+  
+   <select id="m_loginCheck" resultType="member">
+     select * from Users where user_id=#{user_id} and is_deleted=0
+   </select>
+   
+   <update id="m_update" >
+   update Users set password=#{password} where user_id=#{user_id}
+   </update>
+   
+   <update id="m_del">
+   	update Users set is_deleted = 1 where user_id=#{user_id}
+   </update>
+   
+   <select id="m_findId" resultType="member">
+     select * from Users where email=#{email} and is_deleted=0
+   </select>
+   
+ </mapper>
+>>>>>>> dev/devlogin
  
  
  
