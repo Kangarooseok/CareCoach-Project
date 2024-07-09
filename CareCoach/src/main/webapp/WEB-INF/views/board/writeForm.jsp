@@ -15,12 +15,16 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <th>카테고리</th>                       
                         <td>
-                            <select id="category_id" name="category_id">
+                            <select id="category_id" name="category_id"onChange="toggleUrlField()" >
                                 <option value="3">게시판</option>
                                 <option value="4">헬스 영상</option>
                                 <option value="6">문의 게시판</option>
                             </select>
                         </td>
+                    </tr>
+                    <tr id="urlRow" style="display:none;">
+                        <th>url</th>
+                        <td><input style="width: 500px" type="text" id="url" name="url"/></td>
                     </tr>
                     <tr>
                         <th>제목</th>
@@ -58,6 +62,22 @@ function fn_addtoBoard(){
 function fn_cancel(){
 	 window.history.back();
 }
+//URL 입력란 표시 토글
+function toggleUrlField() {
+    var category = document.getElementById("category_id").value;
+    var urlRow = document.getElementById("urlRow");
+
+    if (category == "4") { // '헬스 영상' 카테고리가 선택되었을 때
+        urlRow.style.display = "";
+    } else {
+        urlRow.style.display = "none";
+    }
+}
+
+// 페이지 로드 시 초기 상태 설정
+window.onload = function() {
+    toggleUrlField();
+};
 </script>
 </div>
 </body>

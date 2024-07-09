@@ -46,9 +46,7 @@ public class Pagination {
 		return pageSize;
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
+
 
 	public int getRangeSize() {
 		return rangeSize;
@@ -88,8 +86,6 @@ public class Pagination {
 	public int getRangeCnt() {
 		return rangeCnt;
 	}
-
-
 
 	public int getStartPage() {
 		return startPage;
@@ -155,6 +151,10 @@ public class Pagination {
 		
 		/** DB 질의를 위한 startIndex 설정 **/
 		setStartIndex(curPage);
+		
+		/** DB 질의를 위한  PageSize 설정 **/
+		setPageSize(curPage);
+		
 	}
 	
 	public void setPageCnt(int listCnt) {
@@ -180,8 +180,11 @@ public class Pagination {
 		this.curRange = (int)((curPage-1)/rangeSize) + 1;
 	}
 	public void setStartIndex(int curPage) {
-		this.startIndex = (curPage-1) * pageSize;
+		this.startIndex = (curPage-1) * pageSize+1;
 	}
-
+	
+	public void setPageSize(int curPage) {
+		this.pageSize =  (curPage) * pageSize;
+	}
 
 }

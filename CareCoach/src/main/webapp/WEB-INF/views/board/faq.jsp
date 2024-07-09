@@ -22,6 +22,7 @@ pageEncoding="UTF-8"%>
    </div>
 </div>
 
+<script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
 var faqQuestions = document.querySelectorAll(".faq-question");
 faqQuestions.forEach(function(question) {
@@ -59,13 +60,12 @@ faqQuestions.forEach(function(question) {
       sections[1].classList.add('qna');
     }
   });
-    
-    
-    
-function moveBoardPage(category_id){
-  var href = "${pageContext.request.contextPath}/board/"+category_id;
-  console.log(href);
-  location.href=href;
-}
+
+  function moveBoardPage(category_id){
+      var href = "${pageContext.request.contextPath}/board/"+category_id;
+      console.log(href);
+      location.href=href;
+  }
+
 </script>
 <%@ include file="../footer.jsp" %>  

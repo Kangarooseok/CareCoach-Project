@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.carecoach.boardPagination.Pagination;
 import com.carecoach.service.BoardService;
 import com.carecoach.service.ChatbotService;
 import com.carecoach.vo.CategoryVO;
@@ -41,18 +44,31 @@ public class HomeController {
 		return new ModelAndView("index");
 	}
 	
-	
-	
-	
 	@RequestMapping("/board/{category_id}")
-    public String boardList(@PathVariable Integer category_id, Model model) throws Exception{
-        PostsVO postsvo = new PostsVO();        
+    public String boardList(@PathVariable Integer category_id,
+    		@RequestParam(defaultValue="1") int curPage,
+            HttpServletRequest request,
+            Model model) throws Exception{
+        PostsVO postsvo = new PostsVO();
 		postsvo.setCategory_id(category_id);
+		
+		HttpSession session = request.getSession();
+		
+		int listCnt = boardServiceImpl.selectPostCnt(category_id);
+		
+		Pagination pagination = new Pagination(listCnt, curPage);
+		
+		postsvo.setStartIndex(pagination.getStartIndex());
+	
+		postsvo.setCntPerPage(pagination.getPageSize());
 		
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
         
         model.addAttribute("list", list);
         
+        model.addAttribute("listCnt", listCnt);
+        
+        model.addAttribute("pagination", pagination);
         
         return returnPosts(category_id);
        
@@ -106,7 +122,7 @@ public class HomeController {
     	    String str = content.replace("\r\n", "<br>");
     	    postsVO.setContent(str);
     	}
-	   
+    	
         boardServiceImpl.updatePost(postsVO);
           
         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
@@ -163,8 +179,7 @@ public class HomeController {
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
         
         boardServiceImpl.addViewCnt(postsVO.getId());
-        
-        
+
         model.addAttribute("result", resultVO);
         
         return "board/viewForm";

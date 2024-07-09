@@ -35,13 +35,46 @@ pageEncoding="UTF-8"%>
                 </c:forEach>
             </tbody>
         </table>
-        
+         <div>
+		    <c:if test="${pagination.curRange ne 1}">
+		        <a href="#" onClick="fn_paging(1)">[처음]</a>
+		    </c:if>
+		    <c:if test="${pagination.curPage ne 1}">
+		        <a href="#" onClick="fn_paging('${pagination.prevPage}')">[이전]</a>
+		    </c:if>
+		    <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
+		        <c:choose>
+		            <c:when test="${pageNum eq pagination.curPage}">
+		                <span style="font-weight: bold;"><a href="#" onClick="fn_paging('${pageNum}')">${pageNum}</a></span>
+		            </c:when>
+		            <c:otherwise>
+		                <a href="#" onClick="fn_paging('${pageNum}')">${pageNum}</a>
+		            </c:otherwise>
+		        </c:choose>
+		    </c:forEach>
+		    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
+		        <a href="#" onClick="fn_paging('${pagination.nextPage}')">[다음]</a>
+		    </c:if>
+		    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
+		        <a href="#" onClick="fn_paging('${pagination.pageCnt}')">[끝]</a>
+		    </c:if>
+		</div>
 
     </form>
     </div>
     
+<script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
-
+//글쓰기
+function fn_write(){
+    
+    var form = document.getElementById("boardForm");
+    
+    form.action = "<c:url value='/board/writeForm.do'/>";
+    form.submit();
+    
+}
+ 
 //글조회
 function fn_view(id){
     
@@ -51,6 +84,12 @@ function fn_view(id){
     
     form.action = url;    
     form.submit(); 
+}
+
+function moveBoardPage(category_id){
+    var href = "${pageContext.request.contextPath}/board/"+category_id;
+    console.log(href);
+    location.href=href;
 }
 
 //JavaScript 코드
@@ -74,10 +113,5 @@ document.addEventListener('DOMContentLoaded', function() {
     sections[1].classList.add('qna');
   }
 });
-function moveBoardPage(category_id){
-  var href = "${pageContext.request.contextPath}/board/"+category_id;
-  console.log(href);
-  location.href=href;
-}
 </script>
 <%@ include file="../footer.jsp" %>  

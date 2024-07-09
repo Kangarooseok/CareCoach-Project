@@ -1,7 +1,8 @@
 package com.carecoach.vo;
 
-public class PagingVO {
-	   /** 한 페이지당 게시글 수 **/
+public class Pagination {
+    
+    /** 한 페이지당 게시글 수 **/
     private int pageSize = 10;
     
     /** 한 블럭(range)당 페이지 수 **/
@@ -41,9 +42,6 @@ public class PagingVO {
 		return pageSize;
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
 
 	public int getRangeSize() {
 		return rangeSize;
@@ -79,9 +77,12 @@ public class PagingVO {
 	}
 
 
+
 	public int getRangeCnt() {
 		return rangeCnt;
 	}
+
+
 
 	public int getStartPage() {
 		return startPage;
@@ -104,6 +105,7 @@ public class PagingVO {
 	}
 
 
+
 	public int getPrevPage() {
 		return prevPage;
 	}
@@ -120,7 +122,7 @@ public class PagingVO {
 		this.nextPage = nextPage;
 	}
 	
-	public PagingVO(int listCnt, int curPage){
+    public Pagination(int listCnt, int curPage){
         
         /**
          * 페이징 처리 순서
@@ -144,14 +146,18 @@ public class PagingVO {
         
         /** DB 질의를 위한 startIndex 설정 **/
         setStartIndex(curPage);
+        
+        setPageSize(curPage);
     }
  
     public void setPageCnt(int listCnt) {
         this.pageCnt = (int) Math.ceil(listCnt*1.0/pageSize);
     }
+    
     public void setRangeCnt(int pageCnt) {
         this.rangeCnt = (int) Math.ceil(pageCnt*1.0/rangeSize);
     }
+    
     public void rangeSetting(int curPage){
         
         setCurRange(curPage);        
@@ -165,12 +171,16 @@ public class PagingVO {
         this.prevPage = curPage - 1;
         this.nextPage = curPage + 1;
     }
+    
     public void setCurRange(int curPage) {
         this.curRange = (int)((curPage-1)/rangeSize) + 1;
     }
+    
     public void setStartIndex(int curPage) {
-        this.startIndex = (curPage-1) * pageSize;
+        this.startIndex = (curPage-1) * pageSize+1;
     }
-	
-	
+    
+    public void setPageSize(int curPage) {
+		this.pageSize = (curPage)*pageSize;
+	}
 }

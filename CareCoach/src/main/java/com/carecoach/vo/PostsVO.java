@@ -14,6 +14,24 @@ public class PostsVO {
 	private int view_cnt;
 	private int is_deleted;
 	
+	private int CntPerPage;
+	
+	private int StartIndex;
+	
+	
+	
+	public int getCntPerPage() {
+		return CntPerPage;
+	}
+	public void setCntPerPage(int cntPerPage) {
+		CntPerPage = cntPerPage;
+	}
+	public int getStartIndex() {
+		return StartIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		StartIndex = startIndex;
+	}
 	public int getId() {
 		return id;
 	}

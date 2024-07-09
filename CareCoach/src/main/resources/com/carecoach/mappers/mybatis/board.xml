@@ -10,11 +10,29 @@
    
   
    <select id="selectPostList" resultType="com.carecoach.vo.PostsVO" >
+   		<!-- 
    		select * 
    		from posts 
    		where category_id=#{category_id}
    			and is_deleted=0
    		order by updated_dt DESC
+   		 -->
+   		 
+  		SELECT *
+		FROM (
+		    SELECT
+		        ROWNUM AS RNUM, p.*
+		    FROM (
+		        SELECT *
+		        FROM posts p
+		        WHERE category_id = #{category_id}
+		          AND is_deleted = 0
+		        ORDER BY updated_dt DESC
+		    ) p
+		)
+		WHERE RNUM BETWEEN #{StartIndex} AND #{CntPerPage}
+
+	 		
    </select>
    
    
@@ -42,6 +60,7 @@
     <update id="updatePost">
         update posts set
 		   category_id = #{category_id},
+		   url = #{url},
 		   title = #{title},
 		   content = #{content},
 		   updated_dt = SYSDATE
