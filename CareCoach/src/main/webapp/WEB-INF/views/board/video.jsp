@@ -23,27 +23,43 @@ pageEncoding="UTF-8"%>
                 <tr>
                     <th>번호</th>
                     <th>제목</th>
+                    <th>URL</th>
                     <th>작성자</th>
                     <th>날짜</th>
                     <th>조회수</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr>
-                        <td><c:out value="${result.id}"/></td>
-                        
-                        <td><a href='#' onClick='fn_view(${result.id})'>
-                        
-                        <c:out value="${result.title}"/></a></td>
-                        <td><c:out value="${result.user_id}"/></td>           
-                        <td><c:out value="${result.created_dt}"/></td>
-                        <td><c:out value="${result.view_cnt}"/></td>
-                    </tr>
-                </c:forEach>
+			    <c:forEach var="result" items="${list}" varStatus="status">
+		      
+			        <tr onClick='fn_view(${result.id})'>
+			            <td><c:out value="${result.id}"/></td>
+			            <td><c:out value="${result.title}"/></td>
+			            <td><img id="${status.index}" src="" alt="썸네일" style="width: 100px; height: 60px;"/></td>
+			            <td><c:out value="${result.user_id}"/></td>
+			            <td><c:out value="${result.created_dt}"/></td>
+			            <td><c:out value="${result.view_cnt}"/></td>
+			        </tr>
+		   
+			        	
+			        <script>
+			            // URL에서 비디오 ID 추출
+			            var url = '<c:out value="${result.url}"/>';
+			            var videoId = url.split('v=')[1];
+			            var ampersandPosition = videoId.indexOf('&');
+			            if (ampersandPosition != -1) {
+			                videoId = videoId.substring(0, ampersandPosition);
+			            }
+			            // 썸네일 URL 생성
+			            var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+			            
+			            // 썸네일 이미지를 설정
+			            document.getElementById('${status.index}').src = thumbnailUrl;
+			        </script>
+			    </c:forEach>
             </tbody>
         </table>
-		<div>
+		<div style="margin: auto">
 		    <c:if test="${pagination.curRange ne 1}">
 		        <a href="#" onClick="fn_paging(1)">[처음]</a>
 		    </c:if>
@@ -67,7 +83,6 @@ pageEncoding="UTF-8"%>
 		        <a href="#" onClick="fn_paging('${pagination.pageCnt}')">[끝]</a>
 		    </c:if>
 		</div>
-        
     </form>
 </div>
 
@@ -125,11 +140,8 @@ function moveBoardPage(category_id){
 }
 
 //썸네일 추출
-function extractVideoID() {
-    const urlInput = document.getElementById('urlInput').value;
-    const videoID = urlInput.match(/vi\/([^\/]*)/)[1];
-    document.getElementById('output').innerText = videoID;
-}
+
+
 </script>
 
 <%@ include file="../footer.jsp" %>  

@@ -174,6 +174,7 @@ public class HomeController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
+        
         postsVO.setId(id);
         
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);

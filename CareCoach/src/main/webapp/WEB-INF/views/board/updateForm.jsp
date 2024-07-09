@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                     <tr id="urlRow" style="display:none;">
                         <th>url</th>
-                        <td><input style="width: 500px" type="text" id="url" name="url"/></td>
+                        <td><input style="width: 500px" type="text" id="url" name="url" value="${result.url}"/></td>
                     </tr>
                     <tr>
                         <th>제목</th>

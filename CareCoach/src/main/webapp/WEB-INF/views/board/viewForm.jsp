@@ -18,6 +18,13 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <th>내용</th>
                         <td>${result.content}</td>
+                        <c:if test="${result.category_id == 4}">
+                        <td>
+		                 <iframe id="videoUrl" width="560" height="315" src=""
+		                 frameborder="0" allow="accelerometer; autoplay; 
+		                 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </td>
+                        </c:if>
                     </tr>
                     <tr>
                         <th>작성자</th>
@@ -38,6 +45,20 @@ pageEncoding="UTF-8"%>
     </form>
 </div>
 <script>
+
+// URL에서 비디오 ID 추출
+var url = '<c:out value="${result.url}"/>';
+var videoId = url.split('v=')[1];
+var ampersandPosition = videoId.indexOf('&');
+if (ampersandPosition != -1) {
+    videoId = videoId.substring(0, ampersandPosition);
+}
+// 비디오 URL 생성
+var videoUrl = 'https://www.youtube.com/embed/' + videoId;
+
+// 비디오 URL를 설정
+document.getElementById('videoUrl').src = videoUrl;
+
 //돌아가기
 function fn_cancel(){
 	history.back();

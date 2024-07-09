@@ -59,7 +59,6 @@ pageEncoding="UTF-8"%>
 		        <a href="#" onClick="fn_paging('${pagination.pageCnt}')">[끝]</a>
 		    </c:if>
 		</div>
-
     </form>
     </div>
     
