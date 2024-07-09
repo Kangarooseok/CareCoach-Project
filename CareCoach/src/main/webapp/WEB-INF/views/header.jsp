@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
                 <li><a href="${pageContext.request.contextPath}qna/qna">문의 게시판</a></li>
             </li>
             <li>
-              <a href="#">CareCoach</a>
+              <a href="${pageContext.request.contextPath}/chatbot">CareCoach</a>
             </li>
           </ul>
         </nav>
