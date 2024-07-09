@@ -11,7 +11,7 @@
         var userId = document.getElementById('user_id').value;
         if (userId) {
             window.name = "parentForm";
-            window.open("/controller/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
+            window.open("/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
         } else {
             alert('아이디를 입력해주세요.');
         }
@@ -174,7 +174,7 @@
             return;
         }
         window.name = "parentForm";
-        window.open("/controller/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
+        window.open("/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
     }
 
     function setIdChecked(userId) {

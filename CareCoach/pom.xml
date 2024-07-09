@@ -71,26 +71,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-<<<<<<< HEAD
-=======
-      <!-- 브라우저가 받는 데이터가 XML이라는 것을 확인할 수 있는 라이브러리 추가. JSON데이터가 XML형태로 브라우저에서 
-         보이면 매핑주소.json으로 입력하면 기존 xml데이터가 json데이터인 키,값 쌍으로 변경되어서 보여진다. -->
-	  <dependency>
-         <groupId>com.fasterxml.jackson.dataformat</groupId>
-         <artifactId>jackson-dataformat-xml</artifactId>
-         <version>2.9.5</version>
-      </dependency>
-<<<<<<< HEAD
 	  <dependency>
 	    <groupId>com.googlecode.json-simple</groupId>
 	    <artifactId>json-simple</artifactId>
 	    <version>1.1.1</version>
 	  </dependency>
-      
-=======
-	  
->>>>>>> dev/devjoin
->>>>>>> dev/mergetest
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

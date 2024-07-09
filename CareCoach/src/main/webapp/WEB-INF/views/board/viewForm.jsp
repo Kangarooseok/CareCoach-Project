@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
                         <td>${result.content}</td>
                         <c:if test="${result.category_id == 4}">
                         <td>
-		                 <iframe id="videoUrl" width="560" height="315" src=""
+	        	         <iframe id="videoUrl" width="560" height="315" src=""
 		                 frameborder="0" allow="accelerometer; autoplay; 
 		                 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </td>

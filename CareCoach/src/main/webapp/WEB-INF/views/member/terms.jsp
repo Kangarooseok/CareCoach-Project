@@ -227,7 +227,7 @@
                 } else {
                     const form = document.createElement('form');
                     form.method = 'GET';
-                    form.action = '/controller/join';
+                    form.action = '/join';
                     document.body.appendChild(form);
                     form.submit();
                 }

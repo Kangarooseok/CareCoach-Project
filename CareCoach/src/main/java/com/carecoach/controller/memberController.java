@@ -1,7 +1,6 @@
 package com.carecoach.controller;
 
-<<<<<<< HEAD
-=======
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.io.PrintWriter;
@@ -11,25 +10,23 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
->>>>>>> dev/mergetest
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-=======
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> dev/devlogin
-=======
+
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
->>>>>>> dev/mergetest
+
 import org.springframework.web.servlet.ModelAndView;
 import com.carecoach.service.MemberService;
 import com.carecoach.vo.UsersVO;
@@ -45,24 +42,12 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 @Controller
-<<<<<<< HEAD
 public class memberController {
 
-<<<<<<< HEAD
+
     @Autowired
     private MemberService memberService;
 
-    // 로그인 화면
-    @RequestMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("member/login");
-    }
-
-    // 아이디 찾기
-    @RequestMapping("/findId")
-    public String findId() {
-        return "member/findId";
-    }
 
     // 마이페이지
     @RequestMapping(value = "/mypage")
@@ -85,115 +70,9 @@ public class memberController {
         return mav;
     }
 
-    // 로그아웃
-    @RequestMapping("/member_logout")
-    public ModelAndView member_logout(HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        session.invalidate();
-
-        out.println("<script>");
-        out.println("alert('로그아웃 되었습니다.');");
-        out.println("location='/';");
-        out.println("</script>");
-
-        return null;
-    }
-
-    public static boolean isLogin(HttpSession session, HttpServletResponse response)
-            throws Exception {
-        PrintWriter out = response.getWriter();
-        String id = (String) session.getAttribute("id");
-
-        if (id == null) {
-            out.println("<script>");
-            out.println("alert('다시 로그인 하세요.');");
-            out.println("location='member_login';");
-            out.println("</script>");
-
-            return false;
-        }
-        return true;
-    }
-
-    // 로그인 확인
-    @PostMapping("/member_login_ok")
-    public ModelAndView member_login_ok(String user_id, String password, HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        UsersVO m = this.memberService.loginCheck(user_id);
-
-        if (m == null) {
-            out.println("<script>");
-            out.println("alert('가입 안된 회원입니다.');");
-            out.println("history.back();");
-            out.println("</script>");
-        } else {
-            if (!m.getPassword().equals(password)) {
-                out.println("<script>");
-                out.println("alert('비번이 다릅니다.');");
-                out.println("history.go(-1);");
-                out.println("</script>");
-            } else {
-                session.setAttribute("id", user_id);
-                session.setAttribute("name", m.getName());
-                session.setAttribute("email", m.getEmail());
-                session.setAttribute("bio", m.getBio());
-                session.setMaxInactiveInterval(1800);
-                return new ModelAndView("redirect:/");
-            }
-        }
-        return null;
-    }
-
-    @RequestMapping("/chgpw")
-    public ModelAndView chgpw() {
-        return new ModelAndView("mypage/changePW");
-    }
-
-    // 비번 변경
-    @PostMapping("/chgpw_ok")
-    public ModelAndView chgpw_ok(String password, String newpassword, HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String id = (String) session.getAttribute("id");
-        UsersVO m = this.memberService.loginCheck(id);
-
-        if (!m.getPassword().equals(password)) {
-            out.println("<script>");
-            out.println("alert('비밀번호가 틀립니다.');");
-            out.println("history.back();");
-            out.println("</script>");
-        } else {
-            m.setPassword(newpassword);
-            this.memberService.changepw(m);
-
-            out.println("<script>");
-            out.println("alert('비밀번호가 변경되었습니다.');");
-            out.println("location.href='/mypage'");
-            out.println("</script>");
-        }
-
-        return null;
-    }
-
-    @RequestMapping("/del_mem")
-    public ModelAndView del_mem() {
-        return new ModelAndView("mypage/delmem");
-    }
-=======
 
 
-	@Autowired
-	private MemberService memberService;
 
-=======
-public class memberController {	
-	
-	@Autowired
-	private MemberService memberService;
 	
 	@GetMapping(value = "/checkIdAvailability", produces = "application/json")
     @ResponseBody
@@ -240,8 +119,7 @@ public class memberController {
  	public String join() {
  	    return "member/join";
  	}
-    
->>>>>>> dev/mergetest
+
 	//로그인 화면 
 	@RequestMapping("/login")
 	public ModelAndView login() {
@@ -337,14 +215,6 @@ public class memberController {
 
 
 
-	//마이페이지
-	@RequestMapping("/mypage")
-	public String mypage() {
-
-		return "mypage/mypage";
-	}
-
-
 
 	//로그아웃
 	@RequestMapping("/member_logout")
@@ -379,6 +249,7 @@ public class memberController {
 		}
 		return true;
 	}
+	
 	@PostMapping("/member_login_ok")
 	public ModelAndView member_login_ok(String user_id,String password,
 			HttpServletResponse response,HttpSession session) throws Exception{
@@ -445,45 +316,15 @@ public class memberController {
 		return null;
 	}
 	
-	//회원 탈퇴
-	@RequestMapping("/delmem")
-	public String delmem() {
-		return "mypage/delmem";
-	}
+
 
 	@RequestMapping("/del_mem")
 	public ModelAndView del_mem() {
 
 		return new ModelAndView("mypage/delmem");
 	}
-	@PostMapping("/del_mem_ok")
-	public ModelAndView del_mem_ok(String password ,HttpServletResponse response,HttpSession session) throws Exception{
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out=response.getWriter();
-		String id=(String)session.getAttribute("id");
-		UsersVO m = this.memberService.loginCheck(id);
 
-		if(!m.getPassword().equals(password)) {
-			out.println("<script>");
-			out.println("alert('비밀번호가 틀립니다.');");
-			out.println("history.back();");
-			out.println("</script>");
-		}else {
 
-			this.memberService.del_mem(id);
-			session.invalidate();
-
-			out.println("<script>");
-			out.println("alert('회원 탈퇴 했습니다.');");
-			out.println("location='/';");
-			out.println("</script>");
-		}
-
-		return null;
-	}
-
-}
->>>>>>> dev/devlogin
 
     // user 삭제
     @PostMapping("/del_mem_ok")

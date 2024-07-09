@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
                         <th>카테고리</th>                       
                         <td>
                             <select id="category_id" name="category_id"onChange="toggleUrlField()" >
-                                <option value="3">자유게시판</option>
+                       	        <option value="3">자유게시판</option>
                                 <option value="4">헬스영상</option>
                                 <option value="6">문의게시판</option>
                             </select>

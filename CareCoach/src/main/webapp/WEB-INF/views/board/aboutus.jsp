@@ -12,5 +12,4 @@ pageEncoding="UTF-8"%>
 <div style="padding-left: 100px; padding-right: 100px;width 1000px; font-size: 2em;">${list[0].content}</div>
 </div>
 
-
 <%@ include file="../footer.jsp" %>  

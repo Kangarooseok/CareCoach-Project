@@ -60,7 +60,6 @@ $(function(){
     
 });
  
-
 function getCommentList(){
     
     $.ajax({

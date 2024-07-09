@@ -1,17 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: 82102
-=======
-Built-By: Lee
->>>>>>> dev/mergetest
+Built-By: atkdr
 Build-Jdk: 11.0.0.1
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: mskang
-Build-Jdk: 11.0.22
-Created-By: Maven Integration for Eclipse
-
->>>>>>> dev/devlogin

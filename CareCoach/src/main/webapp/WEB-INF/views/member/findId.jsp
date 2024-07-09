@@ -17,7 +17,6 @@ function write_check(){
 }
 </script>
 
-
   	<div class="find_body">
   		<div class="modal" id="myModal">
       <div class="modal-content">

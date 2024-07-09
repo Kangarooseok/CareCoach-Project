@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
     <form id="boardForm" name="boardForm" method="post">
  		
         <table>
-            <thead>
+          	 <thead>
                 <tr>
                     <th>번호</th>
                     <th>제목</th>

@@ -13,7 +13,6 @@ pageEncoding="UTF-8"%>
     <div class="section health" onclick="moveBoardPage(4)">헬스 영상</div>
   </div>
     <form id="boardForm" name="boardForm" method="post">
- 		
         <table>
             <thead>
                 <tr>

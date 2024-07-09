@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	
 	 <div class="result_body">
       <div class="modal2" id="idModal2">
         <div class="modal-content2">

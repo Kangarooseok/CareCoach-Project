@@ -84,11 +84,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-<<<<<<< HEAD
     public void updatebio(UsersVO bio) {
         this.memberdao.updatebio(bio);
     }
-=======
+
 	public UsersVO findId(String email) {
 		return this.memberdao.findId(email);
 	}
@@ -99,7 +98,6 @@ public class MemberServiceImpl implements MemberService{
 		return this.memberdao.usersCheck(email);
 	}
 
->>>>>>> dev/devlogin
 
 	@Override
 	public void updateProfilePicPath(UsersVO user) {

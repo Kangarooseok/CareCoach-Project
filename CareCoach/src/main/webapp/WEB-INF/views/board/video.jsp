@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
     <div class="section video" onclick="moveBoardPage(4)">헬스 영상</div>
   </div>
 
-    <form id="boardForm" name="boardForm" method="post">
+   <form id="boardForm" name="boardForm" method="post">
  		<div>            
             <a href='#' onClick='fn_write()'>작성</a>            
         </div>
