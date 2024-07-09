@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="terms">
+    <select id="getTermsById" resultType="com.carecoach.vo.TermsVO">
+        SELECT * FROM TERMS WHERE id = #{id}
+    </select>
+
+    <select id="getAllTerms" resultType="com.carecoach.vo.TermsVO">
+        SELECT * FROM TERMS ORDER BY id
+    </select>
+
+    <insert id="insertTerms" parameterType="com.carecoach.vo.TermsVO">
+        INSERT INTO TERMS (title, content) VALUES (#{title}, #{content})
+    </insert>
+
+    <update id="updateTerms" parameterType="com.carecoach.vo.TermsVO">
+        UPDATE TERMS SET title = #{title}, content = #{content} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteTerms" parameterType="int">
+        DELETE FROM TERMS WHERE id = #{id}
+    </delete>
+</mapper>

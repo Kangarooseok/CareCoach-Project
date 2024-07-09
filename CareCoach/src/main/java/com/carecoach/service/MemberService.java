@@ -14,8 +14,14 @@ public interface MemberService {
 
 	void del_mem(String id);
 
+<<<<<<< HEAD
 	void updatebio(UsersVO bio);
 
 	void updateProfilePicPath(UsersVO user);
 	
+=======
+	boolean isUserIdAvailable(String user_id);
+    void registerUser(UsersVO user) throws Exception;
+
+>>>>>>> dev/mergetest
 }

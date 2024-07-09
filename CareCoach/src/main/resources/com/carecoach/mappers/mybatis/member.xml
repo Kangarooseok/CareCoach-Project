@@ -51,12 +51,34 @@
    	update Users set is_deleted = 1 where user_id=#{user_id}
    </update>
    
+<<<<<<< HEAD
    <select id="m_findId" resultType="member">
      select * from Users where email=#{email} and is_deleted=0
    </select>
    
  </mapper>
 >>>>>>> dev/devlogin
+=======
+    <select id="m_checkUserId" resultType="int">
+    SELECT COUNT(*) FROM USERS WHERE user_id = #{user_id}
+	</select>	
+	
+	<select id="m_checkEmail" resultType="int">
+    SELECT COUNT(*) FROM USERS WHERE email = #{email}
+	</select>
+
+    <insert id="m_insertUser" parameterType="com.carecoach.vo.UsersVO">
+        INSERT INTO USERS (user_no,user_id,name,password,email)
+        VALUES (SEQ_USERS.nextval, #{user_id}, #{name}, #{password}, #{email})
+    </insert>
+
+</mapper>
+ 
+ 
+ 
+ 
+ 
+>>>>>>> dev/mergetest
  
  
  

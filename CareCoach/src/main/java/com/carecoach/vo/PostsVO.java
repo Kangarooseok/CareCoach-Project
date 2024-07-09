@@ -14,6 +14,24 @@ public class PostsVO {
 	private int view_cnt;
 	private int is_deleted;
 	
+	private int CntPerPage;
+	
+	private int StartIndex;
+	
+	
+	
+	public int getCntPerPage() {
+		return CntPerPage;
+	}
+	public void setCntPerPage(int cntPerPage) {
+		CntPerPage = cntPerPage;
+	}
+	public int getStartIndex() {
+		return StartIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		StartIndex = startIndex;
+	}
 	public int getId() {
 		return id;
 	}
@@ -75,4 +93,11 @@ public class PostsVO {
 		this.is_deleted = is_deleted;
 	}
 	
+	public String toString() {
+		String result = "id=" + id + "user_id=" + user_id + "category_id=" + category_id + "title=" + title +
+				"\ncontent=" + content + "url=" + url + "created_dt=" + created_dt + "updated_dt=" + updated_dt +
+				"\nview_cnt=" + view_cnt + "is_deleted=" + is_deleted;
+ 
+		return result;
+	}
 }

@@ -75,6 +75,13 @@ public class UsersVO {
 		this.roles = roles;
 	}
 	
+	@Override
+	public String toString() {
+		return "UsersVO [user_id=" + user_id + ", name=" + name + ", password=" + password + ", email=" + email
+				+ ", is_deleted=" + is_deleted + ", indate=" + indate + ", profile_image=" + profile_image + ", bio="
+				+ bio + ", roles=" + roles + ", user_no=" + user_no + "]";
+	}
+	
 	
 	
 }

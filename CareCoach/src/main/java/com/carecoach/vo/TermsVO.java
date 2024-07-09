@@ -26,5 +26,10 @@ public class TermsVO {
 		this.content = content;
 	}
 	
+	@Override
+	public String toString() {
+		return "TermsVO [id=" + id + ", title=" + title + ", content=" + content + "]";
+	}
+	
 	
 }
