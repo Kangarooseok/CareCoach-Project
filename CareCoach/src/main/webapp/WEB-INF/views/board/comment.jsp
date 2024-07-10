@@ -1,4 +1,10 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
@@ -11,17 +17,17 @@
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 1100px" rows="3" cols="30" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
-                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+                                <a href='#' onClick="fn_comment('${result.id }')" class="btn pull-right btn-success">등록</a>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
+        <input type="hidden" id="post_id" name="post_id" value="${result.id }" />        
     </form>
 </div>
 <div class="container">
@@ -32,7 +38,9 @@
 </div>
  
 <script>
-
+/*
+ * 댓글 등록하기(Ajax)
+ */
 function fn_comment(code){
     
     $.ajax({
@@ -43,30 +51,37 @@ function fn_comment(code){
             if(data=="success")
             {
                 getCommentList();
-                $("#comment").val("");
+                $("#content").val("");
             }
         },
         error:function(request,status,error){
-            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
        }
         
     });
 }
  
-
+/**
+ * 초기 페이지 로딩시 댓글 불러오기
+ */
 $(function(){
     
     getCommentList();
     
 });
  
+/**
+ * 댓글 불러오기(Ajax)
+ */
 function getCommentList(){
     
     $.ajax({
         type:'GET',
         url : "<c:url value='/board/commentList.do'/>",
         dataType : "json",
-        data:$("#commentForm").serialize(),
+        
+        data:{post_id: $("#post_id").val()},
+        
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
         success : function(data){
             
@@ -77,8 +92,8 @@ function getCommentList(){
                 
                 for(i=0; i<data.length; i++){
                     html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
-                    html += data[i].comment + "<tr><td></td></tr>";
+                    html += "<div><table class='table'><h6><strong>"+data[i].user_id+"</strong></h6>";
+                    html += data[i].content + "<tr><td></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
                 }
@@ -104,3 +119,6 @@ function getCommentList(){
 }
  
 </script>
+ 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+

@@ -43,7 +43,9 @@ pageEncoding="UTF-8"%>
         <input type='hidden' id='id' name='id' value='${result.id}' />
         <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
     </form>
+<%@ include file="comment.jsp" %>
 </div>
+
 <script>
 
 // URL에서 비디오 ID 추출
@@ -93,5 +95,6 @@ function fn_delete(){
 
 </script>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </body>
 <%@ include file="../footer.jsp" %>  

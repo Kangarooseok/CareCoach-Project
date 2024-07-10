@@ -31,8 +31,6 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 
-
-
 	public void insertPost(PostsVO postsVO) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         mapper.insertPost(postsVO);
