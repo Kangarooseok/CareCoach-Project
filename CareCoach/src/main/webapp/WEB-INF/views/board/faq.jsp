@@ -13,12 +13,12 @@ pageEncoding="UTF-8"%>
  </div>
     <h1>자주 묻는 질문(FAQ)</h1>
 	    <div class="faq-container">
-	        <div class="faq-item">
-	        <c:forEach var="result" items="${list}" varStatus="status">
-	        	<div class="faq-question"><span><c:out value="${result.title}"/></span><span>▼</span></div>
-	         	<div class="faq-answer"><c:out value="${result.content}"/></div>
-	         </c:forEach>
-       </div> 
+        <c:forEach var="result" items="${list}" varStatus="status">
+    	    <div class="faq-item">
+        	<div class="faq-question"><span><c:out value="${result.title}"/></span><span>▼</span></div>
+         	<div class="faq-answer"><c:out value="${result.content}"/></div>
+	       </div> 
+         </c:forEach>
    </div>
 </div>
 

@@ -74,16 +74,7 @@ public class HomeController {
        
     }
 	
-	
-	
-	
-	@RequestMapping(value="/board/chatbot.do")
-    public String chatmessage() throws Exception{
-		String result = ChatbotService.main("안녕"); // 메소드가 static이라 클래스로 호출해야 함
-    	
-    	return "/board/chatbot";
-    }
-	
+
 	
 	/* board */
     @RequestMapping(value="/board/writeForm.do")
@@ -108,6 +99,8 @@ public class HomeController {
         
         model.addAttribute("list", list);
         
+        System.out.println("카테고리 아이디 :"+postsVO.getCategory_id()); 
+        
         return returnPosts(postsVO.getCategory_id());
         
     }
@@ -128,6 +121,8 @@ public class HomeController {
         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
         
         model.addAttribute("list", list);
+        
+        System.out.println("카테고리 아이디 :"+postsVO.getCategory_id()); 
         
         return returnPosts(postsVO.getCategory_id());
         
@@ -153,8 +148,7 @@ public class HomeController {
     @Transactional
     @RequestMapping(value="/board/delete.do")
      public String delete(@ModelAttribute("postsVO") PostsVO postsVO, Model model) throws Exception{
- 	   	System.out.println("delete.do 호출 됨"+postsVO.toString()); 
- 	   
+ 	   	 System.out.println("delete.do 호출 됨"+postsVO.toString()); 
  	   
          boardServiceImpl.deletePost(postsVO);
            
@@ -203,7 +197,7 @@ public class HomeController {
 		case 6:
 			 return "/board/qna";
 		case 7:
-			 return "/board/chatbot";
+			 return "/chatbot/chatbot";
 		default:
 			return "/index";
 		}
