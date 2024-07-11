@@ -88,13 +88,22 @@
         where
             id = #{id}
     </select>
-   
+    <!-- 좋아요 여부 확인 1이면 좋아요 함 0이면 안함-->
+    <select id="is_Liked">
+   	select count(*)
+   	from likes
+   	where post_id=#{post_id}
+   	and user_id=#{user_id}
+   </select>
+    
+   <!-- 좋아요 수 조회 -->
    <select id="selectLikeCnt">
    	select count(*)
    	from likes
    	where post_id=#{post_id}
    </select>
    
+   <!-- 좋아요 -->
    <insert id="addLike">
    		insert into likes
    		(id,user_id,post_id)
@@ -104,7 +113,7 @@
    			#{user_id},
    			#{post_id}
    		)
-   		
+   <!-- 좋아요 취소 -->
    </insert>
    <delete id="delLike">
    delete likes 

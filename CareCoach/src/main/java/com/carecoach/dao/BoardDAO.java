@@ -21,14 +21,17 @@ public interface BoardDAO {
 
 	void addViewCnt(Integer postsId) throws Exception;
 	
+	//좋아요 여부 확인
+    public int is_Liked(PostsVO postsVO) throws Exception;
+	
 	 //좋아요 총 개수 조회
-    public void selectLikeCnt(Integer postsId) throws Exception;
+    public int selectLikeCnt(Integer postsId) throws Exception;
 
     //좋아요 추가
-    public void addLike(LikesVO likesVO) throws Exception;
+    void addLike(PostsVO postsVO) throws Exception;
     
     //좋아요 삭제
-    public void delLike(LikesVO likesVO) throws Exception;
+    void delLike(PostsVO postsVO) throws Exception;
     
 
 }

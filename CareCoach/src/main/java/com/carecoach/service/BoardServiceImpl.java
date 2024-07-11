@@ -67,24 +67,33 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
+	
+	
 
 	@Override
-	public void selectLikeCnt(Integer postsId) throws Exception {
-		boardDao.selectLikeCnt(postsId);
+	public int is_Liked(PostsVO postsVO) throws Exception {
+		return boardDao.is_Liked(postsVO);
 	}
 
 
 
 	@Override
-	public void addLike(LikesVO likesVO) throws Exception {
-		boardDao.addLike(likesVO);
+	public int selectLikeCnt(Integer postsId) throws Exception {
+		return boardDao.selectLikeCnt(postsId);
 	}
 
 
 
 	@Override
-	public void delLike(LikesVO likesVO) throws Exception {
-		boardDao.delLike(likesVO);
+	public void addLike(PostsVO postsVO) throws Exception {
+		boardDao.addLike(postsVO);
+	}
+
+
+
+	@Override
+	public void delLike(PostsVO postsVO) throws Exception {
+		boardDao.delLike(postsVO);
 	}
     
 	

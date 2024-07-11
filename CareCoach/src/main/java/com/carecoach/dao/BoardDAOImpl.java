@@ -61,27 +61,35 @@ public class BoardDAOImpl implements BoardDAO{
 
 		mapper.addViewCnt(postsId);
 	}
-
+	
+	
 
 	@Override
-	public void selectLikeCnt(Integer postsId) throws Exception {
+	public int is_Liked(PostsVO postsVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-
-		mapper.selectLikeCnt(postsId);
+		return mapper.is_Liked(postsVO);
 	}
 
 
 	@Override
-	public void addLike(LikesVO likesVO) throws Exception {
+	public int selectLikeCnt(Integer postsId) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		mapper.addLike(likesVO);
+		
+		return mapper.selectLikeCnt(postsId);
 	}
 
 
 	@Override
-	public void delLike(LikesVO likesVO) throws Exception {
+	public void addLike(PostsVO postsVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		mapper.delLike(likesVO);
+		mapper.addLike(postsVO);
+	}
+
+
+	@Override
+	public void delLike(PostsVO postsVO) throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.delLike(postsVO);
 	}
 
 	

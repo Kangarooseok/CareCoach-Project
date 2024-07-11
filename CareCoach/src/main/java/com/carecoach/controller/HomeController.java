@@ -26,6 +26,7 @@ import com.carecoach.boardPagination.Pagination;
 import com.carecoach.service.BoardService;
 import com.carecoach.service.ChatbotService;
 import com.carecoach.vo.CategoryVO;
+import com.carecoach.vo.LikesVO;
 import com.carecoach.vo.PostsVO;
 
 /**
@@ -52,8 +53,8 @@ public class HomeController {
             Model model) throws Exception{
 		System.out.println("/board/{category_id} 호출");
         PostsVO postsvo = new PostsVO();
+
 		postsvo.setCategory_id(category_id);
-		
 		String loginid=(String)session.getAttribute("id");
 		
 		int listCnt = boardServiceImpl.selectPostCnt(category_id);
@@ -64,7 +65,9 @@ public class HomeController {
 	
 		postsvo.setCntPerPage(pagination.getPageSize());
 		
+		
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
+        
         
         model.addAttribute("loginid",loginid);
         

@@ -2,16 +2,38 @@ package com.carecoach.vo;
 
 
 public class PostsVO {
-
+	
+	//게시글 넘버
 	private int id;
+	
+	//작성자 아이디
 	private String user_id;
+	
+	//카테고리 아이디
 	private int category_id;
+	
+	//제목
 	private String title;
+	
+	//내용
 	private String content;
+	
+	//영상 url
 	private String url;
+	
+	//작성일
 	private String created_dt;
+	
+	//수정일
 	private String updated_dt;
+	
+	//조회수
 	private int view_cnt;
+	
+	//좋아요 수
+	private int like_cnt;
+	
+	
 	private int is_deleted;
 	
 	private int CntPerPage;
@@ -20,6 +42,12 @@ public class PostsVO {
 	
 	
 	
+	public int getLike_cnt() {
+		return like_cnt;
+	}
+	public void setLike_cnt(int like_cnt) {
+		this.like_cnt = like_cnt;
+	}
 	public int getCntPerPage() {
 		return CntPerPage;
 	}
@@ -96,7 +124,7 @@ public class PostsVO {
 	public String toString() {
 		String result = "id=" + id + "user_id=" + user_id + "category_id=" + category_id + "title=" + title +
 				"\ncontent=" + content + "url=" + url + "created_dt=" + created_dt + "updated_dt=" + updated_dt +
-				"\nview_cnt=" + view_cnt + "is_deleted=" + is_deleted;
+				"\nview_cnt=" + view_cnt + "is_deleted=" + is_deleted + "like_cnt : " + like_cnt;
  
 		return result;
 	}
