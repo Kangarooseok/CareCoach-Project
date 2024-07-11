@@ -71,6 +71,8 @@ pageEncoding="UTF-8"%>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
+//로그인 확인 여부
+var isLoggedIn = <%= session.getAttribute("user_id") != null ? "true" : "false" %>;
 
 //JavaScript 코드
 document.addEventListener('DOMContentLoaded', function() {
@@ -104,13 +106,16 @@ function moveBoardPage(category_id){
 }
 //글쓰기
 function fn_write(){
-    
-    var form = document.getElementById("boardForm");
-    
-    form.action = "<c:url value='/board/writeForm.do'/>";
-    form.submit();
-    
-}
+      if (!isLoggedIn) {
+          alert("로그인 해주세요.");
+          return;
+      }
+
+      var form = document.getElementById("boardForm");
+      
+      form.action = "<c:url value='/board/writeForm.do'/>";
+      form.submit();
+ }
  
 //글조회
 function fn_view(id){

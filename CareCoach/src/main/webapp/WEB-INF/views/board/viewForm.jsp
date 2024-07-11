@@ -4,11 +4,61 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
+<!-- 세션에 로그인 한 아이디 -->
+<% String loginId = (String) session.getAttribute("user_id"); %>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
 <div class="page-contents">
+
+<!--  상단 카레고리  -->
+<c:if test="${result.category_id != 6}">
+	<div class="category-container">
+	  	<div class="section notice" onclick="moveBoardPage(2)">공지사항</div>
+		<div class="section freeboard" onclick="moveBoardPage(3)">자유게시판</div>
+		<div class="section video" onclick="moveBoardPage(4)">헬스 영상</div>
+	</div>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  const sections = document.querySelectorAll('.category-container .section');
+	
+	  // 섹션 배경색 변경
+	  sections.forEach(section => {
+	    section.classList.remove('notice', 'freeboard', 'video');
+	  });
+	
+	  if (${result.category_id} === 2) {
+	    sections[0].classList.add('notice');
+	  } else if (${result.category_id} === 3) {
+	    sections[1].classList.add('freeboard');
+	  } else if (${result.category_id} === 4) {
+	    sections[2].classList.add('video');
+	  }
+	});
+	</script>
+</c:if>
+  
+<c:if test="${result.category_id == 6}">
+ <div class="category-container">
+    <div class="section faq" onclick="moveBoardPage(5)">자주묻는질문</div>
+    <div class="section qna" onclick="moveBoardPage(6)">문의게시판</div>
+  </div>
+  	<script>
+  	document.addEventListener('DOMContentLoaded', function() {
+
+  	  // 섹션 요소 선택
+  	  const sections = document.querySelectorAll('.category-container .section');
+
+  	  // 섹션 배경색 변경
+  	  sections.forEach(section => {
+  	    section.classList.remove('faq');
+  	  });
+  	});
+	</script>
+</c:if>
+
+
     <form id="viewForm" name="viewForm" method="post">
         <div>
-            <h2>글쓰기</h2>
             <div>
                 <table>
                     <tr>
@@ -32,11 +82,13 @@ pageEncoding="UTF-8"%>
                     </tr>
                 </table>
                 <div>
+                	<c:if test="${result.category_id != 2 && loginId==result.user_id}">
                     <a href='#' onClick='fn_update()'>수정</a>
+                	</c:if>
                     <a href='#' onClick='fn_cancel()'>뒤로가기</a>
-                    <a href='#' onClick='fn_relay()'>댓글작성</a> 
-                    <a href='#' onClick='fn_delete()'>삭제</a> 
-                
+                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && loginId==result.user_id}">
+                    	<a href='#' onClick='fn_delete()'>삭제</a> 
+                    </c:if>
                 </div>
             </div>
         </div>
