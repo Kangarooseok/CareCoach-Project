@@ -16,9 +16,9 @@ pageEncoding="UTF-8"%>
                         <th>카테고리</th>                       
                         <td>
                	          <select id="category_id" name="category_id" onChange="toggleUrlField()">
-                                <option value="3">자유게시판</option>
-                                <option value="4">헬스영상</option>
-                                <option value="6">문의게시판</option>
+                                <option value="3" ${result.category_id == 3 ? 'selected' : ''}>자유게시판</option>
+                                <option value="4" ${result.category_id == 4 ? 'selected' : ''}>헬스영상</option>
+                                <option value="6" ${result.category_id == 6 ? 'selected' : ''}>문의게시판</option>
                             </select>
                         </td>
                     </tr>
@@ -35,8 +35,7 @@ pageEncoding="UTF-8"%>
                         <td><textarea style="width: 500px" rows="10" cols="10" id="content" name="content">${result.content}</textarea></td>
                     </tr>
                     <tr>
-                        <th>작성자</th>
-                        <td><input style="width: 500px" type="text" id="user_id" name="user_id" value="${result.user_id}" /></td>
+                        <td><input type="hidden" style="width: 500px" type="text" id="user_id" name="user_id" value="${result.user_id}" /></td>
                     </tr>
                     
                 </table>

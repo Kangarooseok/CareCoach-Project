@@ -51,8 +51,7 @@ pageEncoding="UTF-8"%>
 			                videoId = videoId.substring(0, ampersandPosition);
 			            }
 			            // 썸네일 URL 생성
-			            var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
-			            
+			            var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
 			            // 썸네일 이미지를 설정
 			            document.getElementById('${status.index}').src = thumbnailUrl;
 			        </script>
@@ -90,13 +89,16 @@ pageEncoding="UTF-8"%>
 <script>
 //글쓰기
 function fn_write(){
-    
-    var form = document.getElementById("boardForm");
-    
-    form.action = "<c:url value='/board/writeForm.do'/>";
-    form.submit();
-    
-}
+      if (${empty sessionScope.id}) {
+          alert("로그인해주세요.");
+          return;
+      }
+
+      var form = document.getElementById("boardForm");
+      
+      form.action = "<c:url value='/board/writeForm.do'/>";
+      form.submit();
+ }
  
 //글조회
 function fn_view(id){

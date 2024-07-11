@@ -12,36 +12,25 @@
       </div>
       <div class="footer-right">
         <div class="footer-column">
-          <h3>About Us</h3>
-          <ul>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-          </ul>
+          <div onClick='moveBoardPage(1);'>About Us</div>
         </div>
         <div class="footer-column">
           <h3>Community</h3>
-          <ul>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-          </ul>
+   			<ul>
+                <li><div onClick='moveBoardPage(2);'>공지사항</div></li>
+                <li><div onClick='moveBoardPage(3);'>게시판</div></li>
+                <li><div onClick='moveBoardPage(4);'>헬스영상</div></li>
+             </ul>
         </div>
         <div class="footer-column">
           <h3>QnA</h3>
           <ul>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
+            <li><div onClick='moveBoardPage(5);'>자주 묻는 질문</div></li>
+            <li><div onClick='moveBoardPage(6);'>문의 게시판</div></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h3>CareCoach</h3>
-          <ul>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-            <li><a href="#">test</a></li>
-          </ul>
+        	<div onClick='moveBoardPage(7);'>CareCoach</div>
         </div>
       </div>
     </footer>

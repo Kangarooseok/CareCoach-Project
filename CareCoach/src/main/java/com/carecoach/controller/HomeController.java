@@ -48,11 +48,12 @@ public class HomeController {
     public String boardList(@PathVariable Integer category_id,
     		@RequestParam(defaultValue="1") int curPage,
             HttpServletRequest request,
+            HttpSession session,
             Model model) throws Exception{
+		
         PostsVO postsvo = new PostsVO();
 		postsvo.setCategory_id(category_id);
 		
-		HttpSession session = request.getSession();
 		
 		int listCnt = boardServiceImpl.selectPostCnt(category_id);
 		
@@ -72,16 +73,6 @@ public class HomeController {
         
         return returnPosts(category_id);
        
-    }
-	
-	
-	
-	
-	@RequestMapping(value="/board/chatbot.do")
-    public String chatmessage() throws Exception{
-		String result = ChatbotService.main("안녕"); // 메소드가 static이라 클래스로 호출해야 함
-    	
-    	return "/board/chatbot";
     }
 	
 	
@@ -170,7 +161,7 @@ public class HomeController {
     
     
     @RequestMapping(value="/board/viewContent.do")
-    public String viewForm(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpServletRequest request) throws Exception{
+    public String viewForm(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpSession session, HttpServletRequest request) throws Exception{
         
         int id = Integer.parseInt(request.getParameter("id"));
         
@@ -189,6 +180,7 @@ public class HomeController {
 	
 	
 	private String returnPosts(Integer categoryId) {
+		System.out.println("returnPosts 호출 categoryId : "+categoryId);
 		switch (categoryId) {
 		case 1:
 			 return "/board/aboutus";
@@ -203,7 +195,7 @@ public class HomeController {
 		case 6:
 			 return "/board/qna";
 		case 7:
-			 return "/board/chatbot";
+			 return "/chatbot/chatbot";
 		default:
 			return "/index";
 		}

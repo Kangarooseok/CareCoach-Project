@@ -291,6 +291,7 @@ public class memberController {
 	public ModelAndView chgpw() {
 		return new ModelAndView("mypage/changePW");
 	}
+	
 	@PostMapping("/chgpw_ok")
 	public ModelAndView chgpw_ok(String password,String newpassword,HttpServletResponse response,HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=UTF-8");

@@ -8,7 +8,6 @@ pageEncoding="UTF-8"%>
 <div class="page-contents">
     <form id="writeForm" name="writeForm" method="post">
         <div>
-            <h2>글쓰기</h2>
             <div>
                 <table>
                 
@@ -36,7 +35,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td><input style="width: 500px" type="text" id="user_id" name="user_id" /></td>
+                        <td><input type='hidden' style="width: 500px;" type="text" id="user_id" name="user_id"  value="${sessionScope.id}"/></td>
                     </tr>
                 </table>
                 <div>
@@ -47,6 +46,7 @@ pageEncoding="UTF-8"%>
         </div>
     </form>
 <script>
+
 //글쓰기
 function fn_addtoBoard(){
 

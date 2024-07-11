@@ -32,10 +32,9 @@ pageEncoding="UTF-8"%>
             </thead>
             <tbody>
                 <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr>
+                    <tr onClick='fn_view(${result.id})'>
                         <td><c:out value="${result.id}"/></td>
-                        <td><a href='#' onClick='fn_view(${result.id})'>
-                        <c:out value="${result.title}"/></a></td>
+                        <td><c:out value="${result.title}"/></td>
                         <td><c:out value="${result.user_id}"/></td>           
                         <td><c:out value="${result.updated_dt}"/></td>
                         <td><c:out value="${result.view_cnt}"/></td>
@@ -71,8 +70,6 @@ pageEncoding="UTF-8"%>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
-//로그인 확인 여부
-var isLoggedIn = <%= session.getAttribute("user_id") != null ? "true" : "false" %>;
 
 //JavaScript 코드
 document.addEventListener('DOMContentLoaded', function() {
@@ -106,7 +103,7 @@ function moveBoardPage(category_id){
 }
 //글쓰기
 function fn_write(){
-      if (!isLoggedIn) {
+      if (${empty sessionScope.id}) {
           alert("로그인 해주세요.");
           return;
       }

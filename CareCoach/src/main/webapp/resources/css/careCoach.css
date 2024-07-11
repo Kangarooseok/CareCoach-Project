@@ -85,7 +85,8 @@ nav .nav-links li {
   position: relative;
 }
 
-nav .nav-links li a {
+nav .nav-links li div{
+  cursor: pointer;
   text-decoration: none;
   color: #000;
   font-weight: bold;
@@ -117,12 +118,13 @@ nav .nav-links li .dropdown li {
   margin: 0;
 }
 
-nav .nav-links li .dropdown li a {
+nav .nav-links li .dropdown li div {
   text-decoration: none;
   color: #fff;
   display: block;
   padding: 10px 15px;
   text-align: center; /* Center align text within the dropdown */
+  cursor: pointer;
 }
 
 /* Show Dropdown with Fixed Height */
@@ -394,12 +396,21 @@ main {
   flex: 1;
 }
 
+.footer-column div {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+  cursor: pointer;
+}
+
 .footer-column h3 {
   margin: 0;
   margin-bottom: 10px;
   font-size: 1.2em;
   color: #333;
 }
+
 
 .footer-column ul {
   list-style: none;
@@ -411,14 +422,15 @@ main {
   font-size: 0.9em;
 }
 
-.footer-column ul li a {
+.footer-column ul li div {
   font-size: 17px;
   text-decoration: none;
   color: #555;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
-.footer-column ul li a:hover {
+.footer-column ul li div:hover {
   color: #007bff;
 }
 
@@ -440,12 +452,9 @@ main {
 }
 
 
-<<<<<<< HEAD
 .page-contents{
 	margin: auto;
 	min-height: 1000px;
 	background-color: white;
 }
-=======
 
->>>>>>> dev/devjoin

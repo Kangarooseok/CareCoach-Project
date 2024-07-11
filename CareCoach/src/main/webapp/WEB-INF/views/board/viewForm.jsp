@@ -82,11 +82,11 @@ pageEncoding="UTF-8"%>
                     </tr>
                 </table>
                 <div>
-                	<c:if test="${result.category_id != 2 && loginId==result.user_id}">
+                	<c:if test="${result.category_id != 2 && sessionScope.id==result.user_id}">
                     <a href='#' onClick='fn_update()'>수정</a>
                 	</c:if>
                     <a href='#' onClick='fn_cancel()'>뒤로가기</a>
-                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && loginId==result.user_id}">
+                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && sessionScope.id==result.user_id}">
                     	<a href='#' onClick='fn_delete()'>삭제</a> 
                     </c:if>
                 </div>

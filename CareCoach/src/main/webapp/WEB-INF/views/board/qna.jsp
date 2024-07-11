@@ -12,7 +12,9 @@ pageEncoding="UTF-8"%>
     <div class="section qna" onclick="moveBoardPage(6)">문의게시판</div>
   </div>
     <form id="boardForm" name="boardForm" method="post">
- 		
+ 		 <div>            
+            <a href='#' onClick='fn_write()'>글쓰기</a>            
+        </div>
         <table>
           	 <thead>
                 <tr>
@@ -25,10 +27,10 @@ pageEncoding="UTF-8"%>
             </thead>
             <tbody>
                 <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr>
+                    <tr onClick='fn_view(${result.id})'>
                         <td><c:out value="${result.id}"/></td>
-                        <td><a href='#' onClick='fn_view(${result.id})'><c:out value="${result.title}"/></a></td>
-                        <td><c:out value="${result.user_id}"/></td>           
+                        <td><c:out value="${result.title}"/></td>
+                        <td><c:out value="${result.user_id}"/></td>     
                         <td><c:out value="${result.created_dt}"/></td>
                         <td><c:out value="${result.view_cnt}"/></td>
                     </tr>
@@ -66,17 +68,27 @@ pageEncoding="UTF-8"%>
 <script>
 //글쓰기
 function fn_write(){
-    
-    var form = document.getElementById("boardForm");
-    
-    form.action = "<c:url value='/board/writeForm.do'/>";
-    form.submit();
-    
-}
+      if (${empty sessionScope.id}) {
+          alert("로그인해주세요.");
+          return;
+      }
+     
+
+      var form = document.getElementById("boardForm");
+      
+      form.action = "<c:url value='/board/writeForm.do'/>";
+      form.submit();
+ }
  
 //글조회
 function fn_view(id){
-    
+    if (${empty sessionScope.id}) {
+        alert("로그인해주세요.");
+        alert(id);
+        alert(${sessionScope.id});
+        return;
+    }
+	
     var form = document.getElementById("boardForm");
     var url = "<c:url value='/board/viewContent.do'/>";
     url = url + "?id=" + id;

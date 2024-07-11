@@ -45,12 +45,13 @@
    
     <insert id="insertPost">
 			INSERT INTO POSTS
-			(id,user_id,category_id,title,content)
+			(id,user_id,category_id,title,url,content)
 			VALUES (
 			   SEQ_POSTS.nextval,
 			   #{user_id},
 			   #{category_id},
 			   #{title},
+			   #{url},
 			   #{content}
 			)
 			

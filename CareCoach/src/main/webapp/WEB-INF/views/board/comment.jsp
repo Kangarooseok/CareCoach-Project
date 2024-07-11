@@ -42,7 +42,10 @@ pageEncoding="UTF-8"%>
  * 댓글 등록하기(Ajax)
  */
 function fn_comment(code){
-    
+    if(${empty sessionScope.id}){
+    	alert("로그인해주세요");
+    	return;
+    }
     $.ajax({
         type:'POST',
         url : "<c:url value='/board/addComment.do'/>",

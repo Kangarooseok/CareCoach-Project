@@ -24,25 +24,25 @@ pageEncoding="UTF-8"%>
         <nav>
           <ul class="nav-links">
             <li>
-              <a href="#" onClick='moveBoardPage(1);'>About Us</a>
+              <div onClick='moveBoardPage(1);'>About Us</div>
             </li>
             <li>
-              <a href="#">Community</a>
+              <div>Community</div>
               <ul class="dropdown">
-                <li><a href="#" onClick='moveBoardPage(2);'>공지사항</a></li>
-                <li><a href="#" onClick='moveBoardPage(3);'>게시판</a></li>
-                <li><a href="#" onClick='moveBoardPage(4);'>헬스영상</a></li>
+                <li><div onClick='moveBoardPage(2);'>공지사항</div></li>
+                <li><div onClick='moveBoardPage(3);'>게시판</div></li>
+                <li><div onClick='moveBoardPage(4);'>헬스영상</div></li>
               </ul>
             </li>
             <li>
-              <a href="#">QnA</a>
+              <div>QnA</div>
               <ul class="dropdown">
-                <li><a href="#" onClick='moveBoardPage(5);'>자주 묻는 질문</a></li>
-                <li><a href="#" onClick='moveBoardPage(6);'>문의 게시판</a></li>
+                <li><div onClick='moveBoardPage(5);'>자주 묻는 질문</div></li>
+                <li><div onClick='moveBoardPage(6);'>문의 게시판</div></li>
                 </ul>
             </li>
             <li>
-              <a href="#" onClick='moveBoardPage(7);'>CareCoach</a>
+              <div onClick='moveBoardPage(7);'>CareCoach</div>
             </li>
           </ul>
         </nav>
