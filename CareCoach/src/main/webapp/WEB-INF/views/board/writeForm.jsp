@@ -15,9 +15,9 @@ pageEncoding="UTF-8"%>
                         <th>카테고리</th>                       
                         <td>
                             <select id="category_id" name="category_id"onChange="toggleUrlField()" >
-                       	        <option value="3">자유게시판</option>
-                                <option value="4">헬스영상</option>
-                                <option value="6">문의게시판</option>
+                                <option value="3" ${result.category_id == 3 ? 'selected' : ''}>자유게시판</option>
+                                <option value="4" ${result.category_id == 4 ? 'selected' : ''}>헬스영상</option>
+                                <option value="6" ${result.category_id == 6 ? 'selected' : ''}>문의게시판</option>
                             </select>
                         </td>
                     </tr>
@@ -53,10 +53,10 @@ function fn_addtoBoard(){
 	
     var form = document.getElementById("writeForm");
     
-    form.action = "<c:url value='/board/write.do'/>";
+    form.action = "/board/write.do";
     form.submit();
     
-}writeForm.jsp
+}
  
 //취소
 function fn_cancel(){

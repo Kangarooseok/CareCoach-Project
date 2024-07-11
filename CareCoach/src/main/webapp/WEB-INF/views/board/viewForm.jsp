@@ -4,8 +4,6 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
-<!-- 세션에 로그인 한 아이디 -->
-<% String loginId = (String) session.getAttribute("user_id"); %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
 <div class="page-contents">
@@ -82,11 +80,11 @@ pageEncoding="UTF-8"%>
                     </tr>
                 </table>
                 <div>
-                	<c:if test="${result.category_id != 2 && sessionScope.id==result.user_id}">
+                	<c:if test="${result.category_id != 2 && loginid==result.user_id}">
                     <a href='#' onClick='fn_update()'>수정</a>
                 	</c:if>
                     <a href='#' onClick='fn_cancel()'>뒤로가기</a>
-                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && sessionScope.id==result.user_id}">
+                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && loginid==result.user_id}">
                     	<a href='#' onClick='fn_delete()'>삭제</a> 
                     </c:if>
                 </div>
@@ -127,16 +125,6 @@ function fn_update(){
     form.submit();
 }
  
-//답변
-function fn_relay(){
-    
-    var form = document.getElementById("viewForm");
-    
-    form.action = "<c:url value='/board/relayForm.do'/>";
-    form.submit();
-    
-}
-
 function fn_delete(){
 	var form = document.getElementById("viewForm");
     form.action = "<c:url value='/board/delete.do'/>";

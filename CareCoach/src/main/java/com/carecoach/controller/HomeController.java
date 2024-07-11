@@ -50,10 +50,11 @@ public class HomeController {
             HttpServletRequest request,
             HttpSession session,
             Model model) throws Exception{
-		
+		System.out.println("/board/{category_id} 호출");
         PostsVO postsvo = new PostsVO();
 		postsvo.setCategory_id(category_id);
 		
+		String loginid=(String)session.getAttribute("id");
 		
 		int listCnt = boardServiceImpl.selectPostCnt(category_id);
 		
@@ -64,6 +65,8 @@ public class HomeController {
 		postsvo.setCntPerPage(pagination.getPageSize());
 		
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
+        
+        model.addAttribute("loginid",loginid);
         
         model.addAttribute("list", list);
         
@@ -98,8 +101,8 @@ public class HomeController {
         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
         
         model.addAttribute("list", list);
-        
-        return returnPosts(postsVO.getCategory_id());
+
+        return "redirect:/board/" + postsVO.getCategory_id();
         
     }
     
@@ -120,7 +123,7 @@ public class HomeController {
         
         model.addAttribute("list", list);
         
-        return returnPosts(postsVO.getCategory_id());
+        return "redirect:/board/" + postsVO.getCategory_id();
         
     }
     
@@ -153,7 +156,7 @@ public class HomeController {
          
          model.addAttribute("list", list);
          
-         return returnPosts(postsVO.getCategory_id());
+         return "redirect:/board/" + postsVO.getCategory_id();
          
      }
     
@@ -161,10 +164,13 @@ public class HomeController {
     
     
     @RequestMapping(value="/board/viewContent.do")
-    public String viewForm(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpSession session, HttpServletRequest request) throws Exception{
+    public String viewForm(@ModelAttribute("postsVO") PostsVO postsVO, 
+    		Model model, HttpSession session, HttpServletRequest request) throws Exception{
         
         int id = Integer.parseInt(request.getParameter("id"));
         
+        String loginid=(String)session.getAttribute("id");
+		
         
         postsVO.setId(id);
         
@@ -172,6 +178,8 @@ public class HomeController {
         
         boardServiceImpl.addViewCnt(postsVO.getId());
 
+        model.addAttribute("loginid", loginid);
+        
         model.addAttribute("result", resultVO);
         
         return "board/viewForm";
@@ -197,7 +205,7 @@ public class HomeController {
 		case 7:
 			 return "/chatbot/chatbot";
 		default:
-			return "/index";
+			return "/";
 		}
         
 	}

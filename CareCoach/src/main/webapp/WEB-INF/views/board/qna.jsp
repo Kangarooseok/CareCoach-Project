@@ -72,23 +72,20 @@ function fn_write(){
           alert("로그인해주세요.");
           return;
       }
-     
 
       var form = document.getElementById("boardForm");
       
       form.action = "<c:url value='/board/writeForm.do'/>";
       form.submit();
+    
  }
  
 //글조회
 function fn_view(id){
     if (${empty sessionScope.id}) {
         alert("로그인해주세요.");
-        alert(id);
-        alert(${sessionScope.id});
         return;
     }
-	
     var form = document.getElementById("boardForm");
     var url = "<c:url value='/board/viewContent.do'/>";
     url = url + "?id=" + id;

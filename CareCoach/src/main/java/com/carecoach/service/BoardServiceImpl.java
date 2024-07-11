@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.carecoach.dao.BoardDAO;
 import com.carecoach.vo.CategoryVO;
+import com.carecoach.vo.LikesVO;
 import com.carecoach.vo.PostsVO;
 
 @Service("boardServiceImpl")
@@ -14,7 +15,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Autowired
 	private BoardDAO boardDao;
-	
+		
 	
 	@Override
 	public List<PostsVO> selectPostList(PostsVO postsVO) throws Exception {
@@ -64,6 +65,28 @@ public class BoardServiceImpl implements BoardService{
 	public void addViewCnt(Integer postsId) throws Exception {
 		boardDao.addViewCnt(postsId);
 	}
+
+
+
+	@Override
+	public void selectLikeCnt(Integer postsId) throws Exception {
+		boardDao.selectLikeCnt(postsId);
+	}
+
+
+
+	@Override
+	public void addLike(LikesVO likesVO) throws Exception {
+		boardDao.addLike(likesVO);
+	}
+
+
+
+	@Override
+	public void delLike(LikesVO likesVO) throws Exception {
+		boardDao.delLike(likesVO);
+	}
     
+	
 	
 }

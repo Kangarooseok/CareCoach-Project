@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.carecoach.service.mapper.BoardMapper;
 import com.carecoach.vo.CategoryVO;
+import com.carecoach.vo.LikesVO;
 import com.carecoach.vo.PostsVO;
 import com.carecoach.vo.UsersVO;
 
@@ -61,5 +62,29 @@ public class BoardDAOImpl implements BoardDAO{
 		mapper.addViewCnt(postsId);
 	}
 
+
+	@Override
+	public void selectLikeCnt(Integer postsId) throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		mapper.selectLikeCnt(postsId);
+	}
+
+
+	@Override
+	public void addLike(LikesVO likesVO) throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.addLike(likesVO);
+	}
+
+
+	@Override
+	public void delLike(LikesVO likesVO) throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.delLike(likesVO);
+	}
+
+	
+	
 	
 }

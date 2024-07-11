@@ -89,6 +89,28 @@
             id = #{id}
     </select>
    
+   <select id="selectLikeCnt">
+   	select count(*)
+   	from likes
+   	where post_id=#{post_id}
+   </select>
+   
+   <insert id="addLike">
+   		insert into likes
+   		(id,user_id,post_id)
+   		values
+   		(
+   			SEQ_LIKES.nextval,
+   			#{user_id},
+   			#{post_id}
+   		)
+   		
+   </insert>
+   <delete id="delLike">
+   delete likes 
+   where user_id = #{user_id} 
+   and post_id=#{post_id};
+   </delete>
 
  </mapper>
  

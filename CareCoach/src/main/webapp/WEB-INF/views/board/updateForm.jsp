@@ -48,13 +48,13 @@ pageEncoding="UTF-8"%>
         <input type='hidden' id='id' name='id' value='${result.id}' />
     </form>
 <script>
-//글쓰기
+//수정
 function fn_updatetoPost(){
 
 	
     var form = document.getElementById("updateForm");
     
-    form.action = "<c:url value='/board/update.do'/>";
+    form.action = "/board/update.do";
     form.submit();
     
 }

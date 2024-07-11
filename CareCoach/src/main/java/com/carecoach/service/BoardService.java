@@ -2,7 +2,7 @@ package com.carecoach.service;
 
 import java.util.List;
 
-import com.carecoach.vo.CategoryVO;
+import com.carecoach.vo.LikesVO;
 import com.carecoach.vo.PostsVO;
 
 public interface BoardService {
@@ -21,4 +21,13 @@ public interface BoardService {
 	
 	void addViewCnt(Integer postsId) throws Exception;
 	
+	 //좋아요 총 개수 조회
+	 void selectLikeCnt(Integer postsId) throws Exception;
+	
+	    //좋아요 추가
+	 void addLike(LikesVO likesVO) throws Exception;
+	    
+	    //좋아요 삭제
+	 void delLike(LikesVO likesVO) throws Exception;
+    
 }
