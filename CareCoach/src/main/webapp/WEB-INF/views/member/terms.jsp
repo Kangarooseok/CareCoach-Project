@@ -156,7 +156,7 @@
             <img src="${pageContext.request.contextPath}/resources/images/CareCoach-logo.png" alt="CareCoach"/>
         </a>
         <nav>
-            <a href="#">Login</a> <a href="#">Join</a>
+            <a href="${pageContext.request.contextPath}/login">Login</a> <a href="${pageContext.request.contextPath}/join">Join</a>
         </nav>
     </header>
     <div class="container">

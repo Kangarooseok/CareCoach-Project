@@ -67,15 +67,12 @@ pageEncoding="UTF-8"%>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
 //글쓰기
-
-
 	function fn_write(){
       if (${empty sessionScope.id}) {
           alert("로그인해주세요.");
           return;
       }
       var form = document.getElementById("boardForm");
-      alert(loginid);
       form.action = "<c:url value='/board/writeForm.do'/>";
       form.submit();
  }

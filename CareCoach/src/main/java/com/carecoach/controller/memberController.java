@@ -107,8 +107,7 @@ public class memberController {
         
         try {
             memberService.registerUser(user);
-            out.println("<script>alert('회원가입이 완료되었습니다.'); </script>");
-            return "member/login";
+            out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='/login'; </script>");
         } catch (DuplicateKeyException e) {
             out.println("<script>alert('" + e.getMessage() + "'); history.back();</script>");
         } catch (Exception e) {

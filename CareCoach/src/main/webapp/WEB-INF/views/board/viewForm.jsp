@@ -93,9 +93,8 @@ pageEncoding="UTF-8"%>
         <input type='hidden' id='id' name='id' value='${result.id}' />
         <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
         
-        <div onclick='fn_addlike(${result.id})'>좋아요 버튼
-        
-        </div>
+        <button onclick='fn_addlike(${result.id})'>좋아요 누루기</button>
+        <button onclick='fn_dellike(${result.id})'>좋아요 취소</button>
     </form>
 <%@ include file="comment.jsp" %>
 </div>
