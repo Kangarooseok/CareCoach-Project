@@ -20,6 +20,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	color: #000000;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -157,6 +159,66 @@ nav .nav-links li:hover .dropdown {
 	margin : 0 5px 0 5px;
 }
 
+
+.navbar2 {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+      }
+
+      .nav_wrapper {
+        display: inline-flex;
+        list-style: none;
+      }
+
+      .nav_wrapper .icon {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav_wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+
+      .nav_wrapper .name {
+        position: absolute;
+        top: -40px;
+        font-size: 14px;
+        background: #ffffff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        color: #0f0f0f;
+        white-space: nowrap; /* Prevent text from wrapping */
+      }
+
+      .nav_wrapper .name::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #ffffff;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .nav_wrapper .icon:hover .name {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
 /* ======= main ======= */
 
 /* Main content styling */
@@ -234,7 +296,7 @@ main {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  margin: 20px 0 0 10px;
 }
 
 /* Common styles for sections */
@@ -245,6 +307,7 @@ main {
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border : 1px solid #e0e0e0
 }
 
 .section h2 {
@@ -261,6 +324,11 @@ main {
 .section ul li {
   margin: 10px 0;
   font-size: 0.9em;
+}
+
+.section posts {
+  font-size: 1em;
+  margin-bottom: 15px;
 }
 
 /* Styling links inside sections */
@@ -286,12 +354,12 @@ main {
 
 .videos .video-item a {
   display: flex;
-  width: 100%;
+  width: 30%;
   text-decoration: none;
 }
 
 .videos .video-item img {
-  width: 50%;
+  width: 100%;
   height: auto;
   border-radius: 10px 0 0 10px;
 }
@@ -299,6 +367,7 @@ main {
 .videos .video-description {
   padding: 10px;
   display: flex;
+  width: 70%;
   flex-direction: column;
   justify-content: center;
 }
@@ -311,10 +380,14 @@ main {
 
 .videos .video-meta {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   margin-top: 5px;
   font-size: 0.8em;
   color: #999;
+}
+
+.videos .video-meta span:last-child {
+	margin-left : 20px
 }
 
 /* Flex and spacing adjustments */

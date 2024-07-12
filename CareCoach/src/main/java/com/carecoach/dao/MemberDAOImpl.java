@@ -71,6 +71,23 @@ public class MemberDAOImpl implements MemberDAO{
 		return this.sqlsession.selectOne("m_findId", email);
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+    public void updatebio(UsersVO bio) {
+        this.sqlsession.update("bio_update", bio);
+    }
+
+	@Override
+	public void updateProfilePicPath(UsersVO fileName ) {
+		// TODO Auto-generated method stub
+		this.sqlsession.update("updateProfilePicPath", fileName);
+		
+	}
+
+
+   
+>>>>>>> dev/devlogintest
 
 	@Override
     public void updateProfilePicPath(UsersVO user) {

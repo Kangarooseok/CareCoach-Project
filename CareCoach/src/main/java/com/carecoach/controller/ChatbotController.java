@@ -17,6 +17,13 @@ public class ChatbotController {
     @Autowired
     private ChatbotService chatbotService;
     
+<<<<<<< HEAD
+=======
+    @GetMapping("/chatbot") // get방식으로 요청
+    public String chatbot() {
+        return "chatbot/chatbot"; //chatbot.jsp 반환
+    }
+>>>>>>> dev/devlogintest
     
     @PostMapping(value = "/chatbot/send", produces = "application/json;charset=UTF-8")
     @ResponseBody

@@ -13,7 +13,10 @@ public interface MemberService {
 	void changepw(UsersVO m);
 
 	void del_mem(String id);
+	
+	void updatebio(UsersVO bio);
 
+<<<<<<< HEAD
 	void updatebio(UsersVO bio);
 
 	void updateProfilePicPath(UsersVO user);
@@ -21,4 +24,8 @@ public interface MemberService {
 	boolean isUserIdAvailable(String user_id);
     void registerUser(UsersVO user) throws Exception;
 
+=======
+    void updateProfilePicPath(UsersVO fileName);
+	
+>>>>>>> dev/devlogintest
 }
