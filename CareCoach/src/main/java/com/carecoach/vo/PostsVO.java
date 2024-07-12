@@ -33,7 +33,6 @@ public class PostsVO {
 	//좋아요 수
 	private int like_cnt;
 	
-	
 	private int is_deleted;
 	
 	private int CntPerPage;

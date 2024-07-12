@@ -31,7 +31,10 @@
 		    ) p
 		)
 		WHERE RNUM BETWEEN #{StartIndex} AND #{CntPerPage}
-
+		
+		select * from posts
+        where
+        id = #{id}
 	 		
    </select>
    
@@ -88,6 +91,7 @@
         where
             id = #{id}
     </select>
+    
     <!-- 좋아요 여부 확인 1이면 좋아요 함 0이면 안함-->
     <select id="is_Liked">
    	select count(*)

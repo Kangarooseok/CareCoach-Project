@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
                             <textarea style="width: 1100px" rows="3" cols="30" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
-                                <a href='#' onClick="fn_comment('${result.id }')" class="btn pull-right btn-success">등록</a>
+                                <a href='#' onClick="fn_comment('${result.id}')" class="btn pull-right btn-success">등록</a>
                             </div>
                         </td>
                     </tr>

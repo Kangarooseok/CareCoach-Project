@@ -65,9 +65,8 @@ public class HomeController {
 	
 		postsvo.setCntPerPage(pagination.getPageSize());
 		
-		
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
-        
+               
         
         model.addAttribute("loginid",loginid);
         
@@ -168,7 +167,7 @@ public class HomeController {
     
     @RequestMapping(value="/board/viewContent.do")
     public String viewForm(@ModelAttribute("postsVO") PostsVO postsVO, 
-    		Model model, HttpSession session, HttpServletRequest request) throws Exception{
+    	Model model, HttpSession session, HttpServletRequest request) throws Exception{
         
         int id = Integer.parseInt(request.getParameter("id"));
         
