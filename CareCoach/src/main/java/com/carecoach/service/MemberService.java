@@ -16,16 +16,10 @@ public interface MemberService {
 	
 	void updatebio(UsersVO bio);
 
-<<<<<<< HEAD
-	void updatebio(UsersVO bio);
-
-	void updateProfilePicPath(UsersVO user);
-
 	boolean isUserIdAvailable(String user_id);
     void registerUser(UsersVO user) throws Exception;
 
-=======
+
     void updateProfilePicPath(UsersVO fileName);
 	
->>>>>>> dev/devlogintest
 }

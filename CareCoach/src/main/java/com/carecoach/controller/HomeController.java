@@ -40,12 +40,6 @@ public class HomeController {
 	private BoardService boardServiceImpl;
 	
 	
-<<<<<<< HEAD
-	@RequestMapping("/")
-	public ModelAndView main() {
-		System.out.println("main메인컨트롤러");
-		return new ModelAndView("index");
-=======
 	@Autowired
 	private PostService postService;
 	
@@ -87,7 +81,6 @@ public class HomeController {
 		
 		
 		return "index";
->>>>>>> dev/devlogintest
 	}
 	
 	@RequestMapping("/board/{category_id}")

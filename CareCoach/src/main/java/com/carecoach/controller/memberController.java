@@ -7,15 +7,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-<<<<<<< HEAD
 import java.util.Map;
 import java.util.HashMap;
-=======
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
->>>>>>> dev/devlogintest
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,11 +29,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
-=======
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
->>>>>>> dev/devlogintest
 
 
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,7 +74,7 @@ public class memberController {
         mav.addObject("name", user.getName());
         mav.addObject("email", user.getEmail());
         mav.addObject("bio", user.getBio());
-        mav.addObject("profile_image", user.getProfile_image());
+        mav.addObject("profile_image", user.getProfile_img());
 
         return mav;
     }
@@ -241,33 +235,6 @@ public class memberController {
 
 
 
-<<<<<<< HEAD
-=======
-	// 마이페이지
-	@RequestMapping(value = "/mypage")
-	public ModelAndView mypage(HttpServletResponse response, HttpSession session) throws Exception {
-		ModelAndView mav = new ModelAndView("mypage/mypage");
-		String userId = (String) session.getAttribute("id");
-
-		if (userId == null) {
-			response.sendRedirect("/login");
-			return null;
-		}
-		UsersVO user = memberService.loginCheck(userId);
-
-		mav.addObject("id", user.getUser_id());
-		mav.addObject("name", user.getName());
-		mav.addObject("email", user.getEmail());
-		mav.addObject("bio", user.getBio());
-		mav.addObject("profile_img", user.getProfile_img());
-		
-
-		return mav;
-	}
-
-
->>>>>>> dev/devlogintest
-
 	//로그아웃
 	@RequestMapping("/member_logout")
 	public ModelAndView member_logout(HttpServletResponse response,
@@ -368,25 +335,14 @@ public class memberController {
 
 		return null;
 	}
-<<<<<<< HEAD
-	
 
-=======
 
 	//회원 탈퇴
 	@RequestMapping("/delmem")
 	public String delmem() {
 		return "mypage/delmem";
 	}
->>>>>>> dev/devlogintest
-
-	@RequestMapping("/del_mem")
-	public ModelAndView del_mem() {
-
-		return new ModelAndView("mypage/delmem");
-	}
-
-
+	
 
     // user 삭제
     @PostMapping("/del_mem_ok")
@@ -405,7 +361,6 @@ public class memberController {
             this.memberService.del_mem(id);
             session.invalidate();
 
-<<<<<<< HEAD
             out.println("<script>");
             out.println("alert('회원 탈퇴 했습니다.');");
             out.println("location='/';");
@@ -415,57 +370,7 @@ public class memberController {
         return null;
     }
 
-    // 프로필 업데이트
-    @PostMapping("/saveProfile")
-    public void saveProfile(@RequestParam("bio") String bioContent, 
-                            @RequestParam("profile_image") MultipartFile profileImage, 
-                            HttpSession session, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        String userId = (String) session.getAttribute("id");
-        
-        if (userId == null) {
-            response.sendRedirect("/login");
-            return;
-        }
-        
-        // 자기소개 저장
-        UsersVO user = new UsersVO();
-        user.setUser_id(userId);
-        user.setBio(bioContent);
-        memberService.updatebio(user);
-
-        // 프로필 이미지 저장
-        if (!profileImage.isEmpty()) {
-            // 업로드 디렉토리 설정
-            String uploadDirectory = "/C:/files/"; //이새끼 모름 그냥 뭐임
-            Path uploadPath = Paths.get(uploadDirectory);
-
-            // 디렉토리가 존재하지 않으면 생성
-            if (!Files.exists(uploadPath)) {
-                Files.createDirectories(uploadPath);
-            }
-
-            // 파일 이름 설정 (중복 방지를 위해 UUID 사용)
-            String fileName = UUID.randomUUID().toString() + "_" + profileImage.getOriginalFilename();
-            Path filePath = uploadPath.resolve(fileName);
-            
-            // 파일 저장
-            profileImage.transferTo(filePath.toFile());
-
-            // 저장된 파일 경로를 사용자 프로필에 설정
-            user.setProfile_image(filePath.toString());
-            memberService.updateProfilePicPath(user);
-        }
-
-        out.println("<script>");
-        out.println("alert('프로필이 저장되었습니다.');");
-        out.println("location.href='/mypage';");
-        out.println("</script>");
-    }
-=======
-	
+ 	
 	
 	// 프로필 자기소개글 저장
 	@PostMapping("/saveProfile2")
@@ -552,5 +457,4 @@ public class memberController {
 	        out.println("</script>");
 	    }
 	}
->>>>>>> dev/devlogintest
 }

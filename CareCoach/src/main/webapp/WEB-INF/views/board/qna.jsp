@@ -67,14 +67,15 @@ pageEncoding="UTF-8"%>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <script>
 //글쓰기
-function fn_write(){
+
+
+	function fn_write(){
       if (${empty sessionScope.id}) {
           alert("로그인해주세요.");
           return;
       }
-
       var form = document.getElementById("boardForm");
-      
+      alert(loginid);
       form.action = "<c:url value='/board/writeForm.do'/>";
       form.submit();
     
@@ -82,10 +83,15 @@ function fn_write(){
  
 //글조회
 function fn_view(id){
-    if (${empty sessionScope.id}) {
+	var loginid = "${loginid}";
+	var user_id = "${result.user_id}";
+	
+	alert(loginid +","+ user_id);
+	if (${empty sessionScope.id}) {
         alert("로그인해주세요.");
         return;
-    }
+    }    
+    
     var form = document.getElementById("boardForm");
     var url = "<c:url value='/board/viewContent.do'/>";
     url = url + "?id=" + id;

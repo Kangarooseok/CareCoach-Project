@@ -11,10 +11,7 @@ import java.util.Date;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.json.JSONObject;
-<<<<<<< HEAD
-=======
-import org.apache.catalina.connector.Response;
->>>>>>> dev/devlogintest
+
 import org.json.JSONArray;
 
 @Service
@@ -34,10 +31,7 @@ public class ChatbotServiceImpl implements ChatbotService {
             URL url = new URL(API_URL);
 
             String message = getReqMessage(voiceMessage);
-<<<<<<< HEAD
-=======
-            
->>>>>>> dev/devlogintest
+
             System.out.println("##" + message);
 
             String encodeBase64String = makeSignature(message, SECRET_KEY);

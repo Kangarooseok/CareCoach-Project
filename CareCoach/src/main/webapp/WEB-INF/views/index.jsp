@@ -1,24 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-    pageEncoding="UTF-8"%>
-<%@ include file="./header.jsp" %> 
-<c:set var="articlesList" value="${articlesMap.articlesList}" />
-<c:set var="noticesList" value="${noticesMap.noticesList}" />
-    
-    <main>
-      <div class="slider-container">
-        <button class="arrow left">&#9664;</button>
-        <!-- Left arrow -->
-        <div class="slider">
-          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner1.png" alt="Banner 1"/></div>
-          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner2.png" alt="Banner 2" /></div>
-          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner3.png" alt="Banner 3" /></div>
-          <div class="slide"><img src="${pageContext.request.contextPath}/resources/images/banner4.png" alt="Banner 4" /></div>
-        </div>
-        
-        <button class="arrow right">&#9654;</button>
-        <!-- Right arrow -->
-=======
 pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 <%@ page import="java.util.regex.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -32,7 +12,6 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
     <div class="slider">
       <div class="slide">
         <img src="../resources/images/banner1.png" alt="Banner 1" />
->>>>>>> dev/devlogintest
       </div>
       <div class="slide">
         <img src="../resources/images/banner2.png" alt="Banner 2" />

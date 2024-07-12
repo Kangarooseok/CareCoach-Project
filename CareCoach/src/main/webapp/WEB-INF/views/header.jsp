@@ -61,9 +61,7 @@ pageEncoding="UTF-8"%>
           </c:if>
         </div>
       </div>
-<<<<<<< HEAD
-     
- </header>
+
   <script>
    function moveBoardPage(category_id){
        var href = "${pageContext.request.contextPath}/board/"+category_id;
@@ -74,9 +72,7 @@ pageEncoding="UTF-8"%>
     
     
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    
 
-=======
       
       <nav class="navbar2">
       <ul class="nav_wrapper">
@@ -91,4 +87,3 @@ pageEncoding="UTF-8"%>
     </header>
   </body>
 </html>
->>>>>>> dev/devlogintest

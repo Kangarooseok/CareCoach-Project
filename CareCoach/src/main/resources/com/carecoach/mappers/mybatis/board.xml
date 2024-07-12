@@ -32,9 +32,6 @@
 		)
 		WHERE RNUM BETWEEN #{StartIndex} AND #{CntPerPage}
 		
-		select * from posts
-        where
-        id = #{id}
 	 		
    </select>
    

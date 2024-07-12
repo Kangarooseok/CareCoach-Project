@@ -71,12 +71,7 @@ public class MemberDAOImpl implements MemberDAO{
 		return this.sqlsession.selectOne("m_findId", email);
 	}
 
-<<<<<<< HEAD
-=======
-	@Override
-    public void updatebio(UsersVO bio) {
-        this.sqlsession.update("bio_update", bio);
-    }
+
 
 	@Override
 	public void updateProfilePicPath(UsersVO fileName ) {
@@ -86,12 +81,5 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
-   
->>>>>>> dev/devlogintest
-
-	@Override
-    public void updateProfilePicPath(UsersVO user) {
-        this.sqlsession.update("updateProfilePicPath", user);
-    }
 	
 }

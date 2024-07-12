@@ -83,11 +83,6 @@ public class MemberServiceImpl implements MemberService{
 		this.memberdao.del_mem(id);
 	}
 
-	@Override
-    public void updatebio(UsersVO bio) {
-        this.memberdao.updatebio(bio);
-    }
-
 	public UsersVO findId(String email) {
 		return this.memberdao.findId(email);
 	}
@@ -108,12 +103,6 @@ public class MemberServiceImpl implements MemberService{
         this.memberdao.updateProfilePicPath(fileName);
     }
 
-	@Override
-	public void updateProfilePicPath(UsersVO user) {
-		this.memberdao.updateProfilePicPath(user);
 		
-	}
-
-	
 	
 }

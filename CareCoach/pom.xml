@@ -9,29 +9,19 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
-<<<<<<< HEAD
-
-
-	<!-- Get, post를 쓰기위해 자바 버전 바꿈 -->
-	<properties>
-		<java-version>1.8</java-version>
-		<org.springframework-version>5.0.7.RELEASE
-		</org.springframework-version>
-=======
 	<!-- Get, post를 쓰기위해 자바 버전 바꿈 -->
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
->>>>>>> dev/devlogintest
+
 		<org.aspectj-version>1.9.0</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> dev/devlogintest
+
+
 	<dependencies>
 		<!-- mybatis-spring -->
 		<dependency>
@@ -48,9 +38,6 @@
 			<version>3.5.6</version>
 		</dependency>
 
-
-<<<<<<< HEAD
-=======
 		<!-- 이미지 업로드 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -82,19 +69,13 @@
 		</dependency>
 
 
->>>>>>> dev/devlogintest
 		<!-- 오라클 JDBC 드라이버 -->
 		<dependency>
 			<groupId>oracle.jdbc</groupId>
 			<artifactId>jdbc</artifactId>
 			<version>12.2.0.1</version>
 			<scope>system</scope>
-<<<<<<< HEAD
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar
-			</systemPath>
-=======
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
->>>>>>> dev/devlogintest
 		</dependency>
 		<!-- lombok 라이브러리 추가 : 다운로드 주소 ~ projectlombok.org , cmd java -jar lombok.jar -->
 		<!-- json 라이브러리 추가 -->
@@ -119,7 +100,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-<<<<<<< HEAD
 	  <dependency>
 	    <groupId>com.googlecode.json-simple</groupId>
 	    <artifactId>json-simple</artifactId>
@@ -135,8 +115,6 @@
 		
 		</dependency>
 
-=======
->>>>>>> dev/devlogintest
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -265,19 +243,11 @@
 				<version>2.9</version>
 				<configuration>
 					<additionalProjectnatures>
-<<<<<<< HEAD
-						<projectnature>org.springframework.ide.eclipse.core.springnature
-						</projectnature>
-					</additionalProjectnatures>
-					<additionalBuildcommands>
-						<buildcommand>org.springframework.ide.eclipse.core.springbuilder
-						</buildcommand>
-=======
+
 						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
 					</additionalProjectnatures>
 					<additionalBuildcommands>
 						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
->>>>>>> dev/devlogintest
 					</additionalBuildcommands>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>
