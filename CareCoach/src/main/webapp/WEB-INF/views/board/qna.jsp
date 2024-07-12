@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
             </thead>
             <tbody>
                 <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr onClick='fn_view(${result.id})'>
+                    <tr onClick='fn_view(${result.id}, "${result.user_id}")'>
                         <td><c:out value="${result.id}"/></td>
                         <td><c:out value="${result.title}"/></td>
                         <td><c:out value="${result.user_id}"/></td>     
@@ -78,19 +78,20 @@ pageEncoding="UTF-8"%>
       alert(loginid);
       form.action = "<c:url value='/board/writeForm.do'/>";
       form.submit();
-    
  }
  
 //글조회
-function fn_view(id){
+function fn_view(id, user_id){
 	var loginid = "${loginid}";
-	var user_id = "${result.user_id}";
 	
-	alert(loginid +","+ user_id);
 	if (${empty sessionScope.id}) {
         alert("로그인해주세요.");
         return;
     }    
+    if(user_id != loginid){
+    	  alert("본인이 작성한 글만 볼 수 있습니다.");
+          return;
+    }
     
     var form = document.getElementById("boardForm");
     var url = "<c:url value='/board/viewContent.do'/>";
@@ -128,4 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<%@ include file="../footer.jsp" %>  
+<%@ include file="../footer.jsp" %>

@@ -3,8 +3,6 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 <%@ page import="java.util.regex.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <main>
   <div class="slider-container">
     <button class="arrow left">&#9664;</button>
@@ -28,6 +26,7 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
   </div>
 </main>
 
+<form id="indexForm" name="indexForm" method="post">
 <div class="main-content">
   <!-- Notices Section -->
   <div class="section notices">
@@ -45,7 +44,7 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 
       <c:when test="${!empty recentPosts1}">
         <c:forEach var="post" items="${recentPosts1}" varStatus="postNum">
-          <li style="margin-bottom: 15px">
+          <li onclick='fn_view(${post.id})' style="margin-bottom: 15px">
             <a class="cls1 posts" href="#"> ${postNum.count}. ${post.title} </a>
           </li>
         </c:forEach>
@@ -69,7 +68,7 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 
       <c:when test="${!empty recentPosts2}">
         <c:forEach var="post" items="${recentPosts2}" varStatus="postNum">
-          <li style="margin-bottom: 15px">
+          <li onclick='fn_view(${post.id})' style="margin-bottom: 15px">
             <a class="cls1 posts" href="#"> ${postNum.count}. ${post.title} </a>
           </li>
         </c:forEach>
@@ -107,9 +106,9 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
         </c:when>
 	<c:when test="${!empty recentPosts3}">
     <c:forEach var="post" items="${recentPosts3}" varStatus="postNum">
-        <div class="video-item">
+        <div onclick='fn_view(${post.id})' class="video-item">
             <a href="#">
-                <img src="https://img.youtube.com/vi/${post.video_id}/hqdefault.jpg" alt="${post.title}" />
+                <img id="${postNum.index}" src="" alt="${post.title}" />
             </a>
             <div class="video-description">
                 <p>${post.title}</p>
@@ -118,12 +117,40 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
                 </div>
             </div>
         </div>
+    	<script>
+           // URL에서 비디오 ID 추출
+           var url = '<c:out value="${post.url}"/>';
+           var videoId = url.split('v=')[1];
+           var ampersandPosition = videoId.indexOf('&');
+           if (ampersandPosition != -1) {
+               videoId = videoId.substring(0, ampersandPosition);
+           }
+           // 썸네일 URL 생성
+           var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
+           // 썸네일 이미지를 설정
+           document.getElementById('${postNum.index}').src = thumbnailUrl;
+       </script>
     </c:forEach>
 </c:when>
-	        
     </c:choose>
+    
 </div>
-  
 </div>
+  </form>
 <script type="text/javascript" src="../resources/js/bannerSlide.js"></script>
+<script>
+//글조회
+function fn_view(id){
+    
+    var form = document.getElementById("indexForm");
+    var url = "<c:url value='/board/viewContent.do'/>";
+    url = url + "?id=" + id;
+    
+    form.action = url;    
+    form.submit(); 
+}
+</script>
+
+
+
 <%@ include file="./footer.jsp" %>

@@ -93,8 +93,7 @@
             method="post"
             enctype="multipart/form-data"
           >
-            <textarea id="introText" name="bio" rows="4" cols="50">
-${not empty bio ? bio : ''}</textarea
+            <textarea id="introText" name="bio" rows="4" cols="50">${not empty bio ? bio : ''}</textarea
             >
             <div class="resize-buttons"></div>
             <div class="action-buttons">

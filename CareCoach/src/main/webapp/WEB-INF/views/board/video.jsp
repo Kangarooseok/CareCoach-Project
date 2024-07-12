@@ -141,8 +141,6 @@ function moveBoardPage(category_id){
     location.href=href;
 }
 
-//썸네일 추출
-
 
 </script>
 

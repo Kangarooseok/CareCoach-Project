@@ -96,7 +96,10 @@ function getCommentList(){
                 for(i=0; i<data.length; i++){
                     html += "<div>";
                     html += "<div><table class='table'><h6><strong>"+data[i].user_id+"</strong></h6>";
-                    html += data[i].content + "<tr><td></td></tr>";
+
+                    html += data[i].content + "<tr><td></td></tr>"; 
+                    html += "<button onclick='editItem("+i+")'>수정</button>";
+                    html += "<button onclick='deleteItem("+i+")'>삭제</button>";
                     html += "</table></div>";
                     html += "</div>";
                 }
@@ -121,6 +124,16 @@ function getCommentList(){
     });
 }
  
+//JavaScript 함수 추가
+function editItem(index) {
+    // 수정 기능 구현
+    alert("수정 기능을 구현하세요: " + index);
+}
+
+function deleteItem(index) {
+    // 삭제 기능 구현
+    alert("삭제 기능을 구현하세요: " + index);
+}
 </script>
  
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
