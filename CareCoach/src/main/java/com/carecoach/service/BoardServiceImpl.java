@@ -71,10 +71,9 @@ public class BoardServiceImpl implements BoardService{
 	
 
 	@Override
-	public int is_Liked(PostsVO postsVO) throws Exception {
-		return boardDao.is_Liked(postsVO);
+	public int is_Liked(LikesVO likesVO) throws Exception {
+		return boardDao.is_Liked(likesVO);
 	}
-
 
 
 	@Override
@@ -85,15 +84,15 @@ public class BoardServiceImpl implements BoardService{
 
 
 	@Override
-	public void addLike(PostsVO postsVO) throws Exception {
-		boardDao.addLike(postsVO);
+	public void addLike(LikesVO likesVO) throws Exception {
+		boardDao.addLike(likesVO);
 	}
 
 
 
 	@Override
-	public void delLike(PostsVO postsVO) throws Exception {
-		boardDao.delLike(postsVO);
+	public void delLike(LikesVO likesVO) throws Exception {
+		boardDao.delLike(likesVO);
 	}
     
 	

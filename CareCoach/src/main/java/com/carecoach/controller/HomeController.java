@@ -104,8 +104,16 @@ public class HomeController {
 		postsvo.setCntPerPage(pagination.getPageSize());
 		
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
-               
+        // 각 게시물의 likeCnt 설정
         
+        for (PostsVO post : list) {
+            int likeCnt = boardServiceImpl.selectLikeCnt(post.getId());
+            post.setLike_cnt(likeCnt);
+        }
+        
+        boardServiceImpl.selectLikeCnt(category_id);
+        
+             
         model.addAttribute("loginid",loginid);
         
         model.addAttribute("list", list);

@@ -28,6 +28,7 @@ pageEncoding="UTF-8"%>
                     <th>작성자</th>
                     <th>날짜</th>
                     <th>조회수</th>
+                    <th>좋아요</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,7 @@ pageEncoding="UTF-8"%>
                         <td><c:out value="${result.user_id}"/></td>           
                         <td><c:out value="${result.updated_dt}"/></td>
                         <td><c:out value="${result.view_cnt}"/></td>
+                        <td><c:out value="${result.like_cnt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>

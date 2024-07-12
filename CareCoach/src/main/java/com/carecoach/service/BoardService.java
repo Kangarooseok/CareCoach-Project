@@ -22,15 +22,15 @@ public interface BoardService {
 	void addViewCnt(Integer postsId) throws Exception;
 	
 	//좋아요 여부 확인
-    public int is_Liked(PostsVO postsVO) throws Exception;
+    public int is_Liked(LikesVO likesVO) throws Exception;
 	
 	 //게시글의 좋아요 총 개수 조회
     public int selectLikeCnt(Integer postsId) throws Exception;
 	
 	 //좋아요 추가
-	 void addLike(PostsVO postsVO) throws Exception;
+	 void addLike(LikesVO likesVO) throws Exception;
 	    
 	 //좋아요 삭제
-	 void delLike(PostsVO postsVO) throws Exception;
+	 void delLike(LikesVO likesVO) throws Exception;
     
 }

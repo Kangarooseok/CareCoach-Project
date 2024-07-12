@@ -65,9 +65,9 @@ public class BoardDAOImpl implements BoardDAO{
 	
 
 	@Override
-	public int is_Liked(PostsVO postsVO) throws Exception {
+	public int is_Liked(LikesVO likesVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		return mapper.is_Liked(postsVO);
+		return mapper.is_Liked(likesVO);
 	}
 
 
@@ -80,16 +80,16 @@ public class BoardDAOImpl implements BoardDAO{
 
 
 	@Override
-	public void addLike(PostsVO postsVO) throws Exception {
+	public void addLike(LikesVO likesVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		mapper.addLike(postsVO);
+		mapper.addLike(likesVO);
 	}
 
 
 	@Override
-	public void delLike(PostsVO postsVO) throws Exception {
+	public void delLike(LikesVO likesVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		mapper.delLike(postsVO);
+		mapper.delLike(likesVO);
 	}
 
 	

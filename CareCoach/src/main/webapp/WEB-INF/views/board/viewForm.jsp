@@ -92,6 +92,10 @@ pageEncoding="UTF-8"%>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
         <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
+        
+        <div onclick='fn_addlike(${result.id})'>좋아요 버튼
+        
+        </div>
     </form>
 <%@ include file="comment.jsp" %>
 </div>
@@ -132,6 +136,14 @@ function fn_delete(){
 	
 }
 
+function fn_addlike(post_id){
+	
+	var form = document.getElementById("viewForm");
+	
+    form.action = "<c:url value='/board/addlike.do'/>";
+    form.submit();
+	
+}
 
 </script>
 
