@@ -43,7 +43,7 @@ function write_check(){
 	<div class="modal" id="myModal">
 		<div class="modal-content">
 			<span class="close" id="closeModal">&times;</span>
-			<h2>회원탈퇴</h2>
+			<h2>비밀번호 변경</h2>
 			<form method="post" id="login-form" class="loginForm"
 				action="/chgpw_ok" onsubmit="return write_check();">
 				<label for="password">현재 비밀번호</label>

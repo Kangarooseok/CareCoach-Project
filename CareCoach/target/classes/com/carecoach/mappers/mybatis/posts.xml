@@ -8,26 +8,50 @@
 
 
 	<select id="selectRecentPosts" resultType="posts">
-        SELECT * 
-        FROM (
-            SELECT *
-            FROM Posts
-            WHERE is_deleted = 0 AND category_id=#{category_id}
-            ORDER BY created_dt DESC
-        )
-        WHERE ROWNUM &lt;= 5
-    </select>
+	    SELECT id,
+	           CASE WHEN LENGTH(title) > 25 THEN SUBSTR(title, 1, 25) || '...'
+	                ELSE title
+	           END AS title,
+	           content,
+	           category_id,
+	           created_dt
+	    FROM (
+	        SELECT *
+	        FROM Posts
+	        WHERE is_deleted = 0 AND category_id = #{category_id}
+	        ORDER BY created_dt DESC
+	    )
+	    WHERE ROWNUM &lt;= 5
+	</select>
+
     
     <select id="selectRecentVideos" resultType="posts">
-        SELECT * 
-        FROM (
-            SELECT *
-            FROM Posts
-            WHERE is_deleted = 0 AND category_id=#{category_id}
-            ORDER BY created_dt DESC
-        )
-        WHERE ROWNUM &lt;= 2
-    </select>
+	    SELECT 
+	        ID,
+	        USER_ID,
+	        CATEGORY_ID,
+	        CASE 
+	            WHEN LENGTH(TITLE) > 25 THEN SUBSTR(TITLE, 1, 25) || '…'
+	            ELSE TITLE
+	        END AS TITLE,
+	        CONTENT,
+	        URL,
+	        CREATED_DT,
+	        UPDATED_DT,
+	        VIEW_CNT,
+	        IS_DELETED
+	    FROM (
+	        SELECT *
+	        FROM (
+	            SELECT *
+	            FROM Posts
+	            WHERE IS_DELETED = 0 AND CATEGORY_ID=#{category_id}
+	            ORDER BY CREATED_DT DESC
+	        )
+	        WHERE ROWNUM &lt;= 2
+	    )
+	</select>
+    
     
     <select id="countLikesByPostId" resultType="int">
     SELECT COUNT(*)

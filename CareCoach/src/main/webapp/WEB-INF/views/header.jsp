@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
       
       <nav class="navbar2">
       <ul class="nav_wrapper">
-        <a href="#">
+        <a href="/chatbot">
           <li class="icon test_icon_name1">
             <img src="../resources/images/ChatBot_Icon.jpeg" alt="ChatBot" />
             <span class="name">ChatBot</span>

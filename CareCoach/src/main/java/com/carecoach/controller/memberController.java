@@ -56,12 +56,23 @@ public class memberController {
 
 		return "member/findPwd";
 	}
+	
+	//비밀번호 찾기 결과 "HTTP 상태 405 – 허용되지 않는 메소드" 페이징 처리
+	@RequestMapping("/findPwdResult")
+	public String findPwdResult() {
+		return "member/login";
+	}
 
 	//비밀번호 찾기 결과 
 	@RequestMapping(value = "/findPwdResult", method = RequestMethod.POST)
 	public ModelAndView findPwdResult(String user_id, String email, HttpServletResponse response, HttpSession session) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		
+		if (email == null) {
+			response.sendRedirect("/login");
+			return null;
+		}
 
 		// 사용자 조회 로직
 		UsersVO user = this.memberService.findId(email);
