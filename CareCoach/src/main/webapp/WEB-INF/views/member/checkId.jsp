@@ -97,7 +97,7 @@ input[type="text"] {
     <script>
     window.onload = function() {
         var urlParams = new URLSearchParams(window.location.search);
-        var userId = urlParams.get('user_id');
+        var userId = urlParams.get('userId');
         if (userId) {
             document.getElementById('userId').value = userId;
             checkId(); // 옵션: 페이지 로드 시 자동으로 중복 체크 수행
@@ -119,7 +119,7 @@ input[type="text"] {
             alert('아이디는 영문과 숫자로 6~12자리여야 합니다.');
             return;
         }
-        fetch('${pageContext.request.contextPath}/checkIdAvailability?user_id=' + encodeURIComponent(userId), {
+        fetch('${pageContext.request.contextPath}/checkIdAvailability?userId=' + encodeURIComponent(userId), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
@@ -155,7 +155,7 @@ input[type="text"] {
             alert('아이디는 영문과 숫자로 6~12자리여야 합니다.');
             return;
         }
-        fetch('${pageContext.request.contextPath}/checkIdAvailability?user_id=' + encodeURIComponent(userId), {
+        fetch('${pageContext.request.contextPath}/checkIdAvailability?userId=' + encodeURIComponent(userId), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'

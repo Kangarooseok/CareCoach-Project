@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 <div class="page-contents">
 
 <!--  상단 카레고리  -->
-<c:if test="${result.category_id != 6}">
+<c:if test="${result.categoryId != 6}">
 	<div class="category-container">
 	  	<div class="section notice" onclick="moveBoardPage(2)">공지사항</div>
 		<div class="section freeboard" onclick="moveBoardPage(3)">자유게시판</div>
@@ -24,18 +24,18 @@ pageEncoding="UTF-8"%>
 	    section.classList.remove('notice', 'freeboard', 'video');
 	  });
 	
-	  if (${result.category_id} === 2) {
+	  if (${result.categoryId} === 2) {
 	    sections[0].classList.add('notice');
-	  } else if (${result.category_id} === 3) {
+	  } else if (${result.categoryId} === 3) {
 	    sections[1].classList.add('freeboard');
-	  } else if (${result.category_id} === 4) {
+	  } else if (${result.categoryId} === 4) {
 	    sections[2].classList.add('video');
 	  }
 	});
 	</script>
 </c:if>
   
-<c:if test="${result.category_id == 6}">
+<c:if test="${result.categoryId == 6}">
  <div class="category-container">
     <div class="section faq" onclick="moveBoardPage(5)">자주묻는질문</div>
     <div class="section qna" onclick="moveBoardPage(6)">문의게시판</div>
@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <th>내용</th>
                         <td>${result.content}</td>
-                        <c:if test="${result.category_id == 4}">
+                        <c:if test="${result.categoryId == 4}">
                         <td>
 	        	         <iframe id="videoUrl" width="560" height="315" src=""
 		                 frameborder="0" allow="accelerometer; autoplay; 
@@ -76,22 +76,22 @@ pageEncoding="UTF-8"%>
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td>${result.user_id}</td>
+                        <td>${result.userId}</td>
                     </tr>
                 </table>
                 <div>
-                	<c:if test="${result.category_id != 2 && loginid==result.user_id}">
+                	<c:if test="${result.categoryId != 2 && loginid==result.userId}">
                     <a href='#' onClick='fn_update()'>수정</a>
                 	</c:if>
                     <a href='#' onClick='fn_cancel()'>뒤로가기</a>
-                    <c:if test="${(result.category_id == 3 || result.category_id == 4 ) && loginid==result.user_id}">
+                    <c:if test="${(result.categoryId == 3 || result.categoryId == 4 ) && loginid==result.userId}">
                     	<a href='#' onClick='fn_delete()'>삭제</a> 
                     </c:if>
                 </div>
             </div>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
-        <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
+        <input type='hidden' id='categoryId' name='categoryId' value='${result.categoryId}' />
         <c:if test="${loginid!=null}">
     	     <c:if test="${is_liked!=1}">
 	    	    <button onclick='fn_addlike(${result.id})'>좋아요</button>
@@ -141,7 +141,7 @@ function fn_delete(){
 	
 }
 
-function fn_addlike(post_id){
+function fn_addlike(postId){
 	
 	var form = document.getElementById("viewForm");
 	
@@ -150,7 +150,7 @@ function fn_addlike(post_id){
 	
 }
 
-function fn_dellike(post_id){
+function fn_dellike(postId){
 	
 	var form = document.getElementById("viewForm");
 	

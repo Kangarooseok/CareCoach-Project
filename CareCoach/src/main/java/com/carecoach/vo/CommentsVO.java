@@ -3,13 +3,13 @@ package com.carecoach.vo;
 public class CommentsVO {
 
     private int id;
-    private int post_id;
-    private String user_id;
-    private int parent_id;
+    private int postId;
+    private String userId;
+    private int parentId;
     private String content;
-    private String created_dt;
-    private String updated_dt;
-    private int is_deleted;
+    private String createdDt;
+    private String updatedDt;
+    private int isDeleted;
 
     public int getId() {
         return id;
@@ -19,28 +19,28 @@ public class CommentsVO {
         this.id = id;
     }
 
-    public int getPost_id() {
-        return post_id;
+    public int getPostId() {
+        return postId;
     }
 
-    public void setPost_id(int post_id) {
-        this.post_id = post_id;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public int getParent_id() {
-        return parent_id;
+    public int getParentId() {
+        return parentId;
     }
 
-    public void setParent_id(int parent_id) {
-        this.parent_id = parent_id;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
     public String getContent() {
@@ -51,28 +51,41 @@ public class CommentsVO {
         this.content = content;
     }
 
-    public String getCreated_dt() {
-        return created_dt;
+    public String getCreatedDt() {
+        return createdDt;
     }
 
-    public void setCreated_dt(String created_dt) {
-        this.created_dt = created_dt;
+    public void setCreatedDt(String createdDt) {
+        this.createdDt = createdDt;
     }
 
-    public String getUpdated_dt() {
-        return updated_dt;
+    public String getUpdatedDt() {
+        return updatedDt;
     }
 
-    public void setUpdated_dt(String updated_dt) {
-        this.updated_dt = updated_dt;
+    public void setUpdatedDt(String updatedDt) {
+        this.updatedDt = updatedDt;
     }
 
-    public int getIs_deleted() {
-        return is_deleted;
+    public int getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIs_deleted(int is_deleted) {
-        this.is_deleted = is_deleted;
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
+    @Override
+    public String toString() {
+        return "CommentsVO{" +
+                "id=" + id +
+                ", postId=" + postId +
+                ", userId='" + userId + '\'' +
+                ", parentId=" + parentId +
+                ", content='" + content + '\'' +
+                ", createdDt='" + createdDt + '\'' +
+                ", updatedDt='" + updatedDt + '\'' +
+                ", isDeleted=" + isDeleted +
+                '}';
+    }
 }

@@ -11,7 +11,7 @@
             </c:when>
             <c:otherwise>
               <p>${id.name}님의</p>
-              <p>아이디는 "${id.user_id}"입니다.</p>
+              <p>아이디는 "${id.userId}"입니다.</p>
             </c:otherwise>
           </c:choose>
           <button type="button" onclick="closeModal()">확인</button>

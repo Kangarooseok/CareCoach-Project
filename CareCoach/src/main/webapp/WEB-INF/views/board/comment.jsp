@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="post_id" name="post_id" value="${result.id }" />        
+        <input type="hidden" id="postId" name="postId" value="${result.id}" />
     </form>
 </div>
 <div class="container">
@@ -83,7 +83,7 @@ function getCommentList(){
         url : "<c:url value='/board/commentList.do'/>",
         dataType : "json",
         
-        data:{post_id: $("#post_id").val()},
+        data:{postId: $("#postId").val()},
         
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
         success : function(data){
@@ -95,7 +95,7 @@ function getCommentList(){
                 
                 for(i=0; i<data.length; i++){
                     html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].user_id+"</strong></h6>";
+                    html += "<div><table class='table'><h6><strong>"+data[i].userId+"</strong></h6>";
 
                     html += data[i].content + "<tr><td></td></tr>"; 
                     html += "<button onclick='editItem("+i+")'>수정</button>";

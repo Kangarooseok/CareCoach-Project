@@ -66,7 +66,6 @@ public class Pagination {
         return pageSize;
     }
 
-
     public int getRangeSize() {
         return rangeSize;
     }
@@ -87,7 +86,6 @@ public class Pagination {
         return curRange;
     }
 
-
     public int getListCnt() {
         return listCnt;
     }
@@ -100,11 +98,9 @@ public class Pagination {
         return pageCnt;
     }
 
-
     public int getRangeCnt() {
         return rangeCnt;
     }
-
 
     public int getStartPage() {
         return startPage;
@@ -125,7 +121,6 @@ public class Pagination {
     public int getStartIndex() {
         return startIndex;
     }
-
 
     public int getPrevPage() {
         return prevPage;

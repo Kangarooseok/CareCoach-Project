@@ -4,7 +4,7 @@ import com.carecoach.vo.UsersVO;
 
 public interface MemberService {
 
-    UsersVO loginCheck(String user_id);
+    UsersVO loginCheck(String userId);
 
     UsersVO userCheck(String email);
 
@@ -16,7 +16,7 @@ public interface MemberService {
 
     void updatebio(UsersVO bio);
 
-    boolean isUserIdAvailable(String user_id);
+    boolean isUserIdAvailable(String userId);
 
     void registerUser(UsersVO user) throws Exception;
 

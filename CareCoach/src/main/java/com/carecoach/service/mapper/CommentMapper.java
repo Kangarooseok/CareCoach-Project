@@ -9,7 +9,7 @@ import com.carecoach.vo.PostsVO;
 public interface CommentMapper {
 
     // 댓글 리스트 조회
-    public List<CommentsVO> commentList(Integer post_id) throws Exception;
+    public List<CommentsVO> commentList(Integer postId) throws Exception;
 
     // 댓글 등록
     public void commentInsert(CommentsVO commentsVO) throws Exception;
@@ -18,7 +18,7 @@ public interface CommentMapper {
     public void commentUpdate(CommentsVO commentsVO) throws Exception;
 
     // 댓글 삭제
-    public void commentDelete(Integer post_id) throws Exception;
+    public void commentDelete(Integer postId) throws Exception;
 
 
 }

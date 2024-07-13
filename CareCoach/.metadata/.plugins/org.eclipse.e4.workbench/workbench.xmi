@@ -2574,7 +2574,7 @@
   <commands xmi:id="_C2Z_TzgVEe-MdoS46muHbA" elementId="org.eclipse.egit.ui.team.stash.drop" commandName="Delete Stashed Commit..." category="_C2LVwTgVEe-MdoS46muHbA"/>
   <commands xmi:id="_C2Z_UDgVEe-MdoS46muHbA" elementId="org.eclipse.debug.ui.DebugPerspective" commandName="Debug" description="Open the debug perspective" category="_C2LVwjgVEe-MdoS46muHbA"/>
   <commands xmi:id="_C2Z_UTgVEe-MdoS46muHbA" elementId="org.eclipse.jdt.ui.specific_content_assist.command" commandName="Content Assist" description="A parameterizable command that invokes content assist with a single completion proposal category" category="_C2KuoDgVEe-MdoS46muHbA">
-    <parameters xmi:id="_C2Z_UjgVEe-MdoS46muHbA" elementId="org.eclipse.jdt.ui.specific_content_assist.category_id" name="type" optional="false"/>
+    <parameters xmi:id="_C2Z_UjgVEe-MdoS46muHbA" elementId="org.eclipse.jdt.ui.specific_content_assist.categoryId" name="type" optional="false"/>
   </commands>
   <commands xmi:id="_C2Z_UzgVEe-MdoS46muHbA" elementId="org.eclipse.jdt.ui.edit.text.java.search.references.in.hierarchy" commandName="References in Hierarchy" description="Search for references of the selected element in its hierarchy" category="_C2LVwDgVEe-MdoS46muHbA"/>
   <commands xmi:id="_C2amQDgVEe-MdoS46muHbA" elementId="org.eclipse.ui.navigate.expandAll" commandName="Expand All" description="Expand the current tree" category="_C2LVtDgVEe-MdoS46muHbA"/>

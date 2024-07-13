@@ -12,52 +12,12 @@ public class BannersVO {
     private String updateDt;
     private int id;
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSortSep() {
-        return sortSep;
-    }
-
-    public void setSortSep(int sortSep) {
-        this.sortSep = sortSep;
-    }
-
-    public int getUseAt() {
-        return useAt;
-    }
-
-    public void setUseAt(int useAt) {
-        this.useAt = useAt;
-    }
-
-    public String getBanner() {
-        return banner;
-    }
-
-    public void setBanner(String banner) {
-        this.banner = banner;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getCreatedDt() {
-        return createdDt;
-    }
-
-    public void setCreatedDt(String createdDt) {
-        this.createdDt = createdDt;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUpdateDt() {
@@ -68,19 +28,65 @@ public class BannersVO {
         this.updateDt = updateDt;
     }
 
-    public int getId() {
-        return id;
+    public String getCreatedDt() {
+        return createdDt;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCreatedDt(String createdDt) {
+        this.createdDt = createdDt;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
+
+    public int getUseAt() {
+        return useAt;
+    }
+
+    public void setUseAt(int useAt) {
+        this.useAt = useAt;
+    }
+
+    public int getSortSep() {
+        return sortSep;
+    }
+
+    public void setSortSep(int sortSep) {
+        this.sortSep = sortSep;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "BannersVO [name=" + name + ", sortSep=" + sortSep + ", useAt=" + useAt + ", banner=" + banner + ", url="
-                + url + ", createdDt=" + createdDt + ", updateDt=" + updateDt + ", id=" + id + "]";
+        return "BannersVO{" +
+                "name='" + name + '\'' +
+                ", sortSep=" + sortSep +
+                ", useAt=" + useAt +
+                ", banner='" + banner + '\'' +
+                ", url='" + url + '\'' +
+                ", createdDt='" + createdDt + '\'' +
+                ", updateDt='" + updateDt + '\'' +
+                ", id=" + id +
+                '}';
     }
-
-
 }

@@ -41,11 +41,11 @@ public class CommentController {
     public String ajax_addComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) throws Exception {
 
         HttpSession session = request.getSession();
-        String user_id = (String) session.getAttribute("id");
+        String userId = (String) session.getAttribute("id");
 
         try {
 
-            commentsVO.setUser_id(user_id);
+            commentsVO.setUserId(userId);
             commentService.commentInsert(commentsVO);
 
         } catch (Exception e) {
@@ -72,13 +72,13 @@ public class CommentController {
         ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
 
         // 해당 게시물 댓글
-        List<CommentsVO> list = commentService.commentList(commentsVO.getPost_id());
+        List<CommentsVO> list = commentService.commentList(commentsVO.getPostId());
 
         if (list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
                 HashMap hm = new HashMap();
                 hm.put("id", list.get(i).getId());
-                hm.put("user_id", list.get(i).getUser_id());
+                hm.put("userId", list.get(i).getUserId());
                 hm.put("content", list.get(i).getContent());
 
                 hmlist.add(hm);

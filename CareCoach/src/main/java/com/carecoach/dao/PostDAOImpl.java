@@ -14,8 +14,8 @@ public class PostDAOImpl implements PostDAO {
     private SqlSession sqlSession;
 
     @Override
-    public List<PostsVO> selectRecentPosts(int category_id) {
-        return sqlSession.selectList("selectRecentPosts", category_id);
+    public List<PostsVO> selectRecentPosts(int categoryId) {
+        return sqlSession.selectList("selectRecentPosts", categoryId);
     }
 
     @Override

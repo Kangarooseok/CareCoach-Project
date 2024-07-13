@@ -65,8 +65,8 @@
                     <span class="close" id="closeModal">×</span>
                     <h2>비밀번호 변경</h2>
                     <form method="post" id="login-form" class="loginForm" action="/findPwdResult" onsubmit="return write_check();">
-                        <label for="user_id">아이디</label>
-                        <input type="text" name="user_id" placeholder="아이디를 입력해 주세요." id="id" />
+                        <label for="userId">아이디</label>
+                        <input type="text" name="userId" placeholder="아이디를 입력해 주세요." id="id" />
                         <label for="email">이메일</label>
                         <input type="email" name="email" placeholder="이메일을 입력해 주세요." id="email" />
                         <button class="button" type="submit">비밀번호 찾기</button>

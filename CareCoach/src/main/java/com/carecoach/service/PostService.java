@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PostService {
 
-    List<PostsVO> getRecentPosts(int category_id);
+    List<PostsVO> getRecentPosts(int categoryId);
 
     List<PostsVO> selectRecentVideos(int categoryId);
 

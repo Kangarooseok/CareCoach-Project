@@ -19,9 +19,9 @@ public class CommentDAOImpl implements CommentDAO {
     private SqlSession sqlSession;
 
     @Override
-    public List<CommentsVO> commentList(Integer post_id) throws Exception {
+    public List<CommentsVO> commentList(Integer postId) throws Exception {
         CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
-        return mapper.commentList(post_id);
+        return mapper.commentList(postId);
     }
 
     @Override
@@ -37,9 +37,9 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     @Override
-    public void commentDelete(Integer post_id) throws Exception {
+    public void commentDelete(Integer postId) throws Exception {
         CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
-        mapper.commentDelete(post_id);
+        mapper.commentDelete(postId);
     }
 
 

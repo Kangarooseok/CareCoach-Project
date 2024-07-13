@@ -4,7 +4,7 @@ import com.carecoach.vo.UsersVO;
 
 public interface MemberDAO {
 
-    UsersVO loginCheck(String user_id);
+    UsersVO loginCheck(String userId);
 
     UsersVO usersCheck(String email);
 
@@ -19,7 +19,7 @@ public interface MemberDAO {
     void updateProfilePicPath(UsersVO fileName);
 
 
-    int checkUserId(String user_id);
+    int checkUserId(String userId);
 
     int checkEmail(String email);
 

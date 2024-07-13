@@ -18,7 +18,7 @@
         FROM (
         SELECT *
         FROM Posts
-        WHERE is_deleted = 0 AND category_id = #{category_id}
+        WHERE is_deleted = 0 AND category_id = #{categoryId}
         ORDER BY created_dt DESC
         )
         WHERE ROWNUM &lt;= 5
@@ -45,7 +45,7 @@
         FROM (
         SELECT *
         FROM Posts
-        WHERE IS_DELETED = 0 AND CATEGORY_ID=#{category_id}
+        WHERE IS_DELETED = 0 AND CATEGORY_ID=#{categoryId}
         ORDER BY CREATED_DT DESC
         )
         WHERE ROWNUM &lt;= 2
@@ -56,7 +56,7 @@
     <select id="countLikesByPostId" resultType="int">
         SELECT COUNT(*)
         FROM LIKES
-        WHERE post_id = #{post_id}
+        WHERE post_id = #{postId}
         AND post_id IN (
         SELECT post_id
         FROM (

@@ -51,7 +51,7 @@
             <div class="profile-picture-container">
               <div class="profile-picture">
                 <img
-                  src="${not empty profile_img ? profile_img : '../resources/images/default_profile.png'}"
+                  src="${not empty profileImg ? profileImg : '../resources/images/default_profile.png'}"
                   alt="Profile Picture"
                   id="profilePic"
                 />
@@ -65,7 +65,7 @@
               />
               <input
                 type="file"
-                name="profile_img"
+                name="profileImg"
                 id="profilePicInput"
                 style="display: none"
                 onchange="handleProfilePicChange();"

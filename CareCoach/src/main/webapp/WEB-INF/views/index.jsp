@@ -113,7 +113,7 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
             <div class="video-description">
                 <p>${post.title}</p>
                 <div class="video-meta">
-                    <span>&#x2764;${recentPosts4[postNum.index]}</span> <span>&#128100; ${post.user_id}</span>
+                    <span>&#x2764;${recentPosts4[postNum.index]}</span> <span>&#128100; ${post.userId}</span>
                 </div>
             </div>
         </div>

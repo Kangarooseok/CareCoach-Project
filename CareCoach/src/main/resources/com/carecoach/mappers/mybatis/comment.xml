@@ -9,19 +9,19 @@
     <select id="commentList" resultType="com.carecoach.vo.CommentsVO">
         SELECT *
         FROM COMMENTS
-        WHERE post_id = #{post_id}
+        WHERE post_id = #{postId}
         ORDER BY created_dt ASC
     </select>
 
     <insert id="commentInsert" parameterType="com.carecoach.vo.CommentsVO">
         INSERT INTO COMMENTS (id, post_id, user_id, parent_id, content)
-        VALUES (SEQ_COMMENTS.NEXTVAL, #{post_id}, #{user_id}, #{parent_id}, #{content})
+        VALUES (SEQ_COMMENTS.NEXTVAL, #{postId}, #{userId}, #{parentId}, #{content})
     </insert>
 
 
     <update id="commentUpdate" parameterType="com.carecoach.vo.CommentsVO">
         UPDATE COMMENTS
-        SET content = #{content}, updated_dt = SYSDATE
+        SET content = #{content}, update_dt = SYSDATE
         WHERE id = #{id}
     </update>
 

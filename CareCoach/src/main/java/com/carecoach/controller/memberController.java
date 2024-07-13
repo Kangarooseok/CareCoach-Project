@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.HashMap;
@@ -28,28 +27,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.web.servlet.ModelAndView;
 import com.carecoach.service.MemberService;
 import com.carecoach.vo.UsersVO;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 @Controller
 public class memberController {
@@ -71,11 +55,11 @@ public class memberController {
         }
         UsersVO user = memberService.loginCheck(userId);
 
-        mav.addObject("id", user.getUser_id());
+        mav.addObject("id", user.getUserId());
         mav.addObject("name", user.getName());
         mav.addObject("email", user.getEmail());
         mav.addObject("bio", user.getBio());
-        mav.addObject("profile_img", user.getProfile_img());
+        mav.addObject("profileImg", user.getProfileImg());
 
         return mav;
     }
@@ -83,10 +67,10 @@ public class memberController {
 
     @GetMapping(value = "/checkIdAvailability", produces = "application/json")
     @ResponseBody
-    public Map<String, Boolean> checkId(@RequestParam String user_id) {
-        System.out.println("유저 아이디 요청 " + user_id);
-        boolean isAvailable = memberService.isUserIdAvailable(user_id);
-        System.out.println("아이디 체크 : " + user_id + ", 사용 가능: " + isAvailable);
+    public Map<String, Boolean> checkId(@RequestParam String userId) {
+        System.out.println("유저 아이디 요청 " + userId);
+        boolean isAvailable = memberService.isUserIdAvailable(userId);
+        System.out.println("아이디 체크 : " + userId + ", 사용 가능: " + isAvailable);
         Map<String, Boolean> response = new HashMap<String, Boolean>();
         response.put("available", isAvailable);
         return response;
@@ -153,7 +137,7 @@ public class memberController {
 
     //비밀번호 찾기 결과
     @RequestMapping(value = "/findPwdResult", method = RequestMethod.POST)
-    public ModelAndView findPwdResult(String user_id, String email, HttpServletResponse response, HttpSession session) throws Exception {
+    public ModelAndView findPwdResult(String userId, String email, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -165,7 +149,7 @@ public class memberController {
         // 사용자 조회 로직
         UsersVO user = this.memberService.findId(email);
 
-        if (user == null || !user.getEmail().equals(email) || !user.getUser_id().equals(user_id)) {
+        if (user == null || !user.getEmail().equals(email) || !user.getUserId().equals(userId)) {
             // 사용자 정보를 찾을 수 없는 경우
             out.println("<script>");
             out.println("alert('해당 이메일과 아이디로 등록된 사용자가 없습니다.');");
@@ -179,7 +163,7 @@ public class memberController {
             ModelAndView mav = new ModelAndView("member/findPwd"); // JSP 페이지 이름을 지정합니다.
             mav.addObject("resetMode", true);
             // 사용자 ID를 재설정 페이지에 전달하여 후속 처리를 쉽게 할 수 있도록 함
-            mav.addObject("user_id", user.getUser_id());
+            mav.addObject("userId", user.getUserId());
             return mav;
         }
     }
@@ -221,7 +205,7 @@ public class memberController {
             out.println("</script>");
         } else {
             out.println("<script>");
-            out.println("alert('" + m.getName() + "님의 아이디는 \"" + m.getUser_id() + "\"입니다.');");
+            out.println("alert('" + m.getName() + "님의 아이디는 \"" + m.getUserId() + "\"입니다.');");
             out.println("location.href='/login'");
             out.println("</script>");
         }
@@ -264,12 +248,12 @@ public class memberController {
     }
 
     @PostMapping("/member_login_ok")
-    public ModelAndView member_login_ok(String user_id, String password,
+    public ModelAndView member_login_ok(String userId, String password,
                                         HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        UsersVO m = this.memberService.loginCheck(user_id);//아이디와 가입회원 1인 경우만
+        UsersVO m = this.memberService.loginCheck(userId);//아이디와 가입회원 1인 경우만
         //로그인 인증 처리한다.
 
 
@@ -285,7 +269,7 @@ public class memberController {
                 out.println("history.go(-1);");
                 out.println("</script>");
             } else {
-                session.setAttribute("id", user_id);//세션 id키이름에 아이디를 저장
+                session.setAttribute("id", userId);//세션 id키이름에 아이디를 저장
                 session.setMaxInactiveInterval(1800); // 세션 타임아웃을 30분(1800초)으로 설정
                 return new ModelAndView("redirect:/");
             }
@@ -380,7 +364,7 @@ public class memberController {
 
         // 자기소개 저장
         UsersVO user = new UsersVO();
-        user.setUser_id(userId);
+        user.setUserId(userId);
         user.setBio(bioContent);
         memberService.updatebio(user);
 
@@ -391,9 +375,8 @@ public class memberController {
     }
 
 
-    // 프로필 이미지 저장
     @PostMapping("/saveProfile")
-    public void saveProfile(@RequestParam(value = "profile_img", required = false) MultipartFile profileImage,
+    public void saveProfile(@RequestParam(value = "profileImg", required = false) MultipartFile profileImage,
                             HttpSession session, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -401,10 +384,10 @@ public class memberController {
         String userId = (String) session.getAttribute("id");
 
         UsersVO user = new UsersVO();
-        user.setUser_id(userId);
+        user.setUserId(userId);
 
         if (profileImage != null && !profileImage.isEmpty()) {
-            String uploadDirectory = session.getServletContext().getRealPath(File.separator) + "resources" + File.separator + "upload";
+            String uploadDirectory = session.getServletContext().getRealPath("/") + "resources" + File.separator + "upload";
             Path uploadPath = Paths.get(uploadDirectory);
 
             if (!Files.exists(uploadPath)) {
@@ -415,21 +398,21 @@ public class memberController {
             Path filePath = uploadPath.resolve(fileName);
             String filePathString = filePath.toString();
 
-            System.out.println(uploadDirectory);
-            System.out.println(filePath);
+            System.out.println("Upload Directory: " + uploadDirectory);
+            System.out.println("File Path: " + filePathString);
 
             if (Files.isDirectory(filePath)) {
-                System.err.println("파일 경로가 디렉토리입니다: " + filePath.toString());
+                System.err.println("파일 경로가 디렉토리입니다: " + filePathString);
                 return;
             }
 
             try {
-                Files.createFile(filePath);
+                // 파일을 저장할 때 Files.createFile(filePath) 대신 profileImage.transferTo(filePath.toFile())를 직접 호출
                 profileImage.transferTo(filePath.toFile());
-                System.out.println(fileName);
+                System.out.println("File Name: " + fileName);
 
                 // DB에 프로필 이미지 정보 저장 (상대 경로로 설정)
-                user.setProfile_img("/resources/upload/" + fileName);
+                user.setProfileImg("/resources/upload/" + fileName);
                 memberService.updateProfilePicPath(user);
 
                 out.println("<script>");

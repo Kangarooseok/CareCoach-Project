@@ -27,12 +27,12 @@ pageEncoding="UTF-8"%>
             </thead>
             <tbody>
                 <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr onClick='fn_view(${result.id}, "${result.user_id}")'>
+                    <tr onClick='fn_view(${result.id}, "${result.userId}")'>
                         <td><c:out value="${result.id}"/></td>
                         <td><c:out value="${result.title}"/></td>
-                        <td><c:out value="${result.user_id}"/></td>     
-                        <td><c:out value="${result.created_dt}"/></td>
-                        <td><c:out value="${result.view_cnt}"/></td>
+                        <td><c:out value="${result.userId}"/></td>
+                        <td><c:out value="${result.createdDt}"/></td>
+                        <td><c:out value="${result.viewCnt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -78,14 +78,14 @@ pageEncoding="UTF-8"%>
  }
  
 //글조회
-function fn_view(id, user_id){
+function fn_view(id, userId){
 	var loginid = "${loginid}";
 	
 	if (${empty sessionScope.id}) {
         alert("로그인해주세요.");
         return;
     }    
-    if(user_id != loginid){
+    if(userId != loginid){
     	  alert("본인이 작성한 글만 볼 수 있습니다.");
           return;
     }
@@ -98,8 +98,8 @@ function fn_view(id, user_id){
     form.submit(); 
 }
 
-function moveBoardPage(category_id){
-    var href = "${pageContext.request.contextPath}/board/"+category_id;
+function moveBoardPage(categoryId){
+    var href = "${pageContext.request.contextPath}/board/"+categoryId;
     console.log(href);
     location.href=href;
 }

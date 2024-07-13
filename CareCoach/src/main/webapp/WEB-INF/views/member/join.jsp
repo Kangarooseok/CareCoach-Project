@@ -8,18 +8,18 @@
     <title>CareCoach 회원가입</title>
     <script>
     function openCheckId() {
-        var userId = document.getElementById('user_id').value;
+        var userId = document.getElementById('userId').value;
         if (userId) {
             window.name = "parentForm";
-            window.open("/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
+            window.open("/checkId?userId=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
         } else {
             alert('아이디를 입력해주세요.');
         }
     }
 
     function setIdChecked(userId) {
-        document.getElementById("user_id").value = userId;
-        document.getElementById("user_id").readOnly = true;
+        document.getElementById("userId").value = userId;
+        document.getElementById("userId").readOnly = true;
         document.getElementById("idDuplication").value = "checked";
     }
     </script>
@@ -127,8 +127,8 @@
         <form method="post" action="${pageContext.request.contextPath}/join_process">
             <h4>회원가입 양식</h4>
             <div class="form-group">
-                <label for="user_id">아이디</label>
-                <input class="form-control" type="text" id="user_id" name="user_id" maxlength="20" placeholder="아이디를 입력해 주세요">
+                <label for="userId">아이디</label>
+                <input class="form-control" type="text" id="userId" name="userId" maxlength="20" placeholder="아이디를 입력해 주세요">
                 <button class="btn-primary" type="button" onclick="openCheckId()">중복확인</button>
                 <input type="hidden" id="idDuplication" name="idDuplication" value="">
             </div>
@@ -164,7 +164,7 @@
     }
 
     function openCheckId() {
-        var userId = document.getElementById('user_id').value;
+        var userId = document.getElementById('userId').value;
         if (!userId) {
             alert('아이디를 입력해주세요.');
             return;
@@ -174,12 +174,12 @@
             return;
         }
         window.name = "parentForm";
-        window.open("/checkId?user_id=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
+        window.open("/checkId?userId=" + encodeURIComponent(userId), "chkForm", "width=500, height=300, resizable=no, scrollbars=no");
     }
 
     function setIdChecked(userId) {
-        document.getElementById("user_id").value = userId;
-        document.getElementById("user_id").readOnly = true;
+        document.getElementById("userId").value = userId;
+        document.getElementById("userId").readOnly = true;
         document.getElementById("idDuplication").value = "checked";
     }
 
@@ -211,7 +211,7 @@
         password2.addEventListener('input', checkPasswordMatch);
 
         document.querySelector('form').addEventListener('submit', function(e) {
-            var userId = document.getElementById('user_id').value;
+            var userId = document.getElementById('userId').value;
             
             if (!validateUserId(userId)) {
                 e.preventDefault();

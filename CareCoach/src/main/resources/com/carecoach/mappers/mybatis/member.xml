@@ -12,20 +12,20 @@
     </select>
 
     <update id="m_update">
-        update Users set password=#{password} where user_id=#{user_id}
+        update Users set password=#{password} where user_id=#{userId}
     </update>
 
     <update id="bio_update">
-        UPDATE users SET bio = #{bio} WHERE user_id = #{user_id}
+        UPDATE users SET bio = #{bio} WHERE user_id = #{userId}
     </update>
 
     <update id="updateProfilePicPath">
-        UPDATE users SET profile_img = #{profile_img} WHERE user_id = #{user_id}
+        UPDATE users SET profile_img = #{profileImg} WHERE user_id = #{userId}
     </update>
 
 
     <update id="m_del">
-        update Users set is_deleted = 1 where user_id=#{user_id}
+        update Users set id_deleted = 1 where user_id=#{userId}
     </update>
 
     <select id="m_findId" resultType="member">
@@ -33,7 +33,7 @@
     </select>
 
     <select id="m_checkUserId" resultType="int">
-        SELECT COUNT(*) FROM USERS WHERE user_id = #{user_id}
+        SELECT COUNT(*) FROM USERS WHERE user_id = #{userId}
     </select>
 
     <select id="m_checkEmail" resultType="int">
@@ -42,7 +42,7 @@
 
     <insert id="m_insertUser" parameterType="com.carecoach.vo.UsersVO">
         INSERT INTO USERS (user_no,user_id,name,password,email)
-        VALUES (SEQ_USERS.nextval, #{user_id}, #{name}, #{password}, #{email})
+        VALUES (SEQ_USERS.nextval, #{userId}, #{name}, #{password}, #{email})
     </insert>
 
 </mapper>

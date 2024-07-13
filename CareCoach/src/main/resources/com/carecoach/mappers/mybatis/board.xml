@@ -11,9 +11,9 @@
         <!--
         select *
         from posts
-        where category_id=#{category_id}
-            and is_deleted=0
-        order by updated_dt DESC
+        where categoryId=#{categoryId}
+            and id_deleted=0
+        order by updatedDt DESC
          -->
 
         SELECT *
@@ -23,7 +23,7 @@
         FROM (
         SELECT *
         FROM posts p
-        WHERE category_id = #{category_id}
+        WHERE category_id = #{categoryId}
         AND is_deleted = 0
         ORDER BY updated_dt DESC
         ) p
@@ -37,7 +37,7 @@
     <select id="selectPostCnt" resultType="int">
         select count(*)
         from posts
-        where category_id=#{category_id}
+        where category_id=#{categoryId}
         and is_deleted=0
     </select>
 
@@ -46,13 +46,12 @@
         (id,user_id,category_id,title,url,content)
         VALUES (
         SEQ_POSTS.nextval,
-        #{user_id},
-        #{category_id},
+        #{userId},
+        #{categoryId},
         #{title},
         #{url},
         #{content}
         )
-
 
     </insert>
 
@@ -90,15 +89,15 @@
     <select id="is_Liked" resultType="int">
         select count(*)
         from likes
-        where post_id=#{post_id}
-        and user_id=#{user_id}
+        where post_id=#{postId}
+        and user_id=#{userId}
     </select>
 
     <!-- 좋아요 수 조회 -->
     <select id="selectLikeCnt" resultType="int">
         select count(*)
         from likes
-        where post_id=#{post_id}
+        where post_id=#{postId}
     </select>
 
     <!-- 좋아요 -->
@@ -108,15 +107,15 @@
         values
         (
         SEQ_LIKES.nextval,
-        #{user_id},
-        #{post_id}
+        #{userId},
+        #{postId}
         )
         <!-- 좋아요 취소 -->
     </insert>
     <delete id="delLike">
         delete likes
-        where user_id=#{user_id}
-        and post_id=#{post_id}
+        where user_id=#{userId}
+        and post_id=#{postId}
     </delete>
 
 </mapper>

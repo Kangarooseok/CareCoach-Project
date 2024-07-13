@@ -15,9 +15,9 @@ public class CommentServiceImpl implements CommentService {
     private CommentDAO commentDAO;
 
     @Override
-    public List<CommentsVO> commentList(Integer post_id) throws Exception {
+    public List<CommentsVO> commentList(Integer postId) throws Exception {
         List<CommentsVO> commentList;
-        commentList = commentDAO.commentList(post_id);
+        commentList = commentDAO.commentList(postId);
         return commentList;
     }
 
@@ -32,8 +32,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void commentDelete(Integer post_id) throws Exception {
-        commentDAO.commentDelete(post_id);
+    public void commentDelete(Integer postId) throws Exception {
+        commentDAO.commentDelete(postId);
     }
 
 

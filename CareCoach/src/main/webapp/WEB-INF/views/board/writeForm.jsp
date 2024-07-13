@@ -14,10 +14,10 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <th>카테고리</th>                       
                         <td>
-                            <select id="category_id" name="category_id"onChange="toggleUrlField()" >
-                                <option value="3" ${result.category_id == 3 ? 'selected' : ''}>자유게시판</option>
-                                <option value="4" ${result.category_id == 4 ? 'selected' : ''}>헬스영상</option>
-                                <option value="6" ${result.category_id == 6 ? 'selected' : ''}>문의게시판</option>
+                            <select id="categoryId" name="categoryId"onChange="toggleUrlField()" >
+                                <option value="3" ${result.categoryId == 3 ? 'selected' : ''}>자유게시판</option>
+                                <option value="4" ${result.categoryId == 4 ? 'selected' : ''}>헬스영상</option>
+                                <option value="6" ${result.categoryId == 6 ? 'selected' : ''}>문의게시판</option>
                             </select>
                         </td>
                     </tr>
@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td><input type='hidden' style="width: 500px;" type="text" id="user_id" name="user_id"  value="${sessionScope.id}"/></td>
+                        <td><input type='hidden' style="width: 500px;" type="text" id="userId" name="userId"  value="${sessionScope.id}"/></td>
                     </tr>
                 </table>
                 <div>
@@ -64,7 +64,7 @@ function fn_cancel(){
 }
 //URL 입력란 표시 토글
 function toggleUrlField() {
-    var category = document.getElementById("category_id").value;
+    var category = document.getElementById("categoryId").value;
     var urlRow = document.getElementById("urlRow");
 
     if (category == "4") { // '헬스 영상' 카테고리가 선택되었을 때

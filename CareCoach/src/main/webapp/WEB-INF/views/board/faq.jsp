@@ -60,8 +60,8 @@ faqQuestions.forEach(function(question) {
     }
   });
 
-  function moveBoardPage(category_id){
-      var href = "${pageContext.request.contextPath}/board/"+category_id;
+  function moveBoardPage(categoryId){
+      var href = "${pageContext.request.contextPath}/board/"+categoryId;
       console.log(href);
       location.href=href;
   }

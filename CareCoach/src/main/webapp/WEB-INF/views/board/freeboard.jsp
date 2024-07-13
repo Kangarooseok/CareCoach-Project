@@ -36,10 +36,10 @@ pageEncoding="UTF-8"%>
                     <tr onClick='fn_view(${result.id})'>
                         <td><c:out value="${result.id}"/></td>
                         <td><c:out value="${result.title}"/></td>
-                        <td><c:out value="${result.user_id}"/></td>           
-                        <td><c:out value="${result.updated_dt}"/></td>
-                        <td><c:out value="${result.view_cnt}"/></td>
-                        <td><c:out value="${result.like_cnt}"/></td>
+                        <td><c:out value="${result.userId}"/></td>
+                        <td><c:out value="${result.updatedDt}"/></td>
+                        <td><c:out value="${result.viewCnt}"/></td>
+                        <td><c:out value="${result.likeCnt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function moveBoardPage(category_id){
-    var href = "${pageContext.request.contextPath}/board/"+category_id;
+function moveBoardPage(categoryId){
+    var href = "${pageContext.request.contextPath}/board/"+categoryId;
     console.log(href);
     location.href=href;
 }

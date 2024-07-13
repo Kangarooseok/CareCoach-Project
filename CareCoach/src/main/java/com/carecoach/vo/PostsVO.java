@@ -9,10 +9,10 @@ public class PostsVO {
     private int id;
 
     //작성자 아이디
-    private String user_id;
+    private String userId;
 
     //카테고리 아이디
-    private int category_id;
+    private int categoryId;
 
     //제목
     private String title;
@@ -23,61 +23,28 @@ public class PostsVO {
     //영상 url
     private String url;
 
-    private String video_id;
+    private String videoId;
 
     //작성일
-    private String created_dt;
+    private String createdDt;
 
     //수정일
-    private String updated_dt;
+    private String updatedDt;
 
     //조회수
-    private int view_cnt;
+    private int viewCnt;
 
     //좋아요 수
-    private int like_cnt;
+    private int likeCnt;
 
-    private int is_deleted;
+    private int isDeleted;
 
     private int CntPerPage;
 
     private int StartIndex;
 
-
-    public int getLike_cnt() {
-        return like_cnt;
-    }
-
-    public void setLike_cnt(int like_cnt) {
-        this.like_cnt = like_cnt;
-    }
-
-    public int getCntPerPage() {
-        return CntPerPage;
-    }
-
-    public void setCntPerPage(int cntPerPage) {
-        CntPerPage = cntPerPage;
-    }
-
-    public int getStartIndex() {
-        return StartIndex;
-    }
-
-    public void setStartIndex(int startIndex) {
-        StartIndex = startIndex;
-    }
-
-
     // Getter와 Setter 메서드들
 
-    public String getVideo_id() {
-        return video_id;
-    }
-
-    public void setVideo_id(String video_id) {
-        this.video_id = video_id;
-    }
 
     public int getId() {
         return id;
@@ -87,20 +54,20 @@ public class PostsVO {
         this.id = id;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {
@@ -123,49 +90,93 @@ public class PostsVO {
         return url;
     }
 
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public String getCreatedDt() {
+        return createdDt;
+    }
+
+    public void setCreatedDt(String createdDt) {
+        this.createdDt = createdDt;
+    }
+
+    public String getUpdatedDt() {
+        return updatedDt;
+    }
+
+    public void setUpdatedDt(String updatedDt) {
+        this.updatedDt = updatedDt;
+    }
+
+    public int getViewCnt() {
+        return viewCnt;
+    }
+
+    public void setViewCnt(int viewCnt) {
+        this.viewCnt = viewCnt;
+    }
+
+    public int getLikeCnt() {
+        return likeCnt;
+    }
+
+    public void setLikeCnt(int likeCnt) {
+        this.likeCnt = likeCnt;
+    }
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public int getCntPerPage() {
+        return CntPerPage;
+    }
+
+    public void setCntPerPage(int cntPerPage) {
+        CntPerPage = cntPerPage;
+    }
+
+    public int getStartIndex() {
+        return StartIndex;
+    }
+
+    public void setStartIndex(int startIndex) {
+        StartIndex = startIndex;
+    }
+
     public void setUrl(String url) {
         this.url = url;
-        this.video_id = extractVideoIdFromUrl(url); // URL이 설정될 때 비디오 ID 추출 및 설정
+        this.videoId = extractVideoIdFromUrl(url); // URL이 설정될 때 비디오 ID 추출 및 설정
     }
 
-    public String getCreated_dt() {
-        return created_dt;
-    }
-
-    public void setCreated_dt(String created_dt) {
-        this.created_dt = created_dt;
-    }
-
-    public String getUpdated_dt() {
-        return updated_dt;
-    }
-
-    public void setUpdated_dt(String updated_dt) {
-        this.updated_dt = updated_dt;
-    }
-
-    public int getView_cnt() {
-        return view_cnt;
-    }
-
-    public void setView_cnt(int view_cnt) {
-        this.view_cnt = view_cnt;
-    }
-
-    public int getIs_deleted() {
-        return is_deleted;
-    }
-
-    public void setIs_deleted(int is_deleted) {
-        this.is_deleted = is_deleted;
-    }
-
+    @Override
     public String toString() {
-        String result = "id=" + id + "user_id=" + user_id + "category_id=" + category_id + "title=" + title +
-                "\ncontent=" + content + "url=" + url + "created_dt=" + created_dt + "updated_dt=" + updated_dt +
-                "\nview_cnt=" + view_cnt + "is_deleted=" + is_deleted + "like_cnt : " + like_cnt;
-
-        return result;
+        return "PostsVO{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", categoryId=" + categoryId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", url='" + url + '\'' +
+                ", videoId='" + videoId + '\'' +
+                ", createdDt='" + createdDt + '\'' +
+                ", updatedDt='" + updatedDt + '\'' +
+                ", viewCnt=" + viewCnt +
+                ", likeCnt=" + likeCnt +
+                ", isDeleted=" + isDeleted +
+                ", CntPerPage=" + CntPerPage +
+                ", StartIndex=" + StartIndex +
+                '}';
     }
 
     /**

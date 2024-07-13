@@ -14,8 +14,8 @@ public class PostServiceImpl implements PostService {
     private PostDAO postDAO;
 
     @Override
-    public List<PostsVO> getRecentPosts(int category_id) {
-        return this.postDAO.selectRecentPosts(category_id);
+    public List<PostsVO> getRecentPosts(int categoryId) {
+        return this.postDAO.selectRecentPosts(categoryId);
     }
 
     @Override

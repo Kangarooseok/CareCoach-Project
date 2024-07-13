@@ -28,9 +28,9 @@ pageEncoding="UTF-8"%>
                     <tr onClick='fn_view(${result.id})'>
                         <td><c:out value="${result.id}"/></td>
                         <td><c:out value="${result.title}"/></td>
-                        <td><c:out value="${result.user_id}"/></td>           
-                        <td><c:out value="${result.created_dt}"/></td>
-                        <td><c:out value="${result.view_cnt}"/></td>
+                        <td><c:out value="${result.userId}"/></td>
+                        <td><c:out value="${result.createdDt}"/></td>
+                        <td><c:out value="${result.viewCnt}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -91,14 +91,14 @@ if (boardId === '2') {
 } 
 });
 
-function moveBoardPage(category_id){
-  var href = "${pageContext.request.contextPath}/board/"+category_id;
+function moveBoardPage(categoryId){
+  var href = "${pageContext.request.contextPath}/board/"+categoryId;
   console.log(href);
   location.href=href;
 }
 
-function moveBoardPage(category_id){
-    var href = "${pageContext.request.contextPath}/board/"+category_id;
+function moveBoardPage(categoryId){
+    var href = "${pageContext.request.contextPath}/board/"+categoryId;
     console.log(href);
     location.href=href;
 }

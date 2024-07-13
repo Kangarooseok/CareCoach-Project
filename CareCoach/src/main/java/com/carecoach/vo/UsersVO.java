@@ -2,39 +2,23 @@ package com.carecoach.vo;
 
 
 public class UsersVO {
-    private String user_id;
+    private String userId;
     private String name;
     private String password;
     private String email;
-    private int is_deleted;
+    private int isDeleted;
     private String indate;
-    private String profile_img;
+    private String profileImg;
     private String bio;
     private String roles;
-    private int user_no;
+    private int userNo;
 
-    public String getProfile_img() {
-        return profile_img;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setProfile_img(String profile_img) {
-        this.profile_img = profile_img;
-    }
-
-    public int getUser_no() {
-        return user_no;
-    }
-
-    public void setUser_no(int user_no) {
-        this.user_no = user_no;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -61,12 +45,12 @@ public class UsersVO {
         this.email = email;
     }
 
-    public int getIs_deleted() {
-        return is_deleted;
+    public int getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIs_deleted(int is_deleted) {
-        this.is_deleted = is_deleted;
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public String getIndate() {
@@ -75,6 +59,14 @@ public class UsersVO {
 
     public void setIndate(String indate) {
         this.indate = indate;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 
     public String getBio() {
@@ -93,12 +85,27 @@ public class UsersVO {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "UsersVO [user_id=" + user_id + ", name=" + name + ", password=" + password + ", email=" + email
-                + ", is_deleted=" + is_deleted + ", indate=" + indate + ", profile_image=" + profile_img + ", bio="
-                + bio + ", roles=" + roles + ", user_no=" + user_no + "]";
+    public int getUserNo() {
+        return userNo;
     }
 
+    public void setUserNo(int userNo) {
+        this.userNo = userNo;
+    }
 
+    @Override
+    public String toString() {
+        return "UsersVO{" +
+                "userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", isDeleted=" + isDeleted +
+                ", indate='" + indate + '\'' +
+                ", profileImg='" + profileImg + '\'' +
+                ", bio='" + bio + '\'' +
+                ", roles='" + roles + '\'' +
+                ", userNo=" + userNo +
+                '}';
+    }
 }

@@ -1,37 +1,27 @@
 package com.carecoach.controller;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.carecoach.boardPagination.Pagination;
 import com.carecoach.service.BoardService;
-import com.carecoach.service.ChatbotService;
-import com.carecoach.vo.CategoryVO;
 import com.carecoach.vo.LikesVO;
 import com.carecoach.vo.PostsVO;
 
 import com.carecoach.service.PostService;
-import com.carecoach.vo.PostsVO;
 
 @Controller
 public class HomeController {
@@ -82,19 +72,19 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/board/{category_id}")
-    public String boardList(@PathVariable Integer category_id,
+    @RequestMapping("/board/{categoryId}")
+    public String boardList(@PathVariable Integer categoryId,
                             @RequestParam(defaultValue = "1") int curPage,
                             HttpServletRequest request,
                             HttpSession session,
                             Model model) throws Exception {
-        System.out.println("/board/{category_id} 호출");
+        System.out.println("/board/{categoryId} 호출");
         PostsVO postsvo = new PostsVO();
 
-        postsvo.setCategory_id(category_id);
+        postsvo.setCategoryId(categoryId);
         String loginid = (String) session.getAttribute("id");
 
-        int listCnt = boardServiceImpl.selectPostCnt(category_id);
+        int listCnt = boardServiceImpl.selectPostCnt(categoryId);
 
         Pagination pagination = new Pagination(listCnt, curPage);
 
@@ -103,14 +93,14 @@ public class HomeController {
         postsvo.setCntPerPage(pagination.getPageSize());
 
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
-        // 각 게시물의 likeCnt 설정
 
+        // 각 게시물의 likeCnt 설정
         for (PostsVO post : list) {
             int likeCnt = boardServiceImpl.selectLikeCnt(post.getId());
-            post.setLike_cnt(likeCnt);
+            post.setLikeCnt(likeCnt);
         }
 
-        boardServiceImpl.selectLikeCnt(category_id);
+        boardServiceImpl.selectLikeCnt(categoryId);
 
 
         model.addAttribute("loginid", loginid);
@@ -121,7 +111,7 @@ public class HomeController {
 
         model.addAttribute("pagination", pagination);
 
-        return returnPosts(category_id);
+        return returnPosts(categoryId);
 
     }
 
@@ -149,7 +139,7 @@ public class HomeController {
 
         model.addAttribute("list", list);
 
-        return "redirect:/board/" + postsVO.getCategory_id();
+        return "redirect:/board/" + postsVO.getCategoryId();
 
     }
 
@@ -170,7 +160,7 @@ public class HomeController {
 
         model.addAttribute("list", list);
 
-        return "redirect:/board/" + postsVO.getCategory_id();
+        return "redirect:/board/" + postsVO.getCategoryId();
 
     }
 
@@ -202,7 +192,7 @@ public class HomeController {
 
         model.addAttribute("list", list);
 
-        return "redirect:/board/" + postsVO.getCategory_id();
+        return "redirect:/board/" + postsVO.getCategoryId();
 
     }
 
@@ -220,9 +210,9 @@ public class HomeController {
         LikesVO likevo = new LikesVO();
 
         if (loginid != null) {
-            likevo.setPost_id(postsVO.getId());
+            likevo.setPostId(postsVO.getId());
 
-            likevo.setUser_id(loginid);
+            likevo.setUserId(loginid);
 
             int is_liked = boardServiceImpl.is_Liked(likevo);
             model.addAttribute("is_liked", is_liked);

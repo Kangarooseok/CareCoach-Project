@@ -13,8 +13,8 @@ public class MemberDAOImpl implements MemberDAO {
     private SqlSession sqlsession;
 
     @Override
-    public int checkUserId(String user_id) {
-        return sqlsession.selectOne("m_checkUserId", user_id);
+    public int checkUserId(String userId) {
+        return sqlsession.selectOne("m_checkUserId", userId);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 
     @Override
-    public UsersVO loginCheck(String user_id) {
-        return this.sqlsession.selectOne("m_loginCheck", user_id);
+    public UsersVO loginCheck(String userId) {
+        return this.sqlsession.selectOne("m_loginCheck", userId);
     }
 
     @Override

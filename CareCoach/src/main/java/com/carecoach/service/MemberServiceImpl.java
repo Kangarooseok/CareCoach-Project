@@ -3,7 +3,6 @@ package com.carecoach.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.carecoach.dao.MemberDAO;
 import com.carecoach.vo.UsersVO;
@@ -15,14 +14,14 @@ public class MemberServiceImpl implements MemberService {
     private MemberDAO memberdao;
 
     @Override
-    public boolean isUserIdAvailable(String user_id) {
-        return memberdao.checkUserId(user_id) == 0;
+    public boolean isUserIdAvailable(String userId) {
+        return memberdao.checkUserId(userId) == 0;
     }
 
     @Override
     public void registerUser(UsersVO user) throws Exception {
         // 서버 측 유효성 검사
-        if (!isValidUserId(user.getUser_id())) {
+        if (!isValidUserId(user.getUserId())) {
             throw new IllegalArgumentException("Invalid user ID");
         }
         if (!isValidPassword(user.getPassword())) {
@@ -34,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             // 중복 체크
-            if (memberdao.checkUserId(user.getUser_id()) > 0) {
+            if (memberdao.checkUserId(user.getUserId()) > 0) {
                 throw new DuplicateKeyException("이미 존재하는 아이디입니다.");
             }
             if (memberdao.checkEmail(user.getEmail()) > 0) {
@@ -69,8 +68,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public UsersVO loginCheck(String user_id) {
-        return this.memberdao.loginCheck(user_id);
+    public UsersVO loginCheck(String userId) {
+        return this.memberdao.loginCheck(userId);
     }
 
     @Override

@@ -6,9 +6,9 @@
 
 <script>
 function write_check(){
-	  if($.trim($("#user_id").val())== ""){
+	  if($.trim($("#userId").val())== ""){
 		  alert("아이디를 입력하세요.");
-		  $("#user_id").val("").focus();
+		  $("#userId").val("").focus();
 		  return false;
 	  }
 	  
@@ -24,7 +24,7 @@ function write_check(){
       <h2>로그인</h2>
       <form method="post" id="login-form" class="loginForm" action="/member_login_ok" onsubmit="return write_check();">
         <div class="inputWrapper">
-          <input type="text" name="user_id" id="user_id" placeholder="아이디" />
+          <input type="text" name="userId" id="userId" placeholder="아이디" />
           <input type="password" name="password" id="password" placeholder="비밀번호" />
         </div>
         <div class="loginNavigation">

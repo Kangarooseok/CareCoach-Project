@@ -33,8 +33,10 @@ public class TermsVO {
 
     @Override
     public String toString() {
-        return "TermsVO [id=" + id + ", title=" + title + ", content=" + content + "]";
+        return "TermsVO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
-
-
 }
