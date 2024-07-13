@@ -2,11 +2,13 @@
  * 
  */
 
-function post_findId() {
-	var url = "CareCoach?command=find_id";
- 	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300");
+
+function openLoginModal() {
+    $('.modal-contents').load("/findId");
 }
 
-
+function openLoginModal2() {
+    $('.modal-contents').load("/findPwd");
+}
 	  
 	  

@@ -12,8 +12,9 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/careCoach.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/CareCoachMypage.css" />
+    
   </head>
-  <body>
+ <header>
       <div class="container">
         <div class="logo">
           <a href="${pageContext.request.contextPath}/">
@@ -23,52 +24,66 @@ pageEncoding="UTF-8"%>
         <nav>
           <ul class="nav-links">
             <li>
-              <a href="#" onClick='moveBoardPage(1,"${pageContext.request.contextPath}/board/aboutus");'>About Us</a>
+              <div onClick='moveBoardPage(1);'>About Us</div>
             </li>
             <li>
-              <a href="#">Community</a>
+              <div>Community</div>
               <ul class="dropdown">
-                <li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
-                <li><a href="${pageContext.request.contextPath}/board/freeboard">게시판</a></li>
-                <li><a href="${pageContext.request.contextPath}/board/video">헬스영상</a></li>
+                <li><div onClick='moveBoardPage(2);'>공지사항</div></li>
+                <li><div onClick='moveBoardPage(3);'>게시판</div></li>
+                <li><div onClick='moveBoardPage(4);'>헬스영상</div></li>
               </ul>
             </li>
             <li>
-              <a href="#">QnA</a>
+              <div>QnA</div>
               <ul class="dropdown">
-                <li><a href="${pageContext.request.contextPath}qna/faq">자주 묻는 질문</a></li>
-                <li><a href="${pageContext.request.contextPath}qna/qna">문의 게시판</a></li>
+                <li><div onClick='moveBoardPage(5);'>자주 묻는 질문</div></li>
+                <li><div onClick='moveBoardPage(6);'>문의 게시판</div></li>
+                </ul>
             </li>
             <li>
-              <a href="#">CareCoach</a>
+              <div onClick='moveBoardPage(7);'>CareCoach</div>
             </li>
           </ul>
         </nav>
 
         <div class="auth-links">
           <c:if test="${empty id}">
-              <li><a href="/login">Login</a></li>
+              <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
               <li class="contour">|</li>
-              <li><a href="CareCoach?command=contract">Join</a></li>
+              <li><a href="${pageContext.request.contextPath}/terms">Join</a></li>
            </c:if>
             <c:if test="${!empty id}">
               <li>
-               <a href="/member_logout">LOGOUT |</a>
+               <a href="/member_logout">Logout |</a>
               </li>
               <li><a href="/mypage">마이페이지</a></li>
           </c:if>
         </div>
       </div>
+
+  <script>
+   function moveBoardPage(category_id){
+       var href = "${pageContext.request.contextPath}/board/"+category_id;
+       console.log(href);
+       location.href=href;
+   }
+  </script>
+    
+    
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+      
+      <nav class="navbar2">
+      <ul class="nav_wrapper">
+        <a href="/chatbot">
+          <li class="icon test_icon_name1">
+            <img src="../resources/images/ChatBot_Icon.jpeg" alt="ChatBot" />
+            <span class="name">ChatBot</span>
+          </li>
+        </a>
+      </ul>
+    </nav>
     </header>
-    <script>
-	    function moveBoardPage(categoryId, path){
-	        var href = path + '?'+'categoryId='+categoryId;
-	        console.log(href);
-	        location.href=href;
-	    }
-    </script>
-    
-    
-    
   </body>
 </html>

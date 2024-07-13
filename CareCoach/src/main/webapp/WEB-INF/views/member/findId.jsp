@@ -1,77 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="../resources/js/jquery.js"></script>
+<script>
+function write_check(){
+	  if($.trim($("#name").val())== ""){
+		  alert("이름을 입력하세요");
+		  $("#name").val("").focus();
+		  return false;
+	  }
+	  
+	  if($.trim($("#email").val())== ""){
+		  alert("이메일을 입력하세요");
+		  $("#email").val("").focus();
+		  return false;
+	  }
+}
+</script>
 
-    <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>아이디 찾기</title>
-    <style>
-      .body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      .popup-container {
-        border: 1px solid #ccc;
-        background-color: #fff;
-        padding: 20px;
-        width: 300px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .popup-container h2 {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-
-      .popup-container label {
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      .popup-container input[type="text"],
-      .popup-container input[type="email"] {
-        width: calc(100% - 10px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
-
-      .popup-container .button {
-        width: 100%;
-        padding: 10px;
-        background-color: #000;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-
-      .popup-container .button:hover {
-        background-color: #333;
-      }
-    </style>
-    
-  </head>
-  <body>
-    <div class="body">
-      <div class="popup-container">
+  	<div class="find_body">
+  		<div class="modal" id="myModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
         <h2>아이디 찾기</h2>
-        <form method="post" action="CareCoach?command=find_id_result" id="login-form" class="loginForm">
-	        <label for="nickname">이름</label>
-	        <input type="text" name="nickname" placeholder="이름을 입력해 주세요." />
-	        <label for="email">이메일</label>
-	        <input type="email" name="email" placeholder="이메일을 입력해 주세요." />
-	        <input class="button" type="submit" value="아이디 찾기" onclick="post_findId()" />
-	   </form>
+        <form
+          method="post"
+          id="login-form"
+          class="loginForm"
+          action="/findIdResult"
+          onsubmit="return write_check();"
+        >
+          <label for="name">이름</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="이름을 입력해 주세요."
+            id="name"
+          />
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="이메일을 입력해 주세요."
+            id="email"
+          />
+          <button class="button" type="submit">아이디 찾기</button>
+        </form>
       </div>
     </div>
-  </body>
-</html>
+  	</div>
+  	
+  	<div class="modal-result-content"></div>
+  
     
+
+    <script>
+      // Get modal element
+      var modal = document.getElementById("myModal");
+      // Get close button
+      var closeModal = document.getElementById("closeModal");
+
+      // Show modal
+      window.onload = function () {
+        modal.style.display = "flex";
+      };
+
+      // Close modal when 'x' is clicked
+      closeModal.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // Close modal when clicking outside of modal
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script type="text/javascript" src="../resources/js/post_findidresult.js"></script>

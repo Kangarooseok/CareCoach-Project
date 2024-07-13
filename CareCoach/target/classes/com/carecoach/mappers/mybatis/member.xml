@@ -3,30 +3,59 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="Member"> 
- 
+
+<mapper namespace="Member">
+
+
+
+
+	<select id="m_loginCheck" resultType="member">
+		select * from Users where user_id=#{user_id} and is_deleted=0
+	</select>
+
+	<update id="m_update">
+		update Users set password=#{password} where user_id=#{user_id}
+	</update>
+
+	<update id="bio_update">
+        UPDATE users SET bio = #{bio} WHERE user_id = #{user_id}
+    </update>
+    
+ 	<update id="updateProfilePicPath">
+        	UPDATE users SET profile_img = #{profile_img} WHERE user_id = #{user_id}
+    </update>
   
    
-  
-   <select id="m_loginCheck" resultType="member">
-     select * from Users where user_id=#{user_id} and is_deleted=0
-   </select>
+  	 <update id="m_del">
+		update Users set is_deleted = 1 where user_id=#{user_id}
+	</update>
    
-   <update id="m_update" >
-   update Users set password=#{password} where user_id=#{user_id}
-   </update>
-   
-   <update id="m_del">
-   	update Users set is_deleted = 1 where user_id=#{user_id}
-   </update>
- </mapper>
- 
- 
- 
- 
- 
- 
+ 	<select id="m_findId" resultType="member">
+		select * from Users where email=#{email} and is_deleted=0
+	</select>
+	
+    <select id="m_checkUserId" resultType="int">
+    SELECT COUNT(*) FROM USERS WHERE user_id = #{user_id}
+	</select>	
+	
+	<select id="m_checkEmail" resultType="int">
+    SELECT COUNT(*) FROM USERS WHERE email = #{email}
+	</select>
+
+    <insert id="m_insertUser" parameterType="com.carecoach.vo.UsersVO">
+        INSERT INTO USERS (user_no,user_id,name,password,email)
+        VALUES (SEQ_USERS.nextval, #{user_id}, #{name}, #{password}, #{email})
+    </insert>
+
+</mapper>
+
+	
+
+
+	
+	
+
+
  
  
  
