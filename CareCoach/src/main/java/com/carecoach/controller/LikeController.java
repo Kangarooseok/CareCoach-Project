@@ -54,7 +54,7 @@ public class LikeController {
 	   	
 	   	boardServiceImpl.addLike(likevo);
         
-        return "redirect:/";
+        return "redirect:/board/viewContent.do?id="+postsVO.getId();
         
     }
     
@@ -64,16 +64,15 @@ public class LikeController {
 	   	System.out.println("addlike.do 호출 됨"+postsVO.toString()); 
 	   
 	   	String loginid=(String)session.getAttribute("id");
-	   	int post_id = postsVO.getId();
-	   	
+	   
 	   	LikesVO likevo = new LikesVO();
 	   	
-	   	likevo.setPost_id(post_id);
+	   	likevo.setPost_id(postsVO.getId());
 	   	likevo.setUser_id(loginid);
 	   	
 	   	boardServiceImpl.delLike(likevo);
         
-        return "redirect:/";
+        return "redirect:/board/viewContent.do?id="+postsVO.getId();
         
     }
    

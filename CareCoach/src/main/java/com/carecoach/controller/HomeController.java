@@ -219,13 +219,27 @@ public class HomeController {
         
         String loginid=(String)session.getAttribute("id");
 		
-        
         postsVO.setId(id);
-        
+                
+	   	LikesVO likevo = new LikesVO();
+	   	
+	   	if (loginid!=null) {
+	   		likevo.setPost_id(postsVO.getId());
+	   		
+	   		likevo.setUser_id(loginid);
+	   		
+	   		int is_liked = boardServiceImpl.is_Liked(likevo);
+	   		model.addAttribute("is_liked", is_liked);
+			
+		}
+			
+	
+	   	
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
         
         boardServiceImpl.addViewCnt(postsVO.getId());
 
+        
         model.addAttribute("loginid", loginid);
         
         model.addAttribute("result", resultVO);

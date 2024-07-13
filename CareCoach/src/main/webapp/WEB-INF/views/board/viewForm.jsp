@@ -92,9 +92,15 @@ pageEncoding="UTF-8"%>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
         <input type='hidden' id='category_id' name='category_id' value='${result.category_id}' />
+        <c:if test="${loginid!=null}">
+    	     <c:if test="${is_liked!=1}">
+	    	    <button onclick='fn_addlike(${result.id})'>좋아요</button>
+    	     </c:if>
+	        <c:if test="${is_liked==1}">
+	        	<button onclick='fn_dellike(${result.id})'>좋아요 취소</button>
+       		</c:if>
+        </c:if>
         
-        <button onclick='fn_addlike(${result.id})'>좋아요 누루기</button>
-        <button onclick='fn_dellike(${result.id})'>좋아요 취소</button>
     </form>
 <%@ include file="comment.jsp" %>
 </div>
@@ -143,6 +149,15 @@ function fn_addlike(post_id){
     form.submit();
 	
 }
+
+function fn_dellike(post_id){
+	
+	var form = document.getElementById("viewForm");
+	
+    form.action = "<c:url value='/board/deletelike.do'/>";
+    form.submit();
+}
+
 
 </script>
 

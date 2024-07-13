@@ -74,7 +74,7 @@ public class memberController {
         mav.addObject("name", user.getName());
         mav.addObject("email", user.getEmail());
         mav.addObject("bio", user.getBio());
-        mav.addObject("profile_image", user.getProfile_img());
+        mav.addObject("profile_img", user.getProfile_img());
 
         return mav;
     }
@@ -410,7 +410,7 @@ public class memberController {
 	    user.setUser_id(userId);
 
 	    if (profileImage != null && !profileImage.isEmpty()) {
-	        String uploadDirectory = session.getServletContext().getRealPath("/") + "resources/upload";
+	    	String uploadDirectory = session.getServletContext().getRealPath(File.separator) + "resources" + File.separator + "upload";
 	        Path uploadPath = Paths.get(uploadDirectory);
 
 	        if (!Files.exists(uploadPath)) {
