@@ -1,6 +1,7 @@
 package com.carecoach.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,12 +18,12 @@ public class PostDAOImpl implements PostDAO {
         return sqlSession.selectList("selectRecentPosts", category_id);
     }
 
-	@Override
-	public List<PostsVO> selectRecentVideos(int categoryId) {
-		return sqlSession.selectList("selectRecentVideos", categoryId);
-	}
+    @Override
+    public List<PostsVO> selectRecentVideos(int categoryId) {
+        return sqlSession.selectList("selectRecentVideos", categoryId);
+    }
 
-	@Override
+    @Override
     public int countLikesByPostId(int postIdList) {
         return sqlSession.selectOne("countLikesByPostId", postIdList);
     }

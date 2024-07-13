@@ -35,47 +35,46 @@ import com.carecoach.vo.PostsVO;
 
 @Controller
 public class LikeController {
-	
-	@Autowired
-	private BoardService boardServiceImpl;
-	   
-   @Transactional
-   @RequestMapping(value="/board/addlike.do")
-    public String addLike(@ModelAttribute("postsVO") PostsVO postsVO, Model model,HttpSession session) throws Exception{
-	   	System.out.println("addlike.do 호출 됨"+postsVO.toString()); 
-	   
-	   	String loginid=(String)session.getAttribute("id");
-	   	int post_id = postsVO.getId();
-	   	
-	   	LikesVO likevo = new LikesVO();
-	   	
-	   	likevo.setPost_id(post_id);
-	   	likevo.setUser_id(loginid);
-	   	
-	   	boardServiceImpl.addLike(likevo);
-        
-        return "redirect:/board/viewContent.do?id="+postsVO.getId();
-        
+
+    @Autowired
+    private BoardService boardServiceImpl;
+
+    @Transactional
+    @RequestMapping(value = "/board/addlike.do")
+    public String addLike(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpSession session) throws Exception {
+        System.out.println("addlike.do 호출 됨" + postsVO.toString());
+
+        String loginid = (String) session.getAttribute("id");
+        int post_id = postsVO.getId();
+
+        LikesVO likevo = new LikesVO();
+
+        likevo.setPost_id(post_id);
+        likevo.setUser_id(loginid);
+
+        boardServiceImpl.addLike(likevo);
+
+        return "redirect:/board/viewContent.do?id=" + postsVO.getId();
+
     }
-    
-   @Transactional
-   @RequestMapping(value="/board/deletelike.do")
-    public String deleteLike(@ModelAttribute("postsVO") PostsVO postsVO, Model model,HttpSession session) throws Exception{
-	   	System.out.println("addlike.do 호출 됨"+postsVO.toString()); 
-	   
-	   	String loginid=(String)session.getAttribute("id");
-	   
-	   	LikesVO likevo = new LikesVO();
-	   	
-	   	likevo.setPost_id(postsVO.getId());
-	   	likevo.setUser_id(loginid);
-	   	
-	   	boardServiceImpl.delLike(likevo);
-        
-        return "redirect:/board/viewContent.do?id="+postsVO.getId();
-        
+
+    @Transactional
+    @RequestMapping(value = "/board/deletelike.do")
+    public String deleteLike(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpSession session) throws Exception {
+        System.out.println("addlike.do 호출 됨" + postsVO.toString());
+
+        String loginid = (String) session.getAttribute("id");
+
+        LikesVO likevo = new LikesVO();
+
+        likevo.setPost_id(postsVO.getId());
+        likevo.setUser_id(loginid);
+
+        boardServiceImpl.delLike(likevo);
+
+        return "redirect:/board/viewContent.do?id=" + postsVO.getId();
+
     }
-   
-	
-	
+
+
 }

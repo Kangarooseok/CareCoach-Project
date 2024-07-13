@@ -24,69 +24,71 @@ import com.carecoach.vo.CommentsVO;
  */
 @Controller
 public class CommentController {
-	
-	@Autowired
-	private CommentService commentService;
-	
-	/**
+
+    @Autowired
+    private CommentService commentService;
+
+    /**
      * 댓글 등록(Ajax)
+     *
      * @param boardVO
      * @param request
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/board/addComment.do")
+    @RequestMapping(value = "/board/addComment.do")
     @ResponseBody
-    public String ajax_addComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) throws Exception{
-        
+    public String ajax_addComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) throws Exception {
+
         HttpSession session = request.getSession();
-        String user_id = (String)session.getAttribute("id");
-        
-        try{
-        
-        	commentsVO.setUser_id(user_id);        
-        	commentService.commentInsert(commentsVO);
-            
-        } catch (Exception e){
+        String user_id = (String) session.getAttribute("id");
+
+        try {
+
+            commentsVO.setUser_id(user_id);
+            commentService.commentInsert(commentsVO);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return "success";
     }
-    
+
     /**
      * 게시물 댓글 불러오기(Ajax)
+     *
      * @param boardVO
      * @param request
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/board/commentList.do", produces="application/json; charset=utf8")
+    @RequestMapping(value = "/board/commentList.do", produces = "application/json; charset=utf8")
     @ResponseBody
     public ResponseEntity<List<CommentsVO>> ajax_commentList(@ModelAttribute("commentsVO")
-    	CommentsVO commentsVO, HttpServletRequest request) throws Exception{
-        
+                                                             CommentsVO commentsVO, HttpServletRequest request) throws Exception {
+
         HttpHeaders responseHeaders = new HttpHeaders();
         ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
-        
+
         // 해당 게시물 댓글
         List<CommentsVO> list = commentService.commentList(commentsVO.getPost_id());
-        
-        if(list.size() > 0){
-            for(int i=0; i<list.size(); i++){
+
+        if (list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
                 HashMap hm = new HashMap();
                 hm.put("id", list.get(i).getId());
                 hm.put("user_id", list.get(i).getUser_id());
                 hm.put("content", list.get(i).getContent());
-                
+
                 hmlist.add(hm);
             }
-            
+
         }
-        
-        JSONArray json = new JSONArray(hmlist);        
+
+        JSONArray json = new JSONArray(hmlist);
         return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
-        
+
     }
-	
+
 }

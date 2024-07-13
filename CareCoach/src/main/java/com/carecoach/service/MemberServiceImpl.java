@@ -9,15 +9,15 @@ import com.carecoach.dao.MemberDAO;
 import com.carecoach.vo.UsersVO;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 
-	@Autowired
-	private MemberDAO memberdao;
+    @Autowired
+    private MemberDAO memberdao;
 
-	@Override
-	public boolean isUserIdAvailable(String user_id) {
-	    return memberdao.checkUserId(user_id) == 0;
-	}
+    @Override
+    public boolean isUserIdAvailable(String user_id) {
+        return memberdao.checkUserId(user_id) == 0;
+    }
 
     @Override
     public void registerUser(UsersVO user) throws Exception {
@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService{
         if (!isValidEmail(user.getEmail())) {
             throw new IllegalArgumentException("Invalid email address");
         }
-        
+
         try {
             // 중복 체크
             if (memberdao.checkUserId(user.getUser_id()) > 0) {
@@ -54,7 +54,8 @@ public class MemberServiceImpl implements MemberService{
         } finally {
             System.out.println("MemberServiceImpl: registerUser 종료");
         }
-     }
+    }
+
     private boolean isValidUserId(String userId) {
         return userId != null && userId.matches("^[a-zA-Z0-9]{6,12}$");
     }
@@ -62,38 +63,38 @@ public class MemberServiceImpl implements MemberService{
     private boolean isValidPassword(String password) {
         return password != null && password.length() >= 6 && password.length() <= 12;
     }
-    
+
     private boolean isValidEmail(String email) {
         return email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
-    
-	@Override
-	public UsersVO loginCheck(String user_id) {
-		return this.memberdao.loginCheck(user_id);
-	}
 
-	@Override
-	public void changepw(UsersVO m) {
-		this.memberdao.changepw(m);
-		
-	}
+    @Override
+    public UsersVO loginCheck(String user_id) {
+        return this.memberdao.loginCheck(user_id);
+    }
 
-	@Override
-	public void del_mem(String id) {
-		this.memberdao.del_mem(id);
-	}
+    @Override
+    public void changepw(UsersVO m) {
+        this.memberdao.changepw(m);
 
-	public UsersVO findId(String email) {
-		return this.memberdao.findId(email);
-	}
+    }
 
-	@Override
-	public UsersVO userCheck(String email) {
-		// TODO Auto-generated method stub
-		return this.memberdao.usersCheck(email);
-	}
+    @Override
+    public void del_mem(String id) {
+        this.memberdao.del_mem(id);
+    }
 
-	@Override
+    public UsersVO findId(String email) {
+        return this.memberdao.findId(email);
+    }
+
+    @Override
+    public UsersVO userCheck(String email) {
+        // TODO Auto-generated method stub
+        return this.memberdao.usersCheck(email);
+    }
+
+    @Override
     public void updatebio(UsersVO bio) {
         this.memberdao.updatebio(bio);
     }
@@ -103,6 +104,5 @@ public class MemberServiceImpl implements MemberService{
         this.memberdao.updateProfilePicPath(fileName);
     }
 
-		
-	
+
 }

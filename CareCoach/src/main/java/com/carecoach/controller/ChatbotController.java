@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 public class ChatbotController {
     @Autowired
     private ChatbotService chatbotService;
-   
+
     @GetMapping("/chatbot") // get방식으로 요청
     public String chatbot() {
         return "chatbot/chatbot"; //chatbot.jsp 반환
     }
-    
+
     @PostMapping(value = "/chatbot/send", produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<String> sendMessage(@RequestBody String message) {

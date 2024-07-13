@@ -1,6 +1,7 @@
 package com.carecoach.service;
 
 import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -10,6 +11,7 @@ import java.util.Base64;
 import java.util.Date;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
 import org.json.JSONObject;
 
 import org.json.JSONArray;
@@ -35,9 +37,9 @@ public class ChatbotServiceImpl implements ChatbotService {
             System.out.println("##" + message);
 
             String encodeBase64String = makeSignature(message, SECRET_KEY);
-            
+
             // HTTP 연결 설정
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json;UTF-8");
             con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
@@ -49,7 +51,7 @@ public class ChatbotServiceImpl implements ChatbotService {
             wr.close();
             int responseCode = con.getResponseCode();
 
-            if(responseCode==200) { // 성공적으로 응답을 받았을 때
+            if (responseCode == 200) { // 성공적으로 응답을 받았을 때
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(con.getInputStream(), "UTF-8"));
                 StringBuilder response = new StringBuilder();
@@ -59,7 +61,7 @@ public class ChatbotServiceImpl implements ChatbotService {
                 }
                 in.close();
                 chatbotMessage = response.toString();
-                
+
                 // JSON 파싱 및 description 추출
                 try {
                     JSONObject jsonResponse = new JSONObject(chatbotMessage);
@@ -67,7 +69,7 @@ public class ChatbotServiceImpl implements ChatbotService {
                     if (bubbles.length() > 0) {
                         JSONObject firstBubble = bubbles.getJSONObject(0);
                         String description = firstBubble.getJSONObject("data").getString("description");
-                        
+
                         // description만 Base64로 인코딩
                         String encodedDescription = Base64.getEncoder().encodeToString(description.getBytes("UTF-8"));
                         firstBubble.getJSONObject("data").put("description", encodedDescription);
@@ -76,7 +78,7 @@ public class ChatbotServiceImpl implements ChatbotService {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
                 System.out.println("서버 응답: " + chatbotMessage);
             } else { // 오류가 발생했을 때
                 chatbotMessage = con.getResponseMessage();
@@ -87,7 +89,7 @@ public class ChatbotServiceImpl implements ChatbotService {
         }
         return chatbotMessage; // 챗봇응답을 리턴
     }
-    
+
     private String makeSignature(String message, String secretKey) {
         String encodeBase64String = "";
         try {
@@ -99,7 +101,7 @@ public class ChatbotServiceImpl implements ChatbotService {
 
             byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
             encodeBase64String = Base64.getEncoder().encodeToString(rawHmac);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         return encodeBase64String;
@@ -111,7 +113,7 @@ public class ChatbotServiceImpl implements ChatbotService {
             JSONObject obj = new JSONObject();
             long timestamp = new Date().getTime();
 
-            System.out.println("##"+timestamp);
+            System.out.println("##" + timestamp);
 
             obj.put("version", "v2");
             obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
@@ -126,13 +128,13 @@ public class ChatbotServiceImpl implements ChatbotService {
             bubbles_obj.put("data", data_obj);
 
             JSONArray bubbles_array = new JSONArray();
-            bubbles_array.put(bubbles_obj);  
+            bubbles_array.put(bubbles_obj);
 
             obj.put("bubbles", bubbles_array);
             obj.put("event", "send");
 
             requestBody = obj.toString();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("## Exception : " + e);
         }
         return requestBody;
