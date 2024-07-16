@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
             <tbody>
                 <c:forEach var="result" items="${list}" varStatus="status">
                     <tr onClick='fn_view(${result.id})'>
-                        <td><c:out value="${result.id}"/></td>
+                        <td><c:out value="${status.count}"/></td>
                         <td><c:out value="${result.title}"/></td>
                         <td><c:out value="${result.userId}"/></td>
                         <td><c:out value="${result.createdDt}"/></td>

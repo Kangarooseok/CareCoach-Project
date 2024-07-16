@@ -160,8 +160,7 @@ public class HomeController {
 
         model.addAttribute("list", list);
 
-        return "redirect:/board/" + postsVO.getCategoryId();
-
+        return "redirect:/board/viewContent.do?id="+postsVO.getId();
     }
 
 
@@ -207,9 +206,9 @@ public class HomeController {
 
         postsVO.setId(id);
 
-        LikesVO likevo = new LikesVO();
-
         if (loginid != null) {
+            LikesVO likevo = new LikesVO();
+
             likevo.setPostId(postsVO.getId());
 
             likevo.setUserId(loginid);
@@ -219,11 +218,13 @@ public class HomeController {
 
         }
 
-
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
 
-        boardServiceImpl.addViewCnt(postsVO.getId());
+        int likeCnt = boardServiceImpl.selectLikeCnt(resultVO.getId());
 
+        resultVO.setLikeCnt(likeCnt);
+
+        boardServiceImpl.addViewCnt(postsVO.getId());
 
         model.addAttribute("loginid", loginid);
 
@@ -232,6 +233,19 @@ public class HomeController {
         return "board/viewForm";
     }
 
+
+    @RequestMapping(value = "/board/back.do")
+    public String goBack(@ModelAttribute("postsVO") PostsVO postsVO, Model model, HttpServletRequest request) throws Exception {
+
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        postsVO.setId(id);
+
+        PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
+
+        return "redirect:/board/" + postsVO.getCategoryId();
+
+    }
 
     private String returnPosts(Integer categoryId) {
         System.out.println("returnPosts 호출 categoryId : " + categoryId);

@@ -27,18 +27,20 @@ pageEncoding="UTF-8"%>
                     <th>작성자</th>
                     <th>날짜</th>
                     <th>조회수</th>
+                    <th>좋아요</th>
                 </tr>
             </thead>
             <tbody>
 			    <c:forEach var="result" items="${list}" varStatus="status">
 		      
 			        <tr onClick='fn_view(${result.id})'>
-			            <td><c:out value="${result.id}"/></td>
+			            <td><c:out value="${status.count} "/></td>
 			            <td><c:out value="${result.title}"/></td>
 			            <td><img id="${status.index}" src="" alt="썸네일" style="width: 100px; height: 60px;"/></td>
 			            <td><c:out value="${result.userId}"/></td>
 			            <td><c:out value="${result.createdDt}"/></td>
 			            <td><c:out value="${result.viewCnt}"/></td>
+			            <td><c:out value="${result.likeCnt}"/></td>
 			        </tr>
 		   
 			        	

@@ -26,11 +26,10 @@
     </update>
 
     <!-- 댓글 삭제 변경 -->
-    <update id="commentDelete" parameterType="com.carecoach.vo.CommentsVO">
-        UPDATE COMMENTS
-        SET is_deleted = 0 , updated_dt = SYSDATE
+    <delete id="commentDelete" parameterType="com.carecoach.vo.CommentsVO">
+        DELETE COMMENTS
         WHERE id = #{id}
-    </update>
+    </delete>
 
 
 </mapper>

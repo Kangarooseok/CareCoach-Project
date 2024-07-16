@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/viewboard.css" />
 <div class="page-contents">
 
 <!--  상단 카레고리  -->
@@ -54,55 +55,51 @@ pageEncoding="UTF-8"%>
 	</script>
 </c:if>
 
-
     <form id="viewForm" name="viewForm" method="post">
         <div>
-            <div>
-                <table>
-                    <tr>
-                        <th>제목</th>
-                        <td>${result.title}</td>
-                    </tr>
-                    <tr>
-                        <th>내용</th>
-                        <td>${result.content}</td>
-                        <c:if test="${result.categoryId == 4}">
-                        <td>
-	        	         <iframe id="videoUrl" width="560" height="315" src=""
-		                 frameborder="0" allow="accelerometer; autoplay; 
-		                 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </td>
-                        </c:if>
-                    </tr>
-                    <tr>
-                        <th>작성자</th>
-                        <td>${result.userId}</td>
-                    </tr>
-                </table>
-                <div>
-                	<c:if test="${result.categoryId != 2 && loginid==result.userId}">
-                    <a href='#' onClick='fn_update()'>수정</a>
-                	</c:if>
-                    <a href='#' onClick='fn_cancel()'>뒤로가기</a>
-                    <c:if test="${(result.categoryId == 3 || result.categoryId == 4 ) && loginid==result.userId}">
-                    	<a href='#' onClick='fn_delete()'>삭제</a> 
+            <div style="width: 800px; margin: 0 auto;">
+                <div class="view-container">
+                  <div class="viewtitle">
+                    <span style="font-size: 22px;">
+                        ${result.title}
+                    <c:if test="${result.categoryId != 2 && loginid==result.userId}">
+                      <button onClick='fn_update()'>수정</button>
                     </c:if>
+                    <c:if test="${(result.categoryId == 3 || result.categoryId == 4 ) && loginid==result.userId}">
+                      <button onClick='fn_delete()'>삭제</button>
+                    </c:if>
+                    </span>
+                    <br>
+                    👤 ${result.userId}
+                  </div>
+                  <div class="dateview">
+                    ${result.updatedDt} <br> 조회수 : ${result.viewCnt}
+                  </div>
                 </div>
+                <c:if test="${result.categoryId == 4}">
+                <iframe id="videoUrl" width="560" height="315" src=""
+                     frameborder="0" allow="accelerometer; autoplay;
+                     encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                </c:if>
+                <div>${result.content}</div>
+                <c:if test="${loginid!=null}">
+                    <div class="likeDiv">
+                        <c:if test="${is_liked!=1}">
+                            <button onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
+                        </c:if>
+                        <c:if test="${is_liked==1}">
+                            <button onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
+                        </c:if>
+                    </div>
+                </c:if>
             </div>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
         <input type='hidden' id='categoryId' name='categoryId' value='${result.categoryId}' />
-        <c:if test="${loginid!=null}">
-    	     <c:if test="${is_liked!=1}">
-	    	    <button onclick='fn_addlike(${result.id})'>좋아요</button>
-    	     </c:if>
-	        <c:if test="${is_liked==1}">
-	        	<button onclick='fn_dellike(${result.id})'>좋아요 취소</button>
-       		</c:if>
-        </c:if>
-        
     </form>
 <%@ include file="comment.jsp" %>
+
 </div>
 
 <script>
@@ -111,34 +108,33 @@ pageEncoding="UTF-8"%>
 var url = '<c:out value="${result.url}"/>';
 var videoId = url.split('v=')[1];
 var ampersandPosition = videoId.indexOf('&');
+
 if (ampersandPosition != -1) {
     videoId = videoId.substring(0, ampersandPosition);
 }
+
 // 비디오 URL 생성
 var videoUrl = 'https://www.youtube.com/embed/' + videoId;
 
 // 비디오 URL를 설정
 document.getElementById('videoUrl').src = videoUrl;
 
-//돌아가기
-function fn_cancel(){
-	history.back();
-}
- 
 //수정
 function fn_update(){
     
     var form = document.getElementById("viewForm");
     
     form.action = "<c:url value='/board/updateForm.do'/>";
+
     form.submit();
 }
  
 function fn_delete(){
 	var form = document.getElementById("viewForm");
+
     form.action = "<c:url value='/board/delete.do'/>";
+
     form.submit();
-	
 }
 
 function fn_addlike(postId){
@@ -146,8 +142,8 @@ function fn_addlike(postId){
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/addlike.do'/>";
+
     form.submit();
-	
 }
 
 function fn_dellike(postId){
@@ -155,6 +151,7 @@ function fn_dellike(postId){
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/deletelike.do'/>";
+
     form.submit();
 }
 

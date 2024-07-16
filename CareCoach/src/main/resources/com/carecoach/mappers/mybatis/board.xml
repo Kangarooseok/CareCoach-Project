@@ -57,7 +57,7 @@
 
     <update id="updatePost">
         update posts set
-        category_id = #{category_id},
+        category_id = #{categoryId},
         url = #{url},
         title = #{title},
         content = #{content},

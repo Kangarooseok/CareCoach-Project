@@ -4,45 +4,39 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
-<body>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
+
 <div class="page-contents">
     <form id="updateForm" name="updateForm" method="post">
         <div>
-            <h2>글쓰기</h2>
             <div>
                 <table>
-                
                     <tr>
-                        <th>카테고리</th>                       
+                    <th style="width:200px;">카테고리</th>
                         <td>
-               	          <select id="categoryId" name="categoryId" onChange="toggleUrlField()">
+                            <select id="categoryId" name="categoryId" onChange="toggleUrlField()">
                                 <option value="3" ${result.categoryId == 3 ? 'selected' : ''}>자유게시판</option>
                                 <option value="4" ${result.categoryId == 4 ? 'selected' : ''}>헬스영상</option>
                                 <option value="6" ${result.categoryId == 6 ? 'selected' : ''}>문의게시판</option>
                             </select>
+                            <button style="margin-left: 20px;" onClick='fn_updatetoPost()'>수정</button><button style="margin-left: 20px;" onClick='history.back()'>취소</button>
                         </td>
                     </tr>
                     <tr id="urlRow" style="display:none;">
-                        <th>url</th>
-                        <td><input style="width: 500px" type="text" id="url" name="url" value="${result.url}"/></td>
+                        <th style="width:150px;">영상 주소</th>
+                        <td style="text-align: left;"><input style="width: 500px" type="text" id="url" name="url"  placeholder="동영상 URL을 입력해주세요." value="${result.url}"/></td>
                     </tr>
                     <tr>
-                        <th>제목</th>
-                        <td><input style="width: 500px" type="text" id="title" name="title" value="${result.title}"/></td>
+                        <th style="width:150px;">제목</th>
+                        <td style="text-align: left;"><input style="width: 500px" type="text" id="title" name="title"  placeholder="제목을 입력해 주세요." value="${result.title}"/></td>
                     </tr>
                     <tr>
-                        <th>내용</th>
-                        <td><textarea style="width: 500px" rows="10" cols="10" id="content" name="content">${result.content}</textarea></td>
+                        <th style="width:150px; vertical-align: top; text-align: center;">내용</th>
+                        <td style="text-align: left; width:400px; height:600px"><textarea style="width: 1100px; height:600px"; rows="10" cols="10" id="content"
+                         name="content" placeholder="내용을 입력해 주세요.">${result.content}</textarea></td>
                     </tr>
-                    <tr>
-                        <td><input type="hidden" style="width: 500px" type="text" id="userId" name="userId" value="${result.userId}" /></td>
-                    </tr>
-                    
-                </table>
-                <div>
-                    <a href='#' onClick='fn_updatetoPost()'>수정</a>
-                    <a href='#' onClick='fn_cancel()'>취소</a>
-                </div>
+              </table>
             </div>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
@@ -59,10 +53,6 @@ function fn_updatetoPost(){
     
 }
 
-//취소
-function fn_cancel(){
-	location.href = document.referrer;
-}
 //URL 입력란 표시 토글
 function toggleUrlField() {
     var category = document.getElementById("categoryId").value;
@@ -81,8 +71,5 @@ window.onload = function() {
 };
 
 </script>
-</div>
-</body>
-
 
 <%@ include file="../footer.jsp" %>  

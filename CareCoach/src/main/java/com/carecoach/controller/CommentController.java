@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.carecoach.service.CommentService;
 import com.carecoach.vo.CommentsVO;
@@ -28,14 +29,8 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    /**
-     * 댓글 등록(Ajax)
-     *
-     * @param boardVO
-     * @param request
-     * @return
-     * @throws Exception
-     */
+
+   //게시물 등록
     @RequestMapping(value = "/board/addComment.do")
     @ResponseBody
     public String ajax_addComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) throws Exception {
@@ -55,14 +50,7 @@ public class CommentController {
         return "success";
     }
 
-    /**
-     * 게시물 댓글 불러오기(Ajax)
-     *
-     * @param boardVO
-     * @param request
-     * @return
-     * @throws Exception
-     */
+    //게시물 불러오기
     @RequestMapping(value = "/board/commentList.do", produces = "application/json; charset=utf8")
     @ResponseBody
     public ResponseEntity<List<CommentsVO>> ajax_commentList(@ModelAttribute("commentsVO")
@@ -80,7 +68,7 @@ public class CommentController {
                 hm.put("id", list.get(i).getId());
                 hm.put("userId", list.get(i).getUserId());
                 hm.put("content", list.get(i).getContent());
-
+                hm.put("postId", list.get(i).getPostId());
                 hmlist.add(hm);
             }
 
@@ -90,5 +78,33 @@ public class CommentController {
         return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
 
     }
+    // 댓글 삭제
+    @RequestMapping(value = "/board/delComment.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String ajax_delComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) {
+        System.out.println("delComment.do 호출 됨" + commentsVO.toString());
+        try {
+            commentService.commentDelete(commentsVO.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+        return "success";
+    }
+
+    // 댓글 수정
+    @RequestMapping(value = "/board/updateComment.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String ajax_updateComment(@ModelAttribute("CommentsVO") CommentsVO commentsVO, HttpServletRequest request) {
+        System.out.println("updateComment.do 호출 됨" + commentsVO.toString());
+        try {
+            commentService.commentUpdate(commentsVO);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+        return "success";
+    }
+
 
 }
