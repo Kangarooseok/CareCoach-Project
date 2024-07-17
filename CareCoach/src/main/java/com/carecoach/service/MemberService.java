@@ -1,6 +1,7 @@
 package com.carecoach.service;
 
 import com.carecoach.vo.UsersVO;
+import java.security.NoSuchAlgorithmException;
 
 public interface MemberService {
 
@@ -20,7 +21,13 @@ public interface MemberService {
 
     void registerUser(UsersVO user) throws Exception;
 
-
     void updateProfilePicPath(UsersVO fileName);
+
+    String hashPassword(String password) throws NoSuchAlgorithmException;
+    
+    boolean verifyPassword(String password, String storedHash) throws NoSuchAlgorithmException;
+	
+
+	
 
 }
