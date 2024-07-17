@@ -67,7 +67,6 @@ function fn_comment(code){
 */
 $(function(){
   getCommentList();
-  $("#editModal").hide();
 });
 
 /**
@@ -83,14 +82,15 @@ function getCommentList(){
       success: function(data){
           var html = "";
           var cCnt = data.length;
-
           if(data.length > 0){
               for(var i = 0; i < data.length; i++){
                   html += "<div id='comment" + data[i].id + "'>";
                   html += "<div><table class='table'><h6><strong>" + data[i].userId + "</strong></h6>";
                   html += data[i].content + "<tr><td></td></tr>";
-                  html += "<button onclick=\"editItem("+ data[i].id + ",'" + data[i].content +"')\">수정</button>";
+                  if ('${loginid}' == data[i].userId) {
+                  html += "<button onclick=\"editItem(" + data[i].id + ",'" + data[i].content + "')\">수정</button>";
                   html += "<button onclick='deleteItem(" + data[i].id + ")'>삭제</button>";
+                  };
                   html += "</table></div>";
                   html += "</div>";
               }
@@ -115,7 +115,7 @@ function editItem(commentId, content) {
     // 기존 댓글 내용을 숨기고 수정 가능한 입력 칸과 저장 버튼을 생성
     var editHtml = "<textarea id='editContent" + commentId + "' rows='3' cols='30'>" + content + "</textarea>";
     editHtml += "<button onclick='updateComment(" + commentId + ")'>저장</button>";
-    editHtml += "<button onclick='cancelEdit(" + commentId + ", \"" + content + "\")'>취소</button>";
+    editHtml += "<button onclick='cancelEdit()'>취소</button>";
 
     // 해당 댓글 영역을 수정 입력 영역으로 대체
     $("#comment" + commentId).html(editHtml);
@@ -145,6 +145,11 @@ function deleteItem(commentId) {
 // 댓글 수정 요청
 function updateComment(commentId) {
     var updatedContent = $("#editContent" + commentId).val();
+    if (updatedContent === "") {
+                alert("내용을 입력해 주세요.");
+                event.preventDefault();
+                return;
+    }
 
     $.ajax({
         type: 'POST',
@@ -167,13 +172,8 @@ function updateComment(commentId) {
 }
 
 // 수정 취소 기능
-function cancelEdit(commentId, originalContent) {
-    var originalHtml = "<div><table class='table'><h6><strong>" + originalContent + "</strong></h6>";
-    originalHtml += "<button onclick=\"editItem(" + commentId + ", '" + originalContent + "')\">수정</button>";
-    originalHtml += "<button onclick='deleteItem(" + commentId + ")'>삭제</button>";
-    originalHtml += "</table></div>";
-
-    $("#comment" + commentId).html(originalHtml);
+function cancelEdit() {
+    getCommentList();
 }
 </script>
 

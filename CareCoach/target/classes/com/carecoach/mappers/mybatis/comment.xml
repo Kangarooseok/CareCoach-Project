@@ -21,7 +21,7 @@
 
     <update id="commentUpdate" parameterType="com.carecoach.vo.CommentsVO">
         UPDATE COMMENTS
-        SET content = #{content}, update_dt = SYSDATE
+        SET content = #{content}, updated_dt = SYSDATE
         WHERE id = #{id}
     </update>
 

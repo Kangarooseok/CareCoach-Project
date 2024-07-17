@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,7 +55,10 @@ public class CommentController {
     @RequestMapping(value = "/board/commentList.do", produces = "application/json; charset=utf8")
     @ResponseBody
     public ResponseEntity<List<CommentsVO>> ajax_commentList(@ModelAttribute("commentsVO")
-                                                             CommentsVO commentsVO, HttpServletRequest request) throws Exception {
+                                                             CommentsVO commentsVO,
+                                                             HttpSession session,
+                                                             Model model,
+                                                             HttpServletRequest request) throws Exception {
 
         HttpHeaders responseHeaders = new HttpHeaders();
         ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
@@ -73,6 +77,9 @@ public class CommentController {
             }
 
         }
+
+        String loginid = (String) session.getAttribute("id");
+        model.addAttribute("loginid", loginid);
 
         JSONArray json = new JSONArray(hmlist);
         return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
