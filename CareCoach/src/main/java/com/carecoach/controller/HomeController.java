@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.carecoach.service.ChatbotService;
 import com.carecoach.service.PostService;
 import com.carecoach.vo.PostsVO;
 
@@ -31,6 +32,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
+		
 		
 		List<PostsVO> recentPosts1 = postService.getRecentPosts(2);
 		List<PostsVO> recentPosts2 = postService.getRecentPosts(3);
@@ -60,7 +62,6 @@ public class HomeController {
 		model.addAttribute("recentPosts2", recentPosts2);
 		model.addAttribute("recentPosts3", recentPosts3);
 		model.addAttribute("recentPosts4", recentPosts4);
-
 		
 		
 		return "index";

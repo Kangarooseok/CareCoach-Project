@@ -105,6 +105,12 @@ body, html {
 		<c:when test="${not empty sessionScope.id}">
 			<div class="chat-messages" id="chat-messages">
 				<!-- 메시지들이 여기에 추가됩니다 -->
+				<div class="message bot-message">
+					<div class="message-sender">
+						케어코치
+					</div>
+					<div>안녕하세요! 반갑습니다💪 저는 케어코치 챗봇입니다! 무엇을 도와드릴까요?</div>
+				</div>
 			</div>
 			<div class="input-area">
 				<input type="text" id="chatbot-input-field" placeholder="메시지를 입력하세요">

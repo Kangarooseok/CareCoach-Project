@@ -343,7 +343,7 @@ public class memberController {
 	    user.setUser_id(userId);
 
 	    if (profileImage != null && !profileImage.isEmpty()) {
-	        String uploadDirectory = session.getServletContext().getRealPath("/") + "resources/upload";
+	        String uploadDirectory = session.getServletContext().getRealPath("/") + "resources" + File.separator + "upload";
 	        Path uploadPath = Paths.get(uploadDirectory);
 
 	        if (!Files.exists(uploadPath)) {
@@ -354,18 +354,18 @@ public class memberController {
 	        Path filePath = uploadPath.resolve(fileName);
 	        String filePathString = filePath.toString();
 	        
-	        System.out.println(uploadDirectory);
-	        System.out.println(filePath);
+	        System.out.println("Upload Directory: " + uploadDirectory);
+	        System.out.println("File Path: " + filePathString);
 
 	        if (Files.isDirectory(filePath)) {
-	            System.err.println("파일 경로가 디렉토리입니다: " + filePath.toString());
+	            System.err.println("파일 경로가 디렉토리입니다: " + filePathString);
 	            return;
 	        }
 
 	        try {
-	            Files.createFile(filePath);
+	            // 파일을 저장할 때 Files.createFile(filePath) 대신 profileImage.transferTo(filePath.toFile())를 직접 호출
 	            profileImage.transferTo(filePath.toFile());
-	            System.out.println(fileName);
+	            System.out.println("File Name: " + fileName);
 
 	            // DB에 프로필 이미지 정보 저장 (상대 경로로 설정)
 	            user.setProfile_img("/resources/upload/" + fileName);
@@ -389,4 +389,6 @@ public class memberController {
 	        out.println("</script>");
 	    }
 	}
+
+
 }

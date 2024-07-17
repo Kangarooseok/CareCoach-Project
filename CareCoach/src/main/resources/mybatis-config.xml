@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 		<typeAlias type="com.carecoach.vo.UsersVO" alias="member" />
 		<typeAlias type="com.carecoach.vo.PostsVO" alias="posts" />
-          
+		<typeAlias type="com.carecoach.vo.KeyVO" alias="key" />
+		
 	</typeAliases>
 </configuration>

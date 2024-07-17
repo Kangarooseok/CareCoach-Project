@@ -33,7 +33,6 @@
         UPDATE users SET profile_img = #{profile_img} WHERE user_id = #{user_id}
     </update>
 
-
 </mapper>
  
  

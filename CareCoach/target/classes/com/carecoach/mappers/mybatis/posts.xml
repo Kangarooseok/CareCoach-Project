@@ -6,7 +6,6 @@
 
 <mapper namespace="Posts">
 
-
 	<select id="selectRecentPosts" resultType="posts">
 	    SELECT id,
 	           CASE WHEN LENGTH(title) > 25 THEN SUBSTR(title, 1, 25) || '...'
