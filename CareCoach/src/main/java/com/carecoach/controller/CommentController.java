@@ -73,6 +73,7 @@ public class CommentController {
                 hm.put("userId", list.get(i).getUserId());
                 hm.put("content", list.get(i).getContent());
                 hm.put("postId", list.get(i).getPostId());
+                hm.put("updatedDt", list.get(i).getUpdatedDt());
                 hmlist.add(hm);
             }
 

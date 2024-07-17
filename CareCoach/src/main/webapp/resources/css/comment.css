@@ -1,0 +1,16 @@
+.commentList {
+    margin-top: 20px;
+    padding-top : 10px;
+    max-height : 500px;
+    overflow-y: auto;
+    width:1200px;
+}
+
+.comments {
+    margin-top: 20px;
+    padding-top : 10px;
+}
+
+.datecomment{
+  text-align: right;
+}

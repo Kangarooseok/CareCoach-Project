@@ -6,6 +6,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/comment.css" />
+
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
     <br><br>
@@ -32,7 +34,7 @@ pageEncoding="UTF-8"%>
 </div>
 <div class="container">
     <form id="commentListForm" name="commentListForm" method="post">
-        <div id="commentList">
+        <div id="commentList" class="commentList">
         </div>
     </form>
 </div>
@@ -84,14 +86,20 @@ function getCommentList(){
           var cCnt = data.length;
           if(data.length > 0){
               for(var i = 0; i < data.length; i++){
-                  html += "<div id='comment" + data[i].id + "'>";
-                  html += "<div><table class='table'><h6><strong>" + data[i].userId + "</strong></h6>";
-                  html += data[i].content + "<tr><td></td></tr>";
+                  html += "<div class='comments' id='comment" + data[i].id + "'>";
+                  html += "<div><h6><strong>👤 " + data[i].userId;
+                  if ('${loginid}' == data[i].userId) {
+                    html += " (본인)";
+                  }
+                  html += "</strong></h6>";
+                  html += data[i].content;
+                  html += "<div class='datecomment'>"+data[i].updatedDt+"<br>";
                   if ('${loginid}' == data[i].userId) {
                   html += "<button onclick=\"editItem(" + data[i].id + ",'" + data[i].content + "')\">수정</button>";
                   html += "<button onclick='deleteItem(" + data[i].id + ")'>삭제</button>";
                   };
-                  html += "</table></div>";
+                  html += "</div>";
+                  html += "</div>";
                   html += "</div>";
               }
           } else {
@@ -171,7 +179,7 @@ function updateComment(commentId) {
     });
 }
 
-// 수정 취소 기능
+// 수정 취소 클릭시 댓글 다시 불러옴
 function cancelEdit() {
     getCommentList();
 }

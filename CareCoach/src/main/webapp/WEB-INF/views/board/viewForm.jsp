@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
 
     <form id="viewForm" name="viewForm" method="post">
         <div>
-            <div style="width: 800px; margin: 0 auto;">
+            <div style="width: 1000px; margin: 0 auto;">
                 <div class="view-container">
                   <div class="viewtitle">
                     <span style="font-size: 22px;">
