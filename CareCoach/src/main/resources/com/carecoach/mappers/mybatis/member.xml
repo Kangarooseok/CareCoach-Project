@@ -25,7 +25,7 @@
 
 
     <update id="m_del">
-        update Users set id_deleted = 1 where user_id=#{userId}
+        update Users set is_deleted = 1 where user_id=#{userId}
     </update>
 
     <select id="m_findId" resultType="member">

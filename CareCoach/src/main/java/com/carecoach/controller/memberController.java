@@ -1,10 +1,10 @@
 package com.carecoach.controller;
 
-
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.HashMap;
@@ -27,23 +27,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.web.servlet.ModelAndView;
 import com.carecoach.service.MemberService;
 import com.carecoach.vo.UsersVO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Controller
 public class memberController {
 
-
     @Autowired
     private MemberService memberService;
-
-
-    // 마이페이지
+    
+    
+    
     @RequestMapping(value = "/mypage")
     public ModelAndView mypage(HttpServletResponse response, HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("mypage/mypage");
@@ -59,24 +73,22 @@ public class memberController {
         mav.addObject("name", user.getName());
         mav.addObject("email", user.getEmail());
         mav.addObject("bio", user.getBio());
-        mav.addObject("profileImg", user.getProfileImg());
+        mav.addObject("profile_image", user.getProfileImg());
 
         return mav;
     }
 
-
     @GetMapping(value = "/checkIdAvailability", produces = "application/json")
     @ResponseBody
     public Map<String, Boolean> checkId(@RequestParam String userId) {
-        System.out.println("유저 아이디 요청 " + userId);
+        System.out.println("유저 아이디 요청 " + userId);  
         boolean isAvailable = memberService.isUserIdAvailable(userId);
         System.out.println("아이디 체크 : " + userId + ", 사용 가능: " + isAvailable);
         Map<String, Boolean> response = new HashMap<String, Boolean>();
         response.put("available", isAvailable);
         return response;
     }
-
-    //아이디중복확인 페이지
+    
     @GetMapping("/checkId")
     public String checkIdPage() {
         return "member/checkId";
@@ -86,7 +98,7 @@ public class memberController {
     public String joinProcess(UsersVO user, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         try {
             memberService.registerUser(user);
             out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='/login'; </script>");
@@ -97,60 +109,48 @@ public class memberController {
             e.printStackTrace();
             out.println("<script>alert('회원가입 중 오류가 발생했습니다.'); history.back();</script>");
         }
-
+        
         return null;
     }
 
-
-    //회원가입 페이지
     @GetMapping("/join")
     public String join() {
         return "member/join";
     }
 
-    //로그인 화면
     @RequestMapping("/login")
     public ModelAndView login() {
-
         return new ModelAndView("member/login");
     }
 
-
-    //아이디 찾기
     @RequestMapping("/findId")
     public String findId() {
         return "member/findId";
     }
 
-    //비밀번호 찾기
     @RequestMapping("/findPwd")
     public String findPwd() {
-
         return "member/findPwd";
     }
-
-    //비밀번호 찾기 결과 "HTTP 상태 405 – 허용되지 않는 메소드" 페이징 처리
+    
     @RequestMapping("/findPwdResult")
     public String findPwdResult() {
         return "member/login";
     }
 
-    //비밀번호 찾기 결과
     @RequestMapping(value = "/findPwdResult", method = RequestMethod.POST)
     public ModelAndView findPwdResult(String userId, String email, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         if (email == null) {
             response.sendRedirect("/login");
             return null;
         }
 
-        // 사용자 조회 로직
         UsersVO user = this.memberService.findId(email);
 
         if (user == null || !user.getEmail().equals(email) || !user.getUserId().equals(userId)) {
-            // 사용자 정보를 찾을 수 없는 경우
             out.println("<script>");
             out.println("alert('해당 이메일과 아이디로 등록된 사용자가 없습니다.');");
             out.println("history.back();");
@@ -158,24 +158,20 @@ public class memberController {
             out.close();
             return null;
         } else {
-            session.setAttribute("email", email);
-            // 사용자 정보를 찾은 경우 resetMode를 true로 설정하고 JSP로 이동
-            ModelAndView mav = new ModelAndView("member/findPwd"); // JSP 페이지 이름을 지정합니다.
+            session.setAttribute("email",email);
+            ModelAndView mav = new ModelAndView("member/findPwd");
             mav.addObject("resetMode", true);
-            // 사용자 ID를 재설정 페이지에 전달하여 후속 처리를 쉽게 할 수 있도록 함
             mav.addObject("userId", user.getUserId());
             return mav;
         }
     }
 
-    //비밀번호 변경
     @PostMapping("/resetPwd")
     public ModelAndView resetPwd(String newPassword, String confirmPassword, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String email = (String) session.getAttribute("email");
+        String email = (String)session.getAttribute("email");
         UsersVO m = this.memberService.userCheck(email);
-
 
         m.setPassword(confirmPassword);
         this.memberService.changepw(m);
@@ -188,15 +184,12 @@ public class memberController {
         return null;
     }
 
-
-    //아이디 찾기 결과
     @RequestMapping("/findIdResult")
     public ModelAndView findIdResult(String name, String email, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         UsersVO m = this.memberService.findId(email);
-
 
         if (m == null || !m.getEmail().equals(email) || !m.getName().equals(name)) {
             out.println("<script>");
@@ -205,22 +198,19 @@ public class memberController {
             out.println("</script>");
         } else {
             out.println("<script>");
-            out.println("alert('" + m.getName() + "님의 아이디는 \"" + m.getUserId() + "\"입니다.');");
+            out.println("alert('"+m.getName()+"님의 아이디는 \""+m.getUserId()+"\"입니다.');");
             out.println("location.href='/login'");
             out.println("</script>");
         }
         return null;
     }
 
-
-    //로그아웃
     @RequestMapping("/member_logout")
-    public ModelAndView member_logout(HttpServletResponse response,
-                                      HttpSession session) throws Exception {
+    public ModelAndView member_logout(HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        session.invalidate();//세션 만료 => 로그아웃
+        session.invalidate();
 
         out.println("<script>");
         out.println("alert('로그아웃 되었습니다.');");
@@ -228,13 +218,11 @@ public class memberController {
         out.println("</script>");
 
         return null;
-    }//member_logout()
+    }
 
-
-    public static boolean isLogin(HttpSession session, HttpServletResponse response)
-            throws Exception {
+    public static boolean isLogin(HttpSession session, HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
-        String id = (String) session.getAttribute("id");
+        String id = (String)session.getAttribute("id");
 
         if (id == null) {
             out.println("<script>");
@@ -246,16 +234,14 @@ public class memberController {
         }
         return true;
     }
-
+    
     @PostMapping("/member_login_ok")
     public ModelAndView member_login_ok(String userId, String password,
-                                        HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
+    		HttpServletResponse response, HttpSession session) throws Exception {
+    	response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        UsersVO m = this.memberService.loginCheck(userId);//아이디와 가입회원 1인 경우만
-        //로그인 인증 처리한다.
-
+        UsersVO m = this.memberService.loginCheck(userId);
 
         if (m == null) {
             out.println("<script>");
@@ -263,21 +249,27 @@ public class memberController {
             out.println("history.back();");
             out.println("</script>");
         } else {
-            if (!m.getPassword().equals(password)) {
+            try {
+                if (memberService.verifyPassword(password, m.getPassword())) {
+                    session.setAttribute("id", userId);
+                    session.setMaxInactiveInterval(1800);
+                    return new ModelAndView("redirect:/");
+                } else {
+                    out.println("<script>");
+                    out.println("alert('비밀번호가 다릅니다.');");
+                    out.println("history.go(-1);");
+                    out.println("</script>");        		
+                }
+            } catch (NoSuchAlgorithmException e) {
                 out.println("<script>");
-                out.println("alert('비번이 다릅니다.');");
+                out.println("alert('로그인 처리 중 오류가 발생했습니다.');");
                 out.println("history.go(-1);");
                 out.println("</script>");
-            } else {
-                session.setAttribute("id", userId);//세션 id키이름에 아이디를 저장
-                session.setMaxInactiveInterval(1800); // 세션 타임아웃을 30분(1800초)으로 설정
-                return new ModelAndView("redirect:/");
             }
         }
         return null;
-    }//member_login_ok()
+    }
 
-    //회원 탈퇴
     @RequestMapping("/changePW")
     public String changePW() {
         System.out.print("changePW");
@@ -288,68 +280,78 @@ public class memberController {
     public ModelAndView chgpw() {
         return new ModelAndView("mypage/changePW");
     }
-
+    
     @PostMapping("/chgpw_ok")
     public ModelAndView chgpw_ok(String password, String newpassword, HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
+    	response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String id = (String) session.getAttribute("id");
-        UsersVO m = this.memberService.loginCheck(id);
+        String id = (String)session.getAttribute("id");
+        UsersVO user = memberService.loginCheck(id);
 
-        if (!m.getPassword().equals(password)) {
+        try {
+            if (memberService.verifyPassword(password, user.getPassword())) {
+                user.setPassword(newpassword);  // 새 비밀번호를 설정
+                memberService.changepw(user);   // 서비스에서 해싱 처리
+
+                out.println("<script>");
+                out.println("alert('비밀번호가 변경되었습니다.');");
+                out.println("location.href='/mypage'");
+                out.println("</script>");
+            } else {
+                out.println("<script>");
+                out.println("alert('현재 비밀번호가 틀립니다.');");
+                out.println("history.back();");
+                out.println("</script>");
+            }
+        } catch (Exception e) {
+            System.err.println("Password change error: " + e.getMessage());
+            e.printStackTrace();
             out.println("<script>");
-            out.println("alert('비밀번호가 틀립니다.');");
+            out.println("alert('비밀번호 변경 중 오류가 발생했습니다.');");
             out.println("history.back();");
-            out.println("</script>");
-        } else {
-            m.setPassword(newpassword);
-            this.memberService.changepw(m);
-
-            out.println("<script>");
-            out.println("alert('비밀번호가 변경되었습니다.');");
-            out.println("location.href='/mypage'");
             out.println("</script>");
         }
 
         return null;
     }
 
-
-    //회원 탈퇴
     @RequestMapping("/delmem")
     public String delmem() {
         return "mypage/delmem";
     }
-
-
-    // user 삭제
+    
     @PostMapping("/del_mem_ok")
     public ModelAndView del_mem_ok(String password, HttpServletResponse response, HttpSession session) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
+    	response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String id = (String) session.getAttribute("id");
-        UsersVO m = this.memberService.loginCheck(id);
+        UsersVO user = memberService.loginCheck(id);
 
-        if (!m.getPassword().equals(password)) {
+        try {
+            if (memberService.verifyPassword(password, user.getPassword())) {
+                memberService.del_mem(id);
+                session.invalidate();
+
+                out.println("<script>");
+                out.println("alert('회원 탈퇴했습니다.');");
+                out.println("location='/';");
+                out.println("</script>");
+            } else {
+                out.println("<script>");
+                out.println("alert('비밀번호가 틀립니다.');");
+                out.println("history.back();");
+                out.println("</script>");
+            }
+        } catch (NoSuchAlgorithmException e) {
             out.println("<script>");
-            out.println("alert('비밀번호가 틀립니다.');");
+            out.println("alert('회원 탈퇴 처리 중 오류가 발생했습니다.');");
             out.println("history.back();");
-            out.println("</script>");
-        } else {
-            this.memberService.del_mem(id);
-            session.invalidate();
-
-            out.println("<script>");
-            out.println("alert('회원 탈퇴 했습니다.');");
-            out.println("location='/';");
             out.println("</script>");
         }
 
         return null;
     }
 
-
-    // 프로필 자기소개글 저장
     @PostMapping("/saveProfile2")
     public void saveProfile(@RequestParam("bio") String bioContent, HttpSession session, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -362,7 +364,6 @@ public class memberController {
             return;
         }
 
-        // 자기소개 저장
         UsersVO user = new UsersVO();
         user.setUserId(userId);
         user.setBio(bioContent);
@@ -373,21 +374,20 @@ public class memberController {
         out.println("location.href='/mypage';");
         out.println("</script>");
     }
-
-
+    
     @PostMapping("/saveProfile")
     public void saveProfile(@RequestParam(value = "profileImg", required = false) MultipartFile profileImage,
-                            HttpSession session, HttpServletResponse response) throws IOException {
+            HttpSession session, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         String userId = (String) session.getAttribute("id");
-
+        
         UsersVO user = new UsersVO();
         user.setUserId(userId);
 
         if (profileImage != null && !profileImage.isEmpty()) {
-            String uploadDirectory = session.getServletContext().getRealPath("/") + "resources" + File.separator + "upload";
+            String uploadDirectory = session.getServletContext().getRealPath("/") + "resources/upload";
             Path uploadPath = Paths.get(uploadDirectory);
 
             if (!Files.exists(uploadPath)) {
@@ -397,24 +397,23 @@ public class memberController {
             String fileName = UUID.randomUUID().toString() + "_" + profileImage.getOriginalFilename();
             Path filePath = uploadPath.resolve(fileName);
             String filePathString = filePath.toString();
-
-            System.out.println("Upload Directory: " + uploadDirectory);
-            System.out.println("File Path: " + filePathString);
+            
+            System.out.println(uploadDirectory);
+            System.out.println(filePath);
 
             if (Files.isDirectory(filePath)) {
-                System.err.println("파일 경로가 디렉토리입니다: " + filePathString);
+                System.err.println("파일 경로가 디렉토리입니다: " + filePath.toString());
                 return;
             }
 
             try {
-                // 파일을 저장할 때 Files.createFile(filePath) 대신 profileImage.transferTo(filePath.toFile())를 직접 호출
+                Files.createFile(filePath);
                 profileImage.transferTo(filePath.toFile());
-                System.out.println("File Name: " + fileName);
+                System.out.println(fileName);
 
-                // DB에 프로필 이미지 정보 저장 (상대 경로로 설정)
                 user.setProfileImg("/resources/upload/" + fileName);
                 memberService.updateProfilePicPath(user);
-
+                
                 out.println("<script>");
                 out.println("alert('프로필이 저장되었습니다.');");
                 out.println("location.href='/mypage';");

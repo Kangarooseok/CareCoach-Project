@@ -30,7 +30,7 @@ function write_check(){
         <div class="loginNavigation">
           <input type="button" value="아이디 찾기" onclick="openLoginModal()">
           <input type="button" value="비밀번호 변경" onclick="openLoginModal2()">
-          <input type="button" value="회원가입">
+          <input type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/terms'">
         </div>
         <input type="submit" value="로그인" />
        </form>

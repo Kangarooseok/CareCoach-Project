@@ -45,6 +45,7 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public void changepw(UsersVO m) {
+    	System.out.println("Changing password in database. New hash: " + m.getPassword());
         this.sqlsession.update("m_update", m);
 
     }
