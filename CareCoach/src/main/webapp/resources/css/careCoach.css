@@ -106,12 +106,11 @@ nav .nav-links li .dropdown {
   transform: translateX(-50%); /* Centering the dropdown */
   background-color: #444;
   width: 150px; /* Fixed width for dropdown menu */
-  height: 0; /* Initially no height */
   border-radius: 5px;
   list-style: none;
   margin: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: height 0.3s ease-in-out; /* Smooth height transition */
+  transition: height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Smooth height and padding transition */
   padding: 0; /* Remove padding to prevent overflow */
 }
 
@@ -127,14 +126,21 @@ nav .nav-links li .dropdown li div {
   padding: 10px 15px;
   text-align: center; /* Center align text within the dropdown */
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* Smooth background-color transition */
 }
 
 /* Show Dropdown with Fixed Height */
 nav .nav-links li:hover .dropdown {
-	
   height: fit-content; /* Fixed height for dropdown menu */
   padding: 10px 0; /* Add padding to make items look spaced */
 }
+
+/* Hover effect for dropdown items */
+nav .nav-links li .dropdown li div:hover {
+  background-color: #555; /* Change background color on hover */
+}
+
+
 
 /* Auth Links Styling */
 
