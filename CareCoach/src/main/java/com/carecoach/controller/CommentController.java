@@ -71,7 +71,9 @@ public class CommentController {
                 HashMap hm = new HashMap();
                 hm.put("id", list.get(i).getId());
                 hm.put("userId", list.get(i).getUserId());
-                hm.put("content", list.get(i).getContent());
+                // content의 줄넘김 제거
+                String contentWithoutNewlines = list.get(i).getContent().replaceAll("\\r|\\n", "");
+                hm.put("content", contentWithoutNewlines);
                 hm.put("postId", list.get(i).getPostId());
                 hm.put("updatedDt", list.get(i).getUpdatedDt());
                 hmlist.add(hm);

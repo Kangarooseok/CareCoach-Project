@@ -15,8 +15,8 @@ pageEncoding="UTF-8"%>
   </div>
 
    <form id="boardForm" name="boardForm" method="post">
- 		<div>            
-            <a href='#' onClick='fn_write()'>작성</a>            
+        <div style="text-align: right; padding-right : 100px;">
+            <a href='#' onClick='fn_write()'>📝작성</a>
         </div>
         <table>
             <thead>
@@ -40,7 +40,14 @@ pageEncoding="UTF-8"%>
 			            <td><c:out value="${result.userId}"/></td>
 			            <td><c:out value="${result.createdDt}"/></td>
 			            <td><c:out value="${result.viewCnt}"/></td>
-			            <td><c:out value="${result.likeCnt}"/></td>
+                        <td>
+                        <c:if test="${result.isLiked!=1}">
+                            🤍<c:out value="${result.likeCnt}"/>
+                        </c:if>
+                        <c:if test="${result.isLiked==1}">
+                            💗<c:out value="${result.likeCnt}"/>
+                        </c:if>
+                        </td>
 			        </tr>
 		   
 			        	
@@ -60,7 +67,7 @@ pageEncoding="UTF-8"%>
 			    </c:forEach>
             </tbody>
         </table>
-		<div style="margin: auto">
+		<div style="text-align: center;">
 		    <c:if test="${pagination.curRange ne 1}">
 		        <a href="#" onClick="fn_paging(1)">[처음]</a>
 		    </c:if>

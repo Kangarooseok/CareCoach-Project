@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
     <br><br>
         <div>
             <div>
-                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+                <span><strong>댓글</strong></span> <span id="cCnt"></span>
             </div>
             <div>
                 <table class="table">                    
@@ -91,7 +91,7 @@ function getCommentList(){
                   if ('${loginid}' == data[i].userId) {
                     html += " (본인)";
                   }
-                  html += "</strong></h6>";
+                  html += "</strong></h6><br>";
                   html += data[i].content;
                   html += "<div class='datecomment'>"+data[i].updatedDt+"<br>";
                   if ('${loginid}' == data[i].userId) {

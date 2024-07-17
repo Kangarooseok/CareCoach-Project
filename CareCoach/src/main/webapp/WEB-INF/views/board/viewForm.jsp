@@ -60,7 +60,7 @@ pageEncoding="UTF-8"%>
             <div style="width: 1000px; margin: 0 auto;">
                 <div class="view-container">
                   <div class="viewtitle">
-                    <span style="font-size: 22px;">
+                    <span style="font-size: 22px;  margin:10px;">
                         ${result.title}
                     <c:if test="${result.categoryId != 2 && loginid==result.userId}">
                       <button onClick='fn_update()'>수정</button>
@@ -70,7 +70,10 @@ pageEncoding="UTF-8"%>
                     </c:if>
                     </span>
                     <br>
+                    <br>
+                    <span>
                     👤 ${result.userId}
+                    <span>
                   </div>
                   <div class="dateview">
                     ${result.updatedDt} <br> 조회수 : ${result.viewCnt}
@@ -83,16 +86,14 @@ pageEncoding="UTF-8"%>
                 </iframe>
                 </c:if>
                 <div>${result.content}</div>
-                <c:if test="${loginid!=null}">
-                    <div class="likeDiv">
-                        <c:if test="${is_liked!=1}">
-                            <button onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
-                        </c:if>
-                        <c:if test="${is_liked==1}">
-                            <button onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
-                        </c:if>
-                    </div>
-                </c:if>
+                <div class="likeDiv">
+                    <c:if test="${is_liked!=1 && result.categoryId != 6}">
+                        <button onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
+                    </c:if>
+                    <c:if test="${is_liked==1}">
+                        <button onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
+                    </c:if>
+                </div>
             </div>
         </div>
         <input type='hidden' id='id' name='id' value='${result.id}' />
@@ -138,7 +139,10 @@ function fn_delete(){
 }
 
 function fn_addlike(postId){
-	
+    if(${empty sessionScope.id}){
+        alert("로그인해주세요");
+        return;
+    }
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/addlike.do'/>";
@@ -147,7 +151,10 @@ function fn_addlike(postId){
 }
 
 function fn_dellike(postId){
-	
+    if(${empty sessionScope.id}){
+        alert("로그인해주세요");
+        return;
+    }
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/deletelike.do'/>";

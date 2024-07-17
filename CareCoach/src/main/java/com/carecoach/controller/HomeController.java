@@ -94,11 +94,30 @@ public class HomeController {
 
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
 
+
+
         // 각 게시물의 likeCnt 설정
         for (PostsVO post : list) {
             int likeCnt = boardServiceImpl.selectLikeCnt(post.getId());
             post.setLikeCnt(likeCnt);
         }
+        // 각 게시물의 isLiked 설정
+        for (PostsVO post : list) {
+            //좋아요 여부 확인
+            if (loginid != null) {
+                LikesVO likevo = new LikesVO();
+
+                likevo.setPostId(post.getId());
+                likevo.setUserId(loginid);
+
+                int is_liked = boardServiceImpl.is_Liked(likevo);
+                post.setIsLiked(is_liked);
+            }
+        }
+
+
+
+
 
         boardServiceImpl.selectLikeCnt(categoryId);
 
@@ -206,6 +225,7 @@ public class HomeController {
 
         postsVO.setId(id);
 
+        //좋아요 여부 확인
         if (loginid != null) {
             LikesVO likevo = new LikesVO();
 
@@ -221,7 +241,7 @@ public class HomeController {
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
 
         int likeCnt = boardServiceImpl.selectLikeCnt(resultVO.getId());
-
+        System.out.println("viewContent.do > resultVO :" + resultVO.toString());
         resultVO.setLikeCnt(likeCnt);
 
         boardServiceImpl.addViewCnt(postsVO.getId());

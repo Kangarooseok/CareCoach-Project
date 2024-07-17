@@ -3,10 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding : 10px;
+  margin : 10px;
 }
 
 .viewtitle {
   font-weight: bold;
+  padding-top:5px;
+  padding-bottom:5px;
 }
 
 .dateview {
@@ -22,4 +25,24 @@
   padding: 0;
   font-size: inherit;
   cursor: pointer;
+}
+/* 버튼 스타일 */
+.backbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.backbutton:hover {
+    background-color: #0056b3;
 }

@@ -6,7 +6,27 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<style>
+.backbutton {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+/* 버튼 호버 스타일 */
+.backbutton:hover {
+    background-color: #0056b3;
+}
+</style>
 <div class="page-contents">
     <form id="updateForm" name="updateForm" method="post">
         <div>
@@ -20,7 +40,7 @@ pageEncoding="UTF-8"%>
                                 <option value="4" ${result.categoryId == 4 ? 'selected' : ''}>헬스영상</option>
                                 <option value="6" ${result.categoryId == 6 ? 'selected' : ''}>문의게시판</option>
                             </select>
-                            <button style="margin-left: 20px;" onClick='fn_updatetoPost()'>수정</button><button style="margin-left: 20px;" onClick='history.back()'>취소</button>
+                            <a class="backbutton" style="margin-left: 20px;" onClick='fn_updatetoPost()'>수정</a><a href="javascript:history.back();" class="backbutton">취소</a>
                         </td>
                     </tr>
                     <tr id="urlRow" style="display:none;">

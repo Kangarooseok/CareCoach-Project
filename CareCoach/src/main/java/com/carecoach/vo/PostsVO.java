@@ -37,6 +37,9 @@ public class PostsVO {
     //좋아요 수
     private int likeCnt;
 
+    //좋아요 여부
+    private int isLiked;
+
     private int isDeleted;
 
     private int CntPerPage;
@@ -45,6 +48,14 @@ public class PostsVO {
 
     // Getter와 Setter 메서드들
 
+
+    public int getIsLiked() {
+        return isLiked;
+    }
+
+    public void setIsLiked(int isLiked) {
+        this.isLiked = isLiked;
+    }
 
     public int getId() {
         return id;

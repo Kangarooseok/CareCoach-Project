@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 		        <div class="faq-item">
 		        	<div class="faq-question" style="cursor: pointer;"><span><c:out value="${result.title}"/></span><span>▼</span></div>
 		         	<div class="faq-answer"><c:out value="${result.content}"/></div>
-	       		</div> 
+	       		</div>
 	         </c:forEach>
    </div>
 </div>
@@ -26,9 +26,8 @@ pageEncoding="UTF-8"%>
 var faqQuestions = document.querySelectorAll(".faq-question");
 faqQuestions.forEach(function(question) {
     question.addEventListener("click", function() {
-        this.classList.toggle("active");
         var answer = this.nextElementSibling;
-        if (answer.style.display === "none") {
+        if (answer.style.display === "none" || answer.style.display === "") {
             this.querySelector("span:last-child").textContent = "▲";
             answer.style.display = "block";
         } else {
