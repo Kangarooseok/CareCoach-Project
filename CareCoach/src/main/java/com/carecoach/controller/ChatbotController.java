@@ -111,7 +111,6 @@ public class ChatbotController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 System.out.println("서버 응답: " + chatbotMessage);
             } else { // 오류가 발생했을 때
                 chatbotMessage = con.getResponseMessage();

@@ -15,59 +15,41 @@ pageEncoding="UTF-8"%>
   </div>
 
    <form id="boardForm" name="boardForm" method="post">
-        <div style="text-align: right; padding-right : 100px;">
+        <div class="writeClass" style="display: flex; justify-content: space-between; width: 1200px; margin:auto;">
+            <h1 style="padding-top: 0px;">헬스영상</h1>
             <a href='#' onClick='fn_write()'>📝작성</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>URL</th>
-                    <th>작성자</th>
-                    <th>날짜</th>
-                    <th>조회수</th>
-                    <th>좋아요</th>
-                </tr>
-            </thead>
-            <tbody>
-			    <c:forEach var="result" items="${list}" varStatus="status">
-		      
-			        <tr onClick='fn_view(${result.id})'>
-			            <td><c:out value="${status.count} "/></td>
-			            <td><c:out value="${result.title}"/></td>
-			            <td><img id="${status.index}" src="" alt="썸네일" style="width: 100px; height: 60px;"/></td>
-			            <td><c:out value="${result.userId}"/></td>
-			            <td><c:out value="${result.createdDt}"/></td>
-			            <td><c:out value="${result.viewCnt}"/></td>
-                        <td>
-                        <c:if test="${result.isLiked!=1}">
-                            🤍<c:out value="${result.likeCnt}"/>
-                        </c:if>
-                        <c:if test="${result.isLiked==1}">
-                            💗<c:out value="${result.likeCnt}"/>
-                        </c:if>
-                        </td>
-			        </tr>
-		   
-			        	
-			        <script>
-			            // URL에서 비디오 ID 추출
-			            var url = '<c:out value="${result.url}"/>';
-			            var videoId = url.split('v=')[1];
-			            var ampersandPosition = videoId.indexOf('&');
-			            if (ampersandPosition != -1) {
-			                videoId = videoId.substring(0, ampersandPosition);
-			            }
-			            // 썸네일 URL 생성
-			            var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
-			            // 썸네일 이미지를 설정
-			            document.getElementById('${status.index}').src = thumbnailUrl;
-			        </script>
-			    </c:forEach>
-            </tbody>
-        </table>
-		<div style="text-align: center;">
+        <c:forEach var="result" items="${list}" varStatus="status">
+        <div class="videoList" style="display: flex; margin:auto; width:1200px; padding-top: 20px; align-items: stretch;cursor: pointer;" onClick='fn_view(${result.id})'>
+           <img id="${status.index}" src="" alt="썸네일" style="width: 180px; height: 100px; border-radius: 5px;"/>
+           <div style="display:flex; align-self: auto; padding-left:5px; flex-direction: column; justify-content: space-between;">
+                 <div><c:out value="${result.title}"/></div>
+                 <div>👤 <c:out value="${result.userId}"/></div>
+                 <div>작성일 : <c:out value="${result.updatedDt}"/></div>
+                 <c:if test="${result.isLiked!=1}">
+                 <div> 🤍<c:out value="${result.likeCnt}"/></div>
+                 </c:if>
+                 <c:if test="${result.isLiked==1}">
+                     <div>💗<c:out value="${result.likeCnt}"/></div>
+                 </c:if>
+                 <div>조회 <c:out value="${result.viewCnt}"/></div>
+            </div>
+        </div>
+            <script>
+                // URL에서 비디오 ID 추출
+                var url = '<c:out value="${result.url}"/>';
+                var videoId = url.split('v=')[1];
+                var ampersandPosition = videoId.indexOf('&');
+                if (ampersandPosition != -1) {
+                    videoId = videoId.substring(0, ampersandPosition);
+                }
+                // 썸네일 URL 생성
+                var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
+                // 썸네일 이미지를 설정
+                document.getElementById('${status.index}').src = thumbnailUrl;
+            </script>
+        </c:forEach>
+        <div style="text-align: center;">
 		    <c:if test="${pagination.curRange ne 1}">
 		        <a href="#" onClick="fn_paging(1)">[처음]</a>
 		    </c:if>

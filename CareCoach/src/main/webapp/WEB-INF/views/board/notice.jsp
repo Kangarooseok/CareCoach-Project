@@ -13,6 +13,9 @@ pageEncoding="UTF-8"%>
     <div class="section health" onclick="moveBoardPage(4)">헬스 영상</div>
   </div>
     <form id="boardForm" name="boardForm" method="post">
+            <div class="writeClass" style="display: flex; justify-content: space-between; width: 1200px; margin:auto;">
+                <h1 style="padding-top: 0px;">공지사항</h1>
+            </div>
         <table>
             <thead>
                 <tr>

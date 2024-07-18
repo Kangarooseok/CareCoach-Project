@@ -31,6 +31,7 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
   <!-- Notices Section -->
   <div class="section notices">
     <h2>공지사항</h2>
+    <div style="display:flex; align-self: auto; padding-left:10px; flex-direction: column;">
     <c:choose>
       <c:when test="${empty recentPosts1}">
         <tr height="10">
@@ -44,17 +45,19 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 
       <c:when test="${!empty recentPosts1}">
         <c:forEach var="post" items="${recentPosts1}" varStatus="postNum">
-          <li onclick='fn_view(${post.id})' style="margin-bottom: 15px">
-            <a class="cls1 posts" href="#"> ${postNum.count}. ${post.title} </a>
-          </li>
+          <div onclick='fn_view(${post.id})' style="cursor: pointer; display: flex;  align-items: center; height: 40px;">
+           ${postNum.count}. ${post.title}
+          </div>
         </c:forEach>
       </c:when>
     </c:choose>
+    </div>
   </div>
 
   <!-- Board Section -->
   <div class="section board">
     <h2>최근 게시물</h2>
+    <div style="display:flex; align-self: auto; padding-left:10px; flex-direction: column;">
     <c:choose>
       <c:when test="${empty recentPosts2}">
         <tr height="10">
@@ -68,73 +71,74 @@ pageEncoding="UTF-8"%> <%@ include file="./header.jsp" %>
 
       <c:when test="${!empty recentPosts2}">
         <c:forEach var="post" items="${recentPosts2}" varStatus="postNum">
-          <li onclick='fn_view(${post.id})' style="margin-bottom: 15px">
-            <a class="cls1 posts" href="#"> ${postNum.count}. ${post.title} </a>
-          </li>
+          <div onclick='fn_view(${post.id})' style="cursor: pointer; display: flex;  align-items: center; height: 40px;" >
+            ${postNum.count}. ${post.title}
+          </div>
         </c:forEach>
       </c:when>
     </c:choose>
+    </div>
   </div>
 
   <!-- Health Videos Section -->
   <div class="section videos">
     <h2>헬스 영상</h2>
-    <c:choose>
-        <c:when test="${empty recentPosts3}">
-            <div class="video-item">
-                <a href="#">
-                    <img src="https://via.placeholder.com/1200x628" alt="해당 페이지가 없습니다." />
-                </a>
-                <div class="video-description">
-                    <p>해당 페이지가 없습니다.</p>
-                    <div class="video-meta">
-                        <span>&#x2764; 0</span> <span>&#128100; 관리자</span>
+    <div style="display:flex; align-self: auto; padding-left:10px; flex-direction: column; justify-content: space-between;">
+        <c:choose>
+            <c:when test="${empty recentPosts3}">
+                <div class="video-item">
+                    <div>
+                        <img src="https://via.placeholder.com/1200x628" alt="해당 페이지가 없습니다." />
+                    </div>
+                    <div class="video-description">
+                        <p>해당 페이지가 없습니다.</p>
+                        <div class="video-meta">
+                            <span>&#x2764; 0</span> <span>&#128100; 관리자</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="video-item">
-                <a href="#">
-                    <img src="https://via.placeholder.com/1200x628" alt="해당 페이지가 없습니다." />
-                </a>
-                <div class="video-description">
-                    <p>해당 페이지가 없습니다.</p>
-                    <div class="video-meta">
-                        <span>&#x2764; 0</span> <span>&#128100; 관리자</span>
+                <div class="video-item">
+                    <div href="#">
+                        <img src="https://via.placeholder.com/1200x628" alt="해당 페이지가 없습니다." />
+                    </div>
+                    <div class="video-description">
+                        <p>해당 페이지가 없습니다.</p>
+                        <div class="video-meta">
+                            <span>&#x2764; 0</span> <span>&#128100; 관리자</span>
+                        </div>
                     </div>
                 </div>
+            </c:when>
+        <c:when test="${!empty recentPosts3}">
+        <c:forEach var="post" items="${recentPosts3}" varStatus="postNum">
+            <div onclick='fn_view(${post.id})' class="video-item"  style="cursor: pointer;">
+                <div href="#">
+                    <img id="${postNum.index}" src="" alt="${post.title}" />
+                </div>
+                <div class="video-description">
+                    <p style="margin: 3px;">${post.title}</p>
+                    <div style="margin: 3px;">🤍${recentPosts4[postNum.index]}</div>
+                    <div style="margin: 3px;">&#128100; ${post.userId}</div>
+                </div>
             </div>
+                <script>
+                   // URL에서 비디오 ID 추출
+                   var url = '<c:out value="${post.url}"/>';
+                   var videoId = url.split('v=')[1];
+                   var ampersandPosition = videoId.indexOf('&');
+                   if (ampersandPosition != -1) {
+                       videoId = videoId.substring(0, ampersandPosition);
+                   }
+                   // 썸네일 URL 생성
+                   var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
+                   // 썸네일 이미지를 설정
+                   document.getElementById('${postNum.index}').src = thumbnailUrl;
+               </script>
+            </c:forEach>
         </c:when>
-	<c:when test="${!empty recentPosts3}">
-    <c:forEach var="post" items="${recentPosts3}" varStatus="postNum">
-        <div onclick='fn_view(${post.id})' class="video-item">
-            <a href="#">
-                <img id="${postNum.index}" src="" alt="${post.title}" />
-            </a>
-            <div class="video-description">
-                <p>${post.title}</p>
-                <div class="video-meta">
-                    <span>&#x2764;${recentPosts4[postNum.index]}</span> <span>&#128100; ${post.userId}</span>
-                </div>
-            </div>
+        </c:choose>
         </div>
-    	<script>
-           // URL에서 비디오 ID 추출
-           var url = '<c:out value="${post.url}"/>';
-           var videoId = url.split('v=')[1];
-           var ampersandPosition = videoId.indexOf('&');
-           if (ampersandPosition != -1) {
-               videoId = videoId.substring(0, ampersandPosition);
-           }
-           // 썸네일 URL 생성
-           var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
-           // 썸네일 이미지를 설정
-           document.getElementById('${postNum.index}').src = thumbnailUrl;
-       </script>
-    </c:forEach>
-</c:when>
-    </c:choose>
-    
-</div>
+    </div>
 </div>
   </form>
 <script type="text/javascript" src="../resources/js/bannerSlide.js"></script>

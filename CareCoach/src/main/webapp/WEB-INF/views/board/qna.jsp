@@ -12,7 +12,8 @@ pageEncoding="UTF-8"%>
     <div class="section qna" onclick="moveBoardPage(6)">문의게시판</div>
   </div>
     <form id="boardForm" name="boardForm" method="post">
-        <div style="text-align: right; padding-right : 100px;">
+        <div class="writeClass" style="display: flex; justify-content: space-between; width: 1200px; margin:auto;">
+            <h1 style="padding-top: 0px;">문의게시판</h1>
             <a href='#' onClick='fn_write()'>📝작성</a>
         </div>
         <table>

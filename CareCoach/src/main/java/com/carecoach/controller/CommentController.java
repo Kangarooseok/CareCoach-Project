@@ -40,14 +40,11 @@ public class CommentController {
         String userId = (String) session.getAttribute("id");
 
         try {
-
             commentsVO.setUserId(userId);
             commentService.commentInsert(commentsVO);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "success";
     }
 
@@ -78,15 +75,12 @@ public class CommentController {
                 hm.put("updatedDt", list.get(i).getUpdatedDt());
                 hmlist.add(hm);
             }
-
         }
-
         String loginid = (String) session.getAttribute("id");
         model.addAttribute("loginid", loginid);
 
         JSONArray json = new JSONArray(hmlist);
         return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
-
     }
     // 댓글 삭제
     @RequestMapping(value = "/board/delComment.do", method = RequestMethod.POST)
@@ -115,6 +109,4 @@ public class CommentController {
         }
         return "success";
     }
-
-
 }

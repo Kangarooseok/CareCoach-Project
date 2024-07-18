@@ -380,6 +380,7 @@ main {
 
 .videos .video-meta {
   display: flex;
+  flex-direction: column;
   justify-content: start;
   margin-top: 5px;
   font-size: 0.8em;

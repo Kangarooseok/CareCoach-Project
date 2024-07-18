@@ -7,6 +7,28 @@ pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/viewboard.css" />
+<style>
+.backbutton {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #565656;
+    border: solid 1px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.backbutton:hover {
+    background-color: #0056b3;
+}
+</style>
+
 <div class="page-contents">
 
 <!--  상단 카레고리  -->
@@ -63,10 +85,10 @@ pageEncoding="UTF-8"%>
                     <span style="font-size: 22px;  margin:10px;">
                         ${result.title}
                     <c:if test="${result.categoryId != 2 && loginid==result.userId}">
-                      <button onClick='fn_update()'>수정</button>
+                      <button class="backbutton" onClick='fn_update()'>수정</button>
                     </c:if>
                     <c:if test="${(result.categoryId == 3 || result.categoryId == 4 ) && loginid==result.userId}">
-                      <button onClick='fn_delete()'>삭제</button>
+                      <button class="backbutton" onClick='fn_delete()'>삭제</button>
                     </c:if>
                     </span>
                     <br>

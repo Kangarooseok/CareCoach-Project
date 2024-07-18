@@ -12,8 +12,8 @@ pageEncoding="UTF-8"%>
     margin-left: 10px;
     font-size: 12px;
     color: #fff;
-    background-color: #007bff;
-    border: none;
+    background-color: #565656;
+    border: solid 1px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
                                 <option value="4" ${result.categoryId == 4 ? "selected" : ""}>헬스영상</option>
                                 <option value="6" ${result.categoryId == 6 ? "selected" : ""}>문의게시판</option>
                             </select>
-                            <a class="backbutton" style="margin-left: 20px;" onClick='fn_addPost()'>등록</a>
+                            <a class="backbutton" style="margin-left: 20px;  background-color: #e0f8eb; color: #565656;" onClick='fn_addPost()'>등록</a>
                             <a href="javascript:history.back();" class="backbutton">취소</a>
                         </td>
                     </tr>

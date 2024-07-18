@@ -94,8 +94,6 @@ public class HomeController {
 
         List<PostsVO> list = boardServiceImpl.selectPostList(postsvo);
 
-
-
         // 각 게시물의 likeCnt 설정
         for (PostsVO post : list) {
             int likeCnt = boardServiceImpl.selectLikeCnt(post.getId());
@@ -114,31 +112,20 @@ public class HomeController {
                 post.setIsLiked(is_liked);
             }
         }
-
-
-
-
-
         boardServiceImpl.selectLikeCnt(categoryId);
 
-
         model.addAttribute("loginid", loginid);
-
         model.addAttribute("list", list);
-
         model.addAttribute("listCnt", listCnt);
-
         model.addAttribute("pagination", pagination);
 
         return returnPosts(categoryId);
-
     }
 
 
     /* board */
     @RequestMapping(value = "/board/writeForm.do")
     public String writeBoardForm() throws Exception {
-
         return "board/writeForm";
     }
 
@@ -151,7 +138,6 @@ public class HomeController {
             String str = content.replace("\r\n", "<br>");
             postsVO.setContent(str);
         }
-
         boardServiceImpl.insertPost(postsVO);
 
         List<PostsVO> list = boardServiceImpl.selectPostList(postsVO);
@@ -159,7 +145,6 @@ public class HomeController {
         model.addAttribute("list", list);
 
         return "redirect:/board/" + postsVO.getCategoryId();
-
     }
 
     @Transactional
@@ -195,14 +180,12 @@ public class HomeController {
         model.addAttribute("result", resultVO);
 
         return "board/updateForm";
-
     }
 
     @Transactional
     @RequestMapping(value = "/board/delete.do")
     public String delete(@ModelAttribute("postsVO") PostsVO postsVO, Model model) throws Exception {
         System.out.println("delete.do 호출 됨" + postsVO.toString());
-
 
         boardServiceImpl.deletePost(postsVO);
 
@@ -211,7 +194,6 @@ public class HomeController {
         model.addAttribute("list", list);
 
         return "redirect:/board/" + postsVO.getCategoryId();
-
     }
 
 
@@ -237,7 +219,6 @@ public class HomeController {
             model.addAttribute("is_liked", is_liked);
 
         }
-
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
 
         int likeCnt = boardServiceImpl.selectLikeCnt(resultVO.getId());
@@ -264,7 +245,6 @@ public class HomeController {
         PostsVO resultVO = boardServiceImpl.selectPostsById(postsVO);
 
         return "redirect:/board/" + postsVO.getCategoryId();
-
     }
 
     private String returnPosts(Integer categoryId) {
@@ -287,8 +267,5 @@ public class HomeController {
             default:
                 return "/";
         }
-
     }
-
-
 }
