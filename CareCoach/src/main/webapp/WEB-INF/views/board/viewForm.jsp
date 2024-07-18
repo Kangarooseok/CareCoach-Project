@@ -109,11 +109,11 @@ pageEncoding="UTF-8"%>
                 </c:if>
                 <div>${result.content}</div>
                 <div class="likeDiv">
-                    <c:if test="${is_liked!=1 && result.categoryId != 6}">
-                        <button onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
+                    <c:if test="${is_liked==0 && result.categoryId != 6}">
+                        <button id="serverCallButton" onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
                     </c:if>
-                    <c:if test="${is_liked==1}">
-                        <button onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
+                    <c:if test="${is_liked!=0}">
+                        <button id="serverCallButton" onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
                     </c:if>
                 </div>
             </div>
@@ -153,6 +153,8 @@ function fn_update(){
 }
  
 function fn_delete(){
+
+
 	var form = document.getElementById("viewForm");
 
     form.action = "<c:url value='/board/delete.do'/>";
@@ -161,27 +163,57 @@ function fn_delete(){
 }
 
 function fn_addlike(postId){
+
     if(${empty sessionScope.id}){
         alert("로그인해주세요");
         return;
     }
+    // 버튼 요소
+    const serverCallButton = $("#serverCallButton");
+
+    // 버튼이 비활성화되어 있는 경우(이미 클릭된 경우)
+    if (serverCallButton.prop("disabled")) {
+         console.log("서버 통신 중");
+         return;
+    }
+
+    // 버튼을 비활성화하여 중복 클릭 방지
+    serverCallButton.attr("disabled", true);
+
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/addlike.do'/>";
 
     form.submit();
+
+    console.log("서버 통신 성공");
 }
 
 function fn_dellike(postId){
+
     if(${empty sessionScope.id}){
         alert("로그인해주세요");
         return;
     }
+
+    // 버튼 요소
+    const serverCallButton = $("#serverCallButton");
+
+    // 버튼이 비활성화되어 있는 경우(이미 클릭된 경우)
+    if (serverCallButton.prop("disabled")) {
+         console.log("서버 통신 중");
+         return;
+    }
+    // 버튼을 비활성화하여 중복 클릭 방지
+    serverCallButton.attr("disabled", true);
+
 	var form = document.getElementById("viewForm");
 	
     form.action = "<c:url value='/board/deletelike.do'/>";
 
     form.submit();
+
+    console.log("서버 통신 성공");
 }
 
 
