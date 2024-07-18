@@ -15,7 +15,10 @@
         CASE WHEN LENGTH(p.title) > 25 THEN SUBSTR(p.title, 1, 40) || '…'
         ELSE p.title
         END AS title,
-        p.id,
+        url,
+        view_cnt,
+        user_id,
+        id,
         p.content,
         p.category_id,
         p.created_dt,

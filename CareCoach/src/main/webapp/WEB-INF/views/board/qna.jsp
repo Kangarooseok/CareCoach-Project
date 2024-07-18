@@ -27,6 +27,11 @@ pageEncoding="UTF-8"%>
                 </tr>
             </thead>
             <tbody>
+            <c:choose>
+                <c:when test="${empty list}">
+                    <td>등록된 글이 없습니다.</td>
+                </c:when>
+               <c:when test="${!empty list}">
                 <c:forEach var="result" items="${list}" varStatus="status">
                     <tr onClick='fn_view(${result.id}, "${result.userId}")'>
                         <td><c:out value="${status.count}"/></td>
@@ -35,7 +40,9 @@ pageEncoding="UTF-8"%>
                         <td><c:out value="${result.createdDt}"/></td>
                         <td><c:out value="${result.viewCnt}"/></td>
                     </tr>
-                </c:forEach>
+                    </c:forEach>
+                    </c:when>
+                    </c:choose>
             </tbody>
         </table>
          <div class="paginglist" style="text-align: center;">

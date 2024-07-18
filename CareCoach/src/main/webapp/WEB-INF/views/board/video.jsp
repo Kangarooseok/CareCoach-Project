@@ -19,6 +19,13 @@ pageEncoding="UTF-8"%>
             <h1 style="padding-top: 0px;">헬스영상</h1>
             <a href='#' onClick='fn_write()'>📝작성</a>
         </div>
+        <c:choose>
+        <c:when test="${empty list}">
+            <div style="text-align:center;">
+              등록된 글이 없습니다.
+            </div>
+        </c:when>
+        <c:otherwise>
         <c:forEach var="result" items="${list}" varStatus="status">
         <div class="videoList" style="display: flex; margin:auto; width:1200px; padding-top: 20px; align-items: stretch;cursor: pointer;" onClick='fn_view(${result.id})'>
            <img id="${status.index}" src="" alt="썸네일" style="width: 180px; height: 100px; border-radius: 5px;"/>
@@ -32,12 +39,12 @@ pageEncoding="UTF-8"%>
                  <c:if test="${result.isLiked==1}">
                      <div>💗<c:out value="${result.likeCnt}"/></div>
                  </c:if>
-                 <div>조회 <c:out value="${result.viewCnt}"/></div>
+                 <div>조회수 : <c:out value="${result.viewCnt}"/></div>
             </div>
         </div>
             <script>
                 // URL에서 비디오 ID 추출
-                var url = '<c:out value="${result.url}"/>';
+                var url = "${result.url}";
                 var videoId = url.split('v=')[1];
                 var ampersandPosition = videoId.indexOf('&');
                 if (ampersandPosition != -1) {
@@ -49,6 +56,8 @@ pageEncoding="UTF-8"%>
                 document.getElementById('${status.index}').src = thumbnailUrl;
             </script>
         </c:forEach>
+        </c:otherwise>
+        </c:choose>
         <div style="text-align: center;">
 		    <c:if test="${pagination.curRange ne 1}">
 		        <a href="#" onClick="fn_paging(1)">[처음]</a>

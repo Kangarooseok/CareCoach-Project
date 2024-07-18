@@ -85,7 +85,7 @@ pageEncoding="UTF-8"%>
                     <span style="font-size: 22px;  margin:10px;">
                         ${result.title}
                     <c:if test="${result.categoryId != 2 && loginid==result.userId}">
-                      <button class="backbutton" onClick='fn_update()'>수정</button>
+                      <button class="backbutton" style="background-color: #e0f8eb; color: #565656;" onClick='fn_update()'>수정</button>
                     </c:if>
                     <c:if test="${(result.categoryId == 3 || result.categoryId == 4 ) && loginid==result.userId}">
                       <button class="backbutton" onClick='fn_delete()'>삭제</button>
@@ -144,22 +144,24 @@ document.getElementById('videoUrl').src = videoUrl;
 
 //수정
 function fn_update(){
-    
+    if(confirm("수정하시겠습니까?")){
     var form = document.getElementById("viewForm");
     
     form.action = "<c:url value='/board/updateForm.do'/>";
 
     form.submit();
+    }
 }
  
 function fn_delete(){
-
+    if(confirm("정말 삭제하시겠습니까?")){
 
 	var form = document.getElementById("viewForm");
 
     form.action = "<c:url value='/board/delete.do'/>";
 
     form.submit();
+    }
 }
 
 function fn_addlike(postId){

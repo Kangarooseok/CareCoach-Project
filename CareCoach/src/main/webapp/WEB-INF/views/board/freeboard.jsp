@@ -33,23 +33,32 @@ pageEncoding="UTF-8"%>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="result" items="${list}" varStatus="status">
-                    <tr onClick='fn_view(${result.id})'>
-                        <td><c:out value="${status.count}"/></td>
-                        <td><c:out value="${result.title}"/></td>
-                        <td><c:out value="${result.userId}"/></td>
-                        <td><c:out value="${result.updatedDt}"/></td>
-                        <td><c:out value="${result.viewCnt}"/></td>
-                        <td>
-                        <c:if test="${result.isLiked!=1}">
-                            🤍<c:out value="${result.likeCnt}"/>
-                        </c:if>
-                        <c:if test="${result.isLiked==1}">
-                            💗<c:out value="${result.likeCnt}"/>
-                        </c:if>
-                        </td>
-                    </tr>
-                </c:forEach>
+            <c:choose>
+            <c:when test="${empty list}">
+                <tr>
+                    <td colspan="6" style="text-align: center;">등록된 글이 없습니다.</td>
+                </tr>
+            </c:when>
+               <c:when test="${!empty list}">
+                    <c:forEach var="result" items="${list}" varStatus="status">
+                        <tr onClick='fn_view(${result.id})'>
+                            <td><c:out value="${status.count}"/></td>
+                            <td><c:out value="${result.title}"/></td>
+                            <td><c:out value="${result.userId}"/></td>
+                            <td><c:out value="${result.updatedDt}"/></td>
+                            <td><c:out value="${result.viewCnt}"/></td>
+                            <td>
+                            <c:if test="${result.isLiked!=1}">
+                                🤍<c:out value="${result.likeCnt}"/>
+                            </c:if>
+                            <c:if test="${result.isLiked==1}">
+                                💗<c:out value="${result.likeCnt}"/>
+                            </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+               </c:when>
+               </c:choose>
             </tbody>
         </table>
         <!--페이징 처리-->
