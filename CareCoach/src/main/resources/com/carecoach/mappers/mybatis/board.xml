@@ -8,29 +8,27 @@
 
 
     <select id="selectPostList" resultType="com.carecoach.vo.PostsVO">
-        <!--
-        select *
-        from posts
-        where categoryId=#{categoryId}
-            and id_deleted=0
-        order by updatedDt DESC
-         -->
-
         SELECT *
         FROM (
         SELECT
-        ROWNUM AS RNUM, p.*
+        ROWNUM AS RNUM,
+        CASE WHEN LENGTH(p.title) > 25 THEN SUBSTR(p.title, 1, 40) || '…'
+        ELSE p.title
+        END AS title,
+        p.id,
+        p.content,
+        p.category_id,
+        p.created_dt,
+        p.updated_dt
         FROM (
         SELECT *
-        FROM posts p
+        FROM posts
         WHERE category_id = #{categoryId}
         AND is_deleted = 0
         ORDER BY updated_dt DESC
         ) p
         )
         WHERE RNUM BETWEEN #{StartIndex} AND #{CntPerPage}
-
-
     </select>
 
 
