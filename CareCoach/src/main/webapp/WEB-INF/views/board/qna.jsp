@@ -29,7 +29,9 @@ pageEncoding="UTF-8"%>
             <tbody>
             <c:choose>
                 <c:when test="${empty list}">
-                    <td>등록된 글이 없습니다.</td>
+                        <tr>
+                            <td colspan="6" style="text-align: center;">등록된 글이 없습니다.</td>
+                        </tr>
                 </c:when>
                <c:when test="${!empty list}">
                 <c:forEach var="result" items="${list}" varStatus="status">

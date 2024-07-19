@@ -109,10 +109,10 @@ pageEncoding="UTF-8"%>
                 </c:if>
                 <div>${result.content}</div>
                 <div class="likeDiv">
-                    <c:if test="${is_liked==0 && result.categoryId != 6}">
+                    <c:if test="${(is_liked==0 || is_liked==null )&& result.categoryId != 6}">
                         <button id="serverCallButton" onclick='fn_addlike(${result.id})'>🤍</button>${result.likeCnt}
                     </c:if>
-                    <c:if test="${is_liked!=0}">
+                    <c:if test="${is_liked>0}">
                         <button id="serverCallButton" onclick='fn_dellike(${result.id})'>💗</button>${result.likeCnt}
                     </c:if>
                 </div>
