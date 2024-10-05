@@ -60,10 +60,10 @@
 
 ## 추후에 사진 업로드
 <p>
-![CareCoach 메인 페이지 상단](https://github.com/user-attachments/assets/99543470-83a1-43fd-a754-ec9d64a4c6bb)
+![CareCoach 메인 페이지 상단](https://github.com/user-attachments/assets/9c764263-1144-42ba-83ed-3df7bca014a6)
 </p>
 <p>
-![CareCoach 메인 페이지 하단](https://github.com/user-attachments/assets/e5222752-2475-4f2e-ab78-c65a63a88bc8)
+![CareCoach 메인 페이지 하단](https://github.com/user-attachments/assets/dbc282d0-94de-4f52-bbf2-23568120a04a)
 </p>
 
 - [X] **회원가입 페이지**   
