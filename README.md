@@ -58,19 +58,18 @@
 + 최근 작성된 커뮤니티 게시글 5개 호출
 + 최근 업로드된 유튜브 영상 2개 호출
 
-## 추후에 사진 업로드
-<p>
-![CareCoach 메인 페이지 상단](https://github.com/user-attachments/assets/9c764263-1144-42ba-83ed-3df7bca014a6)
-</p>
-<p>
-![CareCoach 메인 페이지 하단](https://github.com/user-attachments/assets/dbc282d0-94de-4f52-bbf2-23568120a04a)
-</p>
+     <p>    
+![CareCoach 메인 상단](https://github.com/user-attachments/assets/dbc282d0-94de-4f52-bbf2-23568120a04a)
+     </p>
+     <p>    
+![CareCoach 메인 하단](https://github.com/user-attachments/assets/9c764263-1144-42ba-83ed-3df7bca014a6)
+     </p>
 
 - [X] **회원가입 페이지**   
 + 약관 동의
 + 회원가입 : (이름, 아이디/아이디 중복확인, 비밀번호/비밀번호 확인, 이메일)
      <p>    
-![CareCoach 회원가입 페이지](https://github.com/user-attachments/assets/8e8c6924-0a69-472e-8afa-a5cd79af308b)
+
      </p>
 
 - [X] **로그인 페이지**   
