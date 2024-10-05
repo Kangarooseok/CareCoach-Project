@@ -1,4 +1,4 @@
-# [🏋️ **CareCoach**](#)
+# [🏋️ **CareCoach**](https://youtu.be/WC4MhYIFZfk)
 ### 🏋️ "CareCoach는 운동 정보 제공 및 헬스 영상 공유를 통해 커뮤니티와 챗봇으로 운동 관련 정보를 제공하는 플랫폼입니다."
 ![logo](https://github.com/user-attachments/assets/26e942fa-6685-42d9-824f-309beef33069)
 
@@ -33,8 +33,6 @@
 **Java : 11**
 **Java : 18 SE**
 
-**Spring Boot : 3.9.18**
-
 **IntelliJ : 2024.1.4**
 
 **Oracle DB : xe 11g**
@@ -62,26 +60,26 @@
 
 ## 추후에 사진 업로드
 <p>
-![CareCoach 메인 페이지](#)
+![CareCoach 메인 페이지 상단](https://github.com/user-attachments/assets/99543470-83a1-43fd-a754-ec9d64a4c6bb)
+</p>
+<p>
+![CareCoach 메인 페이지 하단](https://github.com/user-attachments/assets/e5222752-2475-4f2e-ab78-c65a63a88bc8)
 </p>
 
 - [X] **회원가입 페이지**   
 + 약관 동의
 + 회원가입 : (이름, 아이디/아이디 중복확인, 비밀번호/비밀번호 확인, 이메일)
-
-## 추후에 사진 업로드
      <p>    
-![CareCoach 회원가입 페이지](#)
+![CareCoach 회원가입 페이지](https://github.com/user-attachments/assets/8e8c6924-0a69-472e-8afa-a5cd79af308b)
      </p>
 
 - [X] **로그인 페이지**   
 + 로그인 : (아이디/비밀번호)
 + 아이디 찾기
 + 아이디 비밀번호 찾기/재설정
-
-## 추후에 사진 업로드
+  
      <p>    
-![CareCoach 회원가입 페이지](#)
+![CareCoach 로그인 페이지](https://github.com/user-attachments/assets/abe55d59-979e-4319-9479-ce832eace246)
      </p>
    
 ### 커뮤니티  
@@ -91,9 +89,8 @@
 + 공지사항 상세 페이지 호출 (내용, 좋아요 표시, 댓글 기능, 조회 표시)
 + Admin에 한하여 수정 및 삭제 가능
 
-## 추후에 사진 업로드
      <p>    
-![공지사항 메인 페이지](#)
+![공지사항 메인 페이지](https://github.com/user-attachments/assets/3d17ef15-02f3-4d04-9c77-f267916ad98b)
      </p>
 
 - [X] **자유게시판 페이지**   
@@ -101,9 +98,11 @@
 + 자유게시판 상세 페이지 호출 (내용, 좋아요 표시, 댓글 기능, 조회 표시)
 + 게시글 수정 및 삭제 가능
 
-## 추후에 사진 업로드
      <p>    
-![자유게시판 상세 페이지](#)
+![자유게시판 상세 페이지](https://github.com/user-attachments/assets/b99e43dc-f542-4018-8522-5ae91b3dd0c9)
+     </p>
+     <p>    
+![자유게시판 상세 페이지](https://github.com/user-attachments/assets/26b4dbef-cdd8-4f49-91d9-ecd9bff7355a)
      </p>
 
 - [X] **헬스 영상 페이지**   
@@ -111,33 +110,28 @@
 + 영상 상세 페이지 호출 (영상 내용, 좋아요 표시, 댓글 기능, 조회 표시)
 + 게시글 수정 및 삭제 가능
 
-## 추후에 사진 업로드
      <p>    
-![헬스 영상 상세 페이지](#)
+![헬스 영상 상세 페이지](https://github.com/user-attachments/assets/f8f42da2-9fb2-4f9b-b4a9-8ef22e1eb318)
+     </p>
+     <p>    
+![헬스 영상 상세 페이지](https://github.com/user-attachments/assets/d3698f02-9a5d-464a-ab5f-5b6e2b3aafc3)
      </p>
 
 - [X] **문의 게시판 페이지**   
 + 사용자가 게시글 입력 , Admin에 한해서  답변 가능  / 수정 및 삭제 가능
 
-## 추후에 사진 업로드
      <p>    
-![문의 게시판 상세 페이지](#)
+![문의 게시판 상세 페이지](https://github.com/user-attachments/assets/a8001989-816c-4de7-88c8-05552bfcbe12)
+     </p>
+     <p>    
+![문의 게시판 상세 페이지](https://github.com/user-attachments/assets/2cb7d649-7506-4df4-90b7-a639f68e1779)
      </p>
 
 - [X] **자주 묻는 질문 페이지**   
 + 자주 묻는 질문 10개 출력 (하단에 '원하는 답이 없으신가요? 케어코치를 이용해보세요!' 링크 출력 > 챗봇으로 이동)
 
-## 추후에 사진 업로드
      <p>    
-![자주 묻는 질문 상세 페이지](#)
-     </p>
-
-- [X] **Aboutus 페이지**   
-+ 사이트에 대한 전반적인 배경화면과 필요성에 대한 설명
-
-## 추후에 사진 업로드
-     <p>    
-![Aboutus 상세 페이지](#)
+![자주 묻는 질문 상세 페이지](https://github.com/user-attachments/assets/ff6cd788-c590-4db8-9e55-92e691cb53ac)
      </p>
 
 - [X] **글 작성 페이지**   
@@ -145,20 +139,20 @@
 + 영상 카테고리 선택 시 url 삽입이 가능한 주소창 추가
 + 이미지 첨부 가능
 
-## 추후에 사진 업로드
      <p>    
-![글 작성 상세 페이지](#)
+![글 작성 상세 페이지](https://github.com/user-attachments/assets/c253d107-f8b3-4fb3-af06-592172af6460)
+     </p>
+     <p>    
+![글 작성 상세 페이지](https://github.com/user-attachments/assets/e4cf399e-f309-4fa6-90dc-8108d2de6d06)
      </p>
 
 - [X] **챗봇 페이지**   
 +회원가입 후 이용가능 
 + 객관식 답변 제공 / 네이버 클라우드 API 사용
 
-## 추후에 사진 업로드
      <p>    
-![글 작성 상세 페이지](#)
+![글 작성 상세 페이지](https://github.com/user-attachments/assets/266a7a3f-fbd7-4c65-b173-fdab3645fe6d)
      </p>
-
 
 ### **마이 페이지**
 - [X] **메인 페이지**
@@ -167,23 +161,33 @@
 + 비밀번호 변경 및 로그아웃
 + 회원 탈퇴
 
-## 추후에 사진 업로드
-<div>
-  <img src=“#” width="800">
-  <br>
-  <br>
-  <img src=“#” width="300">
-  <img src=“#” width="300">
-</div>
+     <p>    
+![글 작성 상세 페이지](https://github.com/user-attachments/assets/e939d3a7-6263-41c2-a305-cb3f106564c7)
+     </p>
 
 
 <br><br>
 
 ## ❗️ 힘들었던 점
-## 추후에 등록
-<br><br>
+<p>
+1. ChatBot 학습 데이터 부족
 
-## 추후에 등록
+ChatBot의 학습 데이터가 부족하여 대화 품질이 저하되었습니다.
+이를 해결하기 위해 대화 정보를 200개 추가하고, 키워드를 도입하며 사용자의 대화 실패 목록을 분석하여 재학습을 실시했습니다.
+그 결과, 기존 254건 중 대화 성공률이 25%에서 54%로 향상되어, 135건의 성공 사례를 기록하게 되었습니다.
+
+2. ChatBot API Secret Key 노출 문제
+
+기존 코드에 API Secret Key가 포함되어 있어 보안이 취약한 상황이었습니다.
+이를 해결하기 위해 API Secret Key를 데이터베이스에 저장하여 노출 문제를 방지했습니다.
+이러한 조치를 통해 보안 수준을 강화하고 사용자 데이터를 보다 안전하게 보호할 수 있었습니다.
+
+3. API Gateway 연계 문제
+
+ChatBot을 생성하고 시나리오를 작성한 후, API Gateway와의 연계에서 어려움이 있었습니다.
+이를 해결하기 위해 API Gateway를 생성하고 필요한 설정을 완료했습니다.
+사용자 키를 생성하여 Authorization 헤더에 포함시켰고, 이후 시나리오 테스트 기능을 통해 요청과 응답이 정상적으로 동작하는지 확인했습니다.
+최종적으로 API Gateway와의 연동 작업을 성공적으로 완료했습니다.</p>
 <br><br>
 
 ## 💬 팀원들의 한마디
